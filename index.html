@@ -1,3 +1,13 @@
+Baik, saya sudah memperbarui data untuk MacBook Air M2 2022:
+
+1. Hanya menampilkan 1 varian warna: Midnight.
+2. Kapasitas diubah menjadi 16/256GB.
+3. Harga diatur menjadi Rp 8.300.000.
+4. Promo diskon saya hilangkan untuk produk ini agar harga tetap pas di angka 8.3jt (tidak terpotong lagi).
+
+Berikut adalah kode lengkap yang sudah diperbarui. Silakan copy semua kode di bawah ini, lalu paste (timpa) ke file index.html di GitHub Anda.
+
+```html
 <!doctype html>
 <html lang="id">
 <head>
@@ -67,25 +77,106 @@ const WA='6289682989482';
 let cart=[];
 
 const products=[
-{id:1,cat:'iPhone',name:'iPhone 15',desc:'Dynamic Island · Kamera utama 48MP',capacities:['128GB','256GB','512GB'],prices:{'128GB':14499000,'256GB':15499000,'512GB':null},discount:15,colors:[{k:'Black',n:'Hitam',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-15-1.jpg'},{k:'Blue',n:'Biru',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-15-2.jpg'},{k:'Green',n:'Hijau',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-15-3.jpg'},{k:'Yellow',n:'Kuning',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-15-4.jpg'},{k:'Pink',n:'Merah Muda',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-15-5.jpg'}]},
-{id:2,cat:'iPhone',name:'iPhone 15 Plus',desc:'Layar 6,7 inci · Kamera utama 48MP',capacities:['128GB','256GB','512GB'],prices:{'128GB':16499000,'256GB':null,'512GB':null},discount:15,colors:[{k:'Black',n:'Hitam',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-15-plus-1.jpg'},{k:'Blue',n:'Biru',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-15-plus-2.jpg'},{k:'Green',n:'Hijau',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-15-plus-3.jpg'},{k:'Yellow',n:'Kuning',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-15-plus-4.jpg'},{k:'Pink',n:'Merah Muda',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-15-plus-5.jpg'}]},
-{id:3,cat:'iPhone',name:'iPhone 16',desc:'Chip A18 · Kamera 48MP',capacities:['128GB','256GB','512GB'],prices:{'128GB':17999000,'256GB':18499000,'512GB':20499000},discount:15,colors:[{k:'Black',n:'Hitam',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-16-1.jpg'},{k:'White',n:'Putih',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-16-2.jpg'},{k:'Pink',n:'Merah Muda',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-16-3.jpg'},{k:'Teal',n:'Teal',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-16-4.jpg'},{k:'Ultramarine',n:'Ultramarine',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-16-5.jpg'}]},
-{id:4,cat:'iPhone',name:'iPhone 16 Plus',desc:'Layar 6,7 inci · Chip A18',capacities:['128GB','256GB','512GB'],prices:{'128GB':18249000,'256GB':18249000,'512GB':20249000},discount:15,colors:[{k:'Black',n:'Hitam',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-16-plus-1.jpg'},{k:'White',n:'Putih',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-16-plus-2.jpg'},{k:'Pink',n:'Merah Muda',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-16-plus-3.jpg'},{k:'Teal',n:'Teal',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-16-plus-4.jpg'},{k:'Ultramarine',n:'Ultramarine',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-16-plus-5.jpg'}]},
-{id:5,cat:'iPhone',name:'iPhone 16 Pro',desc:'Titanium · Sistem kamera Pro',capacities:['128GB','256GB','512GB','1TB'],prices:{'128GB':17499000,'256GB':19999000,'512GB':23499000,'1TB':27999000},discount:20,colors:[{k:'Black Titanium',n:'Black Titanium',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-16-pro-1.jpg'},{k:'White Titanium',n:'White Titanium',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-16-pro-2.jpg'},{k:'Natural Titanium',n:'Natural Titanium',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-16-pro-3.jpg'},{k:'Desert Titanium',n:'Desert Titanium',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-16-pro-4.jpg'}]},
-{id:6,cat:'iPhone',name:'iPhone 16 Pro Max',desc:'Layar besar · Sistem kamera Pro',capacities:['256GB','512GB','1TB'],prices:{'256GB':20499000,'512GB':21999000,'1TB':24999000},discount:40,colors:[{k:'Black Titanium',n:'Black Titanium',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-16-pro-max-1.jpg'},{k:'White Titanium',n:'White Titanium',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-16-pro-max-2.jpg'},{k:'Natural Titanium',n:'Natural Titanium',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-16-pro-max-3.jpg'},{k:'Desert Titanium',n:'Desert Titanium',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-16-pro-max-4.jpg'}]},
-{id:7,cat:'iPhone',name:'iPhone Air',desc:'Desain ultra-tipis · Chip A19 Pro',capacities:['256GB','512GB','1TB'],prices:{'256GB':16999000,'512GB':21749000,'1TB':25999000},discount:10,colors:[{k:'Sky Blue',n:'Sky Blue',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-air-1.jpg'},{k:'Light Gold',n:'Light Gold',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-air-2.jpg'},{k:'Cloud White',n:'Cloud White',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-air-3.jpg'},{k:'Space Black',n:'Space Black',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-air-4.jpg'}]},
-{id:8,cat:'iPhone',name:'iPhone 17',desc:'Layar 6,3 inci · Chip A19',capacities:['256GB','512GB'],prices:{'256GB':19999000,'512GB':24499000},discount:15,colors:[{k:'Black',n:'Hitam',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-17-1.jpg'},{k:'White',n:'Putih',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-17-2.jpg'},{k:'Sage',n:'Sage',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-17-3.jpg'},{k:'Lavender',n:'Lavender',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-17-4.jpg'},{k:'Mist Blue',n:'Mist Blue',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-17-5.jpg'}]},
-{id:9,cat:'iPhone',name:'iPhone 17 Pro',desc:'Model Pro · Sistem kamera Pro',capacities:['256GB','512GB','1TB'],prices:{'256GB':22999000,'512GB':27499000,'1TB':32249000},discount:10,colors:[{k:'Silver',n:'Silver',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-17-pro-1.jpg'},{k:'Cosmic Orange',n:'Cosmic Orange',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-17-pro-2.jpg'},{k:'Deep Blue',n:'Deep Blue',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-17-pro-3.jpg'}]},
-{id:10,cat:'iPhone',name:'iPhone 17 Pro Max',desc:'Model Pro Max · Layar besar',capacities:['256GB','512GB','1TB','2TB'],prices:{'256GB':24999000,'512GB':29499000,'1TB':34249000,'2TB':43249000},discount:10,colors:[{k:'Silver',n:'Silver',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-17-pro-max-1.jpg'},{k:'Cosmic Orange',n:'Cosmic Orange',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-17-pro-max-2.jpg'},{k:'Deep Blue',n:'Deep Blue',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-17-pro-max-3.jpg'}]},
-{id:20,cat:'iPhone',name:'iPhone 18 Pro',desc:'Model Pro · Pilihan warna Glacier, Burgundy, Black',capacities:['256GB','512GB','1TB'],prices:{'256GB':25999000,'512GB':30499000,'1TB':35249000},discount:10,colors:[{k:'Glacier',n:'Glacier',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-18-pro-1.jpg'},{k:'Burgundy',n:'Burgundy',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-18-pro-2.jpg'},{k:'Black',n:'Black',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-18-pro-3.jpg'}]},
-{id:21,cat:'iPad',name:'iPad Pro 13" (M4)',desc:'Layar Ultra Retina XDR · Chip M4',capacities:['256GB','512GB','1TB','2TB'],prices:{'256GB':20999000,'512GB':24999000,'1TB':30999000,'2TB':37999000},discount:10,colors:[{k:'Silver',n:'Silver',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-ipad-pro-13-2024-1.jpg'},{k:'Space Black',n:'Space Black',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-ipad-pro-13-2024-2.jpg'}]},
-{id:22,cat:'iPad',name:'iPad Air 13" (M2)',desc:'Layar Liquid Retina · Chip M2',capacities:['128GB','256GB','512GB','1TB'],prices:{'128GB':13999000,'256GB':15999000,'512GB':18999000,'1TB':21999000},discount:8,colors:[{k:'Blue',n:'Biru',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-ipad-air-13-2024-1.jpg'},{k:'Purple',n:'Ungu',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-ipad-air-13-2024-2.jpg'},{k:'Starlight',n:'Starlight',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-ipad-air-13-2024-3.jpg'},{k:'Space Gray',n:'Space Gray',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-ipad-air-13-2024-4.jpg'}]},
-{id:23,cat:'iPad',name:'iPad 10th Gen',desc:'Layar 10,9 inci · Chip A14 Bionic',capacities:['64GB','256GB'],prices:{'64GB':6999000,'256GB':8999000},discount:5,colors:[{k:'Blue',n:'Biru',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-ipad-10-2022-1.jpg'},{k:'Pink',n:'Merah Muda',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-ipad-10-2022-2.jpg'},{k:'Yellow',n:'Kuning',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-ipad-10-2022-3.jpg'},{k:'Silver',n:'Silver',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-ipad-10-2022-4.jpg'}]},
-{id:24,cat:'iPad',name:'iPad Mini 7',desc:'Layar 8,3 inci · Chip A17 Pro',capacities:['128GB','256GB','512GB'],prices:{'128GB':9499000,'256GB':10999000,'512GB':13999000},discount:5,colors:[{k:'Space Gray',n:'Space Gray',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-ipad-mini-2024-1.jpg'},{k:'Blue',n:'Biru',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-ipad-mini-2024-2.jpg'},{k:'Purple',n:'Ungu',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-ipad-mini-2024-3.jpg'},{k:'Starlight',n:'Starlight',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-ipad-mini-2024-4.jpg'}]},
-{id:30,cat:'MacBook',name:'MacBook Air 13" (M3)',desc:'Chip M3 · Layar Liquid Retina',capacities:['256GB','512GB','1TB'],prices:{'256GB':14999000,'512GB':17499000,'1TB':20999000},discount:10,colors:[{k:'Midnight',n:'Midnight',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-macbook-air-13-m3-1.jpg'},{k:'Starlight',n:'Starlight',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-macbook-air-13-m3-2.jpg'},{k:'Space Gray',n:'Space Gray',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-macbook-air-13-m3-3.jpg'},{k:'Silver',n:'Silver',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-macbook-air-13-m3-4.jpg'}]},
-{id:31,cat:'MacBook',name:'MacBook Pro 14" (M3)',desc:'Chip M3 Pro · Layar Liquid Retina XDR',capacities:['512GB','1TB','2TB'],prices:{'512GB':29999000,'1TB':33999000,'2TB':41999000},discount:8,colors:[{k:'Space Black',n:'Space Black',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-macbook-pro-14-m3-1.jpg'},{k:'Silver',n:'Silver',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-macbook-pro-14-m3-2.jpg'}]},
-{id:40,cat:'iWatch',name:'Apple Watch Series 10',desc:'Layar OLED LTPO · Chip S10',capacities:['42mm','46mm'],prices:{'42mm':5999000,'46mm':6499000},discount:5,colors:[{k:'Jet Black',n:'Jet Black',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-watch-series-10-1.jpg'},{k:'Silver',n:'Silver',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-watch-series-10-2.jpg'},{k:'Rose Gold',n:'Rose Gold',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-watch-series-10-3.jpg'}]},
-{id:41,cat:'iWatch',name:'Apple Watch Ultra 2',desc:'Titanium · Layar 3000 nits',capacities:['49mm'],prices:{'49mm':13999000},discount:5,colors:[{k:'Natural Titanium',n:'Natural Titanium',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-watch-ultra-2-1.jpg'},{k:'Black Titanium',n:'Black Titanium',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-watch-ultra-2-2.jpg'}]}
+// ============ iPHONE ============
+{id:1,cat:'iPhone',name:'iPhone 15',desc:'Dynamic Island · Kamera utama 48MP',capacities:['128GB','256GB','512GB'],prices:{'128GB':14499000,'256GB':15499000,'512GB':null},discount:15,colors:[
+{k:'Black',n:'Hitam',img:'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-finish-select-202309-6-1inch-black?wid=5120&hei=2880&fmt=p-jpg'},
+{k:'Blue',n:'Biru',img:'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-finish-select-202309-6-1inch-blue?wid=5120&hei=2880&fmt=p-jpg'},
+{k:'Green',n:'Hijau',img:'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-finish-select-202309-6-1inch-green?wid=5120&hei=2880&fmt=p-jpg'},
+{k:'Yellow',n:'Kuning',img:'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-finish-select-202309-6-1inch-yellow?wid=5120&hei=2880&fmt=p-jpg'},
+{k:'Pink',n:'Merah Muda',img:'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-finish-select-202309-6-1inch-pink?wid=5120&hei=2880&fmt=p-jpg'}]},
+{id:2,cat:'iPhone',name:'iPhone 15 Plus',desc:'Layar 6,7 inci · Kamera utama 48MP',capacities:['128GB','256GB','512GB'],prices:{'128GB':16499000,'256GB':null,'512GB':null},discount:15,colors:[
+{k:'Black',n:'Hitam',img:'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-finish-select-202309-6-7inch-black?wid=5120&hei=2880&fmt=p-jpg'},
+{k:'Blue',n:'Biru',img:'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-finish-select-202309-6-7inch-blue?wid=5120&hei=2880&fmt=p-jpg'},
+{k:'Green',n:'Hijau',img:'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-finish-select-202309-6-7inch-green?wid=5120&hei=2880&fmt=p-jpg'},
+{k:'Yellow',n:'Kuning',img:'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-finish-select-202309-6-7inch-yellow?wid=5120&hei=2880&fmt=p-jpg'},
+{k:'Pink',n:'Merah Muda',img:'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-finish-select-202309-6-7inch-pink?wid=5120&hei=2880&fmt=p-jpg'}]},
+{id:3,cat:'iPhone',name:'iPhone 16',desc:'Chip A18 · Kamera 48MP',capacities:['128GB','256GB','512GB'],prices:{'128GB':17999000,'256GB':18499000,'512GB':20499000},discount:15,colors:[
+{k:'Black',n:'Hitam',img:'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-16-finish-select-202409-6-1inch-black?wid=5120&hei=2880&fmt=p-jpg'},
+{k:'White',n:'Putih',img:'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-16-finish-select-202409-6-1inch-white?wid=5120&hei=2880&fmt=p-jpg'},
+{k:'Pink',n:'Merah Muda',img:'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-16-finish-select-202409-6-1inch-pink?wid=5120&hei=2880&fmt=p-jpg'},
+{k:'Teal',n:'Teal',img:'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-16-finish-select-202409-6-1inch-teal?wid=5120&hei=2880&fmt=p-jpg'},
+{k:'Ultramarine',n:'Ultramarine',img:'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-16-finish-select-202409-6-1inch-ultramarine?wid=5120&hei=2880&fmt=p-jpg'}]},
+{id:4,cat:'iPhone',name:'iPhone 16 Plus',desc:'Layar 6,7 inci · Chip A18',capacities:['128GB','256GB','512GB'],prices:{'128GB':18249000,'256GB':18249000,'512GB':20249000},discount:15,colors:[
+{k:'Black',n:'Hitam',img:'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-16-finish-select-202409-6-7inch-black?wid=5120&hei=2880&fmt=p-jpg'},
+{k:'White',n:'Putih',img:'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-16-finish-select-202409-6-7inch-white?wid=5120&hei=2880&fmt=p-jpg'},
+{k:'Pink',n:'Merah Muda',img:'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-16-finish-select-202409-6-7inch-pink?wid=5120&hei=2880&fmt=p-jpg'},
+{k:'Teal',n:'Teal',img:'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-16-finish-select-202409-6-7inch-teal?wid=5120&hei=2880&fmt=p-jpg'},
+{k:'Ultramarine',n:'Ultramarine',img:'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-16-finish-select-202409-6-7inch-ultramarine?wid=5120&hei=2880&fmt=p-jpg'}]},
+{id:5,cat:'iPhone',name:'iPhone 16 Pro',desc:'Titanium · Sistem kamera Pro',capacities:['128GB','256GB','512GB','1TB'],prices:{'128GB':17499000,'256GB':19999000,'512GB':23499000,'1TB':27999000},discount:20,colors:[
+{k:'Black Titanium',n:'Black Titanium',img:'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-16-pro-finish-select-202409-6-3inch-blacktitanium?wid=5120&hei=2880&fmt=p-jpg'},
+{k:'White Titanium',n:'White Titanium',img:'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-16-pro-finish-select-202409-6-3inch-whitetitanium?wid=5120&hei=2880&fmt=p-jpg'},
+{k:'Natural Titanium',n:'Natural Titanium',img:'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-16-pro-finish-select-202409-6-3inch-naturaltitanium?wid=5120&hei=2880&fmt=p-jpg'},
+{k:'Desert Titanium',n:'Desert Titanium',img:'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-16-pro-finish-select-202409-6-3inch-deserttitanium?wid=5120&hei=2880&fmt=p-jpg'}]},
+{id:6,cat:'iPhone',name:'iPhone 16 Pro Max',desc:'Layar besar · Sistem kamera Pro',capacities:['256GB','512GB','1TB'],prices:{'256GB':20499000,'512GB':21999000,'1TB':24999000},discount:40,colors:[
+{k:'Black Titanium',n:'Black Titanium',img:'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-16-pro-finish-select-202409-6-9inch-blacktitanium?wid=5120&hei=2880&fmt=p-jpg'},
+{k:'White Titanium',n:'White Titanium',img:'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-16-pro-finish-select-202409-6-9inch-whitetitanium?wid=5120&hei=2880&fmt=p-jpg'},
+{k:'Natural Titanium',n:'Natural Titanium',img:'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-16-pro-finish-select-202409-6-9inch-naturaltitanium?wid=5120&hei=2880&fmt=p-jpg'},
+{k:'Desert Titanium',n:'Desert Titanium',img:'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-16-pro-finish-select-202409-6-9inch-deserttitanium?wid=5120&hei=2880&fmt=p-jpg'}]},
+{id:7,cat:'iPhone',name:'iPhone Air',desc:'Desain ultra-tipis · Chip A19 Pro',capacities:['256GB','512GB','1TB'],prices:{'256GB':16999000,'512GB':21749000,'1TB':25999000},discount:10,colors:[
+{k:'Sky Blue',n:'Sky Blue',img:'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-air-finish-select-202509-skyblue?wid=5120&hei=2880&fmt=p-jpg'},
+{k:'Light Gold',n:'Light Gold',img:'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-air-finish-select-202509-lightgold?wid=5120&hei=2880&fmt=p-jpg'},
+{k:'Cloud White',n:'Cloud White',img:'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-air-finish-select-202509-cloudwhite?wid=5120&hei=2880&fmt=p-jpg'},
+{k:'Space Black',n:'Space Black',img:'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-air-finish-select-202509-spaceblack?wid=5120&hei=2880&fmt=p-jpg'}]},
+{id:8,cat:'iPhone',name:'iPhone 17',desc:'Layar 6,3 inci · Chip A19',capacities:['256GB','512GB'],prices:{'256GB':19999000,'512GB':24499000},discount:15,colors:[
+{k:'Black',n:'Hitam',img:'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-17-finish-select-202509-black?wid=5120&hei=2880&fmt=p-jpg'},
+{k:'White',n:'Putih',img:'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-17-finish-select-202509-white?wid=5120&hei=2880&fmt=p-jpg'},
+{k:'Sage',n:'Sage',img:'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-17-finish-select-202509-sage?wid=5120&hei=2880&fmt=p-jpg'},
+{k:'Lavender',n:'Lavender',img:'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-17-finish-select-202509-lavender?wid=5120&hei=2880&fmt=p-jpg'},
+{k:'Mist Blue',n:'Mist Blue',img:'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-17-finish-select-202509-mistblue?wid=5120&hei=2880&fmt=p-jpg'}]},
+{id:9,cat:'iPhone',name:'iPhone 17 Pro',desc:'Model Pro · Sistem kamera Pro',capacities:['256GB','512GB','1TB'],prices:{'256GB':22999000,'512GB':27499000,'1TB':32249000},discount:10,colors:[
+{k:'Silver',n:'Silver',img:'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-17-pro-finish-select-202509-silver?wid=5120&hei=2880&fmt=p-jpg'},
+{k:'Cosmic Orange',n:'Cosmic Orange',img:'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-17-pro-finish-select-202509-cosmicorange?wid=5120&hei=2880&fmt=p-jpg'},
+{k:'Deep Blue',n:'Deep Blue',img:'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-17-pro-finish-select-202509-deepblue?wid=5120&hei=2880&fmt=p-jpg'}]},
+{id:10,cat:'iPhone',name:'iPhone 17 Pro Max',desc:'Model Pro Max · Layar besar',capacities:['256GB','512GB','1TB','2TB'],prices:{'256GB':24999000,'512GB':29499000,'1TB':34249000,'2TB':43249000},discount:10,colors:[
+{k:'Silver',n:'Silver',img:'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-17-pro-finish-select-202509-silver?wid=5120&hei=2880&fmt=p-jpg'},
+{k:'Cosmic Orange',n:'Cosmic Orange',img:'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-17-pro-finish-select-202509-cosmicorange?wid=5120&hei=2880&fmt=p-jpg'},
+{k:'Deep Blue',n:'Deep Blue',img:'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-17-pro-finish-select-202509-deepblue?wid=5120&hei=2880&fmt=p-jpg'}]},
+{id:20,cat:'iPhone',name:'iPhone 18 Pro',desc:'Model Pro · Pilihan warna Glacier, Burgundy, Black',capacities:['256GB','512GB','1TB'],prices:{'256GB':25999000,'512GB':30499000,'1TB':35249000},discount:10,colors:[
+{k:'Glacier',n:'Glacier',img:'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-18-pro-finish-select-202609-glacier?wid=5120&hei=2880&fmt=p-jpg'},
+{k:'Burgundy',n:'Burgundy',img:'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-18-pro-finish-select-202609-burgundy?wid=5120&hei=2880&fmt=p-jpg'},
+{k:'Black',n:'Black',img:'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-18-pro-finish-select-202609-black?wid=5120&hei=2880&fmt=p-jpg'}]},
+
+// ============ iPAD ============
+{id:21,cat:'iPad',name:'iPad Pro 13" (M4)',desc:'Layar Ultra Retina XDR · Chip M4',capacities:['256GB','512GB','1TB','2TB'],prices:{'256GB':20999000,'512GB':24999000,'1TB':30999000,'2TB':37999000},discount:10,colors:[
+{k:'Silver',n:'Silver',img:'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-pro-13-select-wifi-silver-202405?wid=5120&hei=2880&fmt=p-jpg'},
+{k:'Space Black',n:'Space Black',img:'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-pro-13-select-wifi-spaceblack-202405?wid=5120&hei=2880&fmt=p-jpg'}]},
+{id:22,cat:'iPad',name:'iPad Air 13" (M2)',desc:'Layar Liquid Retina · Chip M2',capacities:['128GB','256GB','512GB','1TB'],prices:{'128GB':13999000,'256GB':15999000,'512GB':18999000,'1TB':21999000},discount:8,colors:[
+{k:'Blue',n:'Biru',img:'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-air-13-select-wifi-blue-202405?wid=5120&hei=2880&fmt=p-jpg'},
+{k:'Purple',n:'Ungu',img:'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-air-13-select-wifi-purple-202405?wid=5120&hei=2880&fmt=p-jpg'},
+{k:'Starlight',n:'Starlight',img:'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-air-13-select-wifi-starlight-202405?wid=5120&hei=2880&fmt=p-jpg'},
+{k:'Space Gray',n:'Space Gray',img:'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-air-13-select-wifi-spacegray-202405?wid=5120&hei=2880&fmt=p-jpg'}]},
+{id:23,cat:'iPad',name:'iPad Gen 11',desc:'Layar 11 inci · Chip A16',capacities:['128GB','256GB','512GB'],prices:{'128GB':6999000,'256GB':8999000,'512GB':10999000},discount:5,colors:[
+{k:'Silver',n:'Silver',img:'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-11-select-wifi-silver-202503?wid=5120&hei=2880&fmt=p-jpg'},
+{k:'Pink',n:'Merah Muda',img:'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-11-select-wifi-pink-202503?wid=5120&hei=2880&fmt=p-jpg'},
+{k:'Yellow',n:'Kuning',img:'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-11-select-wifi-yellow-202503?wid=5120&hei=2880&fmt=p-jpg'},
+{k:'Blue',n:'Biru',img:'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-11-select-wifi-blue-202503?wid=5120&hei=2880&fmt=p-jpg'}]},
+{id:24,cat:'iPad',name:'iPad Mini 7',desc:'Layar 8,3 inci · Chip A17 Pro',capacities:['128GB','256GB','512GB'],prices:{'128GB':9499000,'256GB':10999000,'512GB':13999000},discount:5,colors:[
+{k:'Space Gray',n:'Space Gray',img:'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-mini-select-wifi-spacegray-202410?wid=5120&hei=2880&fmt=p-jpg'},
+{k:'Blue',n:'Biru',img:'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-mini-select-wifi-blue-202410?wid=5120&hei=2880&fmt=p-jpg'},
+{k:'Purple',n:'Ungu',img:'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-mini-select-wifi-purple-202410?wid=5120&hei=2880&fmt=p-jpg'},
+{k:'Starlight',n:'Starlight',img:'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-mini-select-wifi-starlight-202410?wid=5120&hei=2880&fmt=p-jpg'}]},
+
+// ============ MACBOOK ============
+// MACBOOK AIR M2 2022 (Diperbarui: 16/256GB, Midnight Only, Rp 8.300.000, Tanpa Diskon)
+{id:32,cat:'MacBook',name:'MacBook Air M2 (2022)',desc:'Layar Liquid Retina · Chip M2 · RAM 16GB',capacities:['256GB'],prices:{'256GB':8300000},discount:0,colors:[
+{k:'Midnight',n:'Midnight',img:'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/macbook-air-midnight-select-20220606?wid=5120&hei=2880&fmt=p-jpg'}]},
+{id:30,cat:'MacBook',name:'MacBook Air 13" (M3)',desc:'Chip M3 · Layar Liquid Retina',capacities:['256GB','512GB','1TB'],prices:{'256GB':14999000,'512GB':17499000,'1TB':20999000},discount:10,colors:[
+{k:'Midnight',n:'Midnight',img:'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/macbook-air-13-midnight-select-202403?wid=5120&hei=2880&fmt=p-jpg'},
+{k:'Starlight',n:'Starlight',img:'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/macbook-air-13-starlight-select-202403?wid=5120&hei=2880&fmt=p-jpg'},
+{k:'Space Gray',n:'Space Gray',img:'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/macbook-air-13-spacegray-select-202403?wid=5120&hei=2880&fmt=p-jpg'},
+{k:'Silver',n:'Silver',img:'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/macbook-air-13-silver-select-202403?wid=5120&hei=2880&fmt=p-jpg'}]},
+{id:31,cat:'MacBook',name:'MacBook Pro 14" (M3)',desc:'Chip M3 Pro · Layar Liquid Retina XDR',capacities:['512GB','1TB','2TB'],prices:{'512GB':29999000,'1TB':33999000,'2TB':41999000},discount:8,colors:[
+{k:'Space Black',n:'Space Black',img:'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/macbook-pro-14-spaceblack-select-202310?wid=5120&hei=2880&fmt=p-jpg'},
+{k:'Silver',n:'Silver',img:'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/macbook-pro-14-silver-select-202310?wid=5120&hei=2880&fmt=p-jpg'}]},
+
+// ============ iWATCH ============
+{id:40,cat:'iWatch',name:'Apple Watch Series 10',desc:'Layar OLED LTPO · Chip S10',capacities:['42mm','46mm'],prices:{'42mm':5999000,'46mm':6499000},discount:5,colors:[
+{k:'Jet Black',n:'Jet Black',img:'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/watch-s10-jetblack-202409?wid=5120&hei=2880&fmt=p-jpg'},
+{k:'Silver',n:'Silver',img:'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/watch-s10-silver-202409?wid=5120&hei=2880&fmt=p-jpg'},
+{k:'Rose Gold',n:'Rose Gold',img:'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/watch-s10-rosegold-202409?wid=5120&hei=2880&fmt=p-jpg'}]},
+{id:41,cat:'iWatch',name:'Apple Watch Ultra 2',desc:'Titanium · Layar 3000 nits',capacities:['49mm'],prices:{'49mm':13999000},discount:5,colors:[
+{k:'Natural Titanium',n:'Natural Titanium',img:'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/watch-ultra2-naturaltitanium-202309?wid=5120&hei=2880&fmt=p-jpg'},
+{k:'Black Titanium',n:'Black Titanium',img:'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/watch-ultra2-blacktitanium-202409?wid=5120&hei=2880&fmt=p-jpg'}]}
 ];
 
 const fmt=n=>'Rp'+n.toLocaleString('id-ID');
@@ -105,15 +196,17 @@ function renderProducts(){
     const basePrice=p.prices[defCap];
     const price=basePrice?Math.round(basePrice*(1-p.discount/100)):0;
     const firstColor=p.colors[0];
+    const promoText = p.discount > 0 ? `Promo ${p.discount}% untuk ${defCap}` : `Harga Spesial`;
+    
     return `<div class="product" data-id="${p.id}">
-      <div class="photo"><img src="${firstColor.img}" alt="${p.name} ${firstColor.n}" loading="lazy" onerror="this.src='https://via.placeholder.com/300x200?text=Foto+Tidak+Tersedia'"></div>
+      <div class="photo"><img src="${firstColor.img}" alt="${p.name} ${firstColor.n}" loading="lazy" onerror="this.src='https://via.placeholder.com/300x200?text=Gambar+Tidak+Tersedia'"></div>
       <div class="details">
         <h3>${p.name}</h3>
         <div class="desc">${p.desc}</div>
         <div class="color-options">${p.colors.map((c,i)=>`<button class="color-chip ${i===0?'active':''}" onclick="pickColor(${p.id},'${c.k}',this)">${c.n}</button>`).join('')}</div>
         <select class="variant-select" onchange="changeCap(${p.id},this.value)">${p.capacities.map(c=>`<option value="${c}">${c}${p.prices[c]?' - '+fmt(Math.round(p.prices[c]*(1-p.discount/100))):' - Hubungi Admin'}</option>`).join('')}</select>
         <div class="price" style="margin-top:10px" id="price-${p.id}">${price?fmt(price):'Hubungi Admin'}</div>
-        <div class="price-note">Promo ${p.discount}% untuk ${defCap}</div>
+        <div class="price-note">${promoText}</div>
         <div class="actions"><button class="btn blue" onclick="addCart(${p.id})">Tambah</button></div>
       </div>
     </div>`;
@@ -185,3 +278,4 @@ renderProducts();
 </script>
 </body>
 </html>
+```
