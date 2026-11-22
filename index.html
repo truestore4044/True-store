@@ -9,7 +9,7 @@
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;line-height:1.5}
 a{color:inherit;text-decoration:none}button{font:inherit;cursor:pointer}.wrap{width:min(1120px,calc(100% - 32px));margin:auto}
 header{background:#ffffffed;backdrop-filter:blur(14px);position:sticky;top:0;z-index:5;border-bottom:1px solid var(--line)}
-.nav{height:66px;display:flex;align-items:center;justify-content:space-between;gap:12px}.brand{font-weight:900;letter-spacing:.12em;font-size:19px}.brand span{color:var(--blue)}
+.nav{height:66px;display:flex;align-items:center;justify-content:space-between;gap:12px}.brand{font-weight:900;letter-spacing:.12em;font-size:19px}.brand span{color:var(--blue)}.brand{display:flex;align-items:center;gap:7px;flex-wrap:wrap}.brand .brand-mark{font-size:19px;color:#171717;border:1.5px solid #171717;border-radius:50%;width:24px;height:24px;display:inline-grid;place-items:center;font-size:10px}.brand-sub{font-size:8px;letter-spacing:.12em;color:#777;font-weight:700;margin-left:3px}
 .links{display:flex;gap:20px;font-size:14px;color:#424245}.carttop{border:0;border-radius:22px;background:#171717;color:#fff;padding:10px 16px;font-weight:700}
 .hero{padding:68px 0 55px;text-align:center;background:radial-gradient(ellipse at 50% 0,#e6efff 0,transparent 65%)}.eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:.19em;color:var(--blue);font-weight:800}
 .hero h1{font-size:clamp(38px,7vw,64px);line-height:1.04;letter-spacing:-.055em;margin:16px auto;max-width:850px}.hero p{max-width:620px;margin:0 auto 24px;color:var(--muted);font-size:16px}
@@ -17,7 +17,7 @@ header{background:#ffffffed;backdrop-filter:blur(14px);position:sticky;top:0;z-i
 section{padding:34px 0 55px}.head{display:flex;justify-content:space-between;align-items:end;gap:16px;margin-bottom:20px}.head h2{margin:0;font-size:29px;letter-spacing:-.04em}.head p{margin:5px 0 0;color:var(--muted);font-size:14px}
 .tabs{display:flex;gap:9px;flex-wrap:wrap;margin:0 0 22px}.tab{border:1px solid #d9d9df;background:#fff;border-radius:22px;padding:10px 17px;font-weight:700;color:#333}.tab.active{background:#171717;color:#fff;border-color:#171717}
 .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.product{background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 5px 20px #00000006}
-.photo{height:215px;background:#f8f8fa;display:grid;place-items:center;padding:12px}.photo img{width:100%;height:100%;object-fit:contain}.details{padding:16px;display:flex;flex-direction:column;flex:1}.tag{display:inline-block;background:#eaf4ed;color:#167342;border-radius:20px;padding:5px 9px;font-size:10px;font-weight:800;width:max-content}.product h3{font-size:17px;margin:9px 0 4px}.desc{font-size:12px;color:var(--muted);margin:0 0 10px}.price{font-size:19px;font-weight:900;letter-spacing:-.03em}.price-note{font-size:10px;color:var(--muted);margin:4px 0 13px}.actions{display:flex;gap:8px;margin-top:auto}.actions button{flex:1;font-size:12px;padding:10px 7px;border-radius:20px}
+.photo{height:215px;background:#f8f8fa;display:grid;place-items:center;padding:12px}.photo img{width:100%;height:100%;object-fit:contain}.details{padding:16px;display:flex;flex-direction:column;flex:1}.tag{display:inline-block;background:#eaf4ed;color:#167342;border-radius:20px;padding:5px 9px;font-size:10px;font-weight:800;width:max-content}.product h3{font-size:17px;margin:9px 0 4px}.desc{font-size:12px;color:var(--muted);margin:0 0 10px}.price{font-size:19px;font-weight:900;letter-spacing:-.03em}.price-note{font-size:10px;color:var(--muted);margin:4px 0 13px}.variant-label{font-size:11px;font-weight:800;margin:8px 0 4px;display:block}.variant-select{width:100%;border:1px solid #d9d9df;border-radius:10px;padding:9px;background:#fff;font:inherit;font-size:12px}.color-options{display:flex;flex-wrap:wrap;gap:7px;margin:5px 0 9px}.color-chip{border:1px solid #d5d5d8;background:#fff;border-radius:20px;padding:6px 9px;font-size:10px;cursor:pointer}.color-chip.active{border:2px solid #171717;padding:5px 8px;font-weight:800}.actions{display:flex;gap:8px;margin-top:auto}.actions button{flex:1;font-size:12px;padding:10px 7px;border-radius:20px}
 .note{font-size:12px;color:var(--muted);margin:18px 0 0;line-height:1.6}.benefits{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.benefit{background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px}.benefit b{display:block;margin-bottom:5px}.benefit span{color:var(--muted);font-size:13px}
 .overlay{position:fixed;inset:0;background:#0008;z-index:10;display:none;align-items:center;justify-content:center;padding:14px}.overlay.show{display:flex}.modal{background:#fff;border-radius:22px;width:min(540px,100%);max-height:92vh;overflow:auto;padding:20px}.modalhead{display:flex;justify-content:space-between;align-items:center}.modal h2{margin:0 0 10px}.close{border:0;background:#eee;border-radius:50%;width:35px;height:35px;font-size:20px}
 .cartline{display:flex;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px solid var(--line);font-size:13px}.qty{display:flex;align-items:center;gap:8px}.qty button{border:1px solid var(--line);background:#f6f6f7;border-radius:8px;width:27px;height:27px}
@@ -30,13 +30,13 @@ footer{border-top:1px solid var(--line);padding:25px 0 34px;color:var(--muted);f
 </style>
 </head>
 <body>
-<header><div class="wrap nav"><a class="brand" href="#home">TRUE<span>STORE</span></a><nav class="links"><a href="#produk">Katalog</a><a href="#tentang">Tentang</a><a href="#kontak">Kontak</a></nav><button class="carttop" onclick="openCart()">Keranjang (<span id="cartCount">0</span>)</button></div></header>
+<header><div class="wrap nav"><a class="brand" href="#home"><span class="brand-mark" aria-hidden="true">●</span> TRUE<span>STORE</span><small class="brand-sub">PREMIUM APPLE COLLECTION</small></a><nav class="links"><a href="#produk">Katalog</a><a href="#tentang">Tentang</a><a href="#kontak">Kontak</a></nav><button class="carttop" onclick="openCart()">Keranjang (<span id="cartCount">0</span>)</button></div></header>
 <main id="home">
 <div class="hero"><div class="wrap"><div class="eyebrow">TRUE STORE · APPLE COLLECTION</div><h1>Find your next<br>Apple device.</h1><p>Pilih perangkat favoritmu dari kategori iPhone, iPad, MacBook, dan Apple Watch.</p><a class="btn blue" href="#produk">Jelajahi Produk</a></div></div>
 <section id="produk"><div class="wrap"><div class="head"><div><h2>Katalog Produk</h2><p>Pilih kategori untuk melihat produk yang tersedia.</p></div></div>
 <div class="tabs"><button class="tab active" data-cat="iPhone" onclick="setCategory('iPhone')">iPhone</button><button class="tab" data-cat="iPad" onclick="setCategory('iPad')">iPad</button><button class="tab" data-cat="MacBook" onclick="setCategory('MacBook')">MacBook</button><button class="tab" data-cat="iWatch" onclick="setCategory('iWatch')">iWatch</button></div>
 <div class="grid" id="productGrid"></div>
-<p class="note">Harga merupakan referensi katalog Indonesia dan dapat berubah mengikuti varian, warna, promo, dan stok. Promo 30% ditampilkan sesuai permintaan toko; pastikan promo benar-benar berlaku sebelum menerima pesanan. Harga MacBook Air M2 2022 16GB/256GB tetap Rp8.300.000 tanpa diskon tambahan. Foto produk menggunakan foto produk nyata dari sumber katalog; model/warna pada foto dapat berbeda dari varian yang dipilih. True Store merupakan toko independen dan tidak berafiliasi dengan Apple Inc.</p></div></section>
+<p class="note">Harga merupakan referensi katalog Indonesia dan dapat berubah mengikuti varian, warna, promo, dan stok. Promo 30% ditampilkan sesuai permintaan toko; pastikan promo benar-benar berlaku sebelum menerima pesanan. Harga MacBook Air M2 2022 16GB/256GB tetap Rp8.300.000 tanpa diskon tambahan. Foto produk menampilkan model yang sesuai; pilihan warna dan kapasitas mengikuti spesifikasi model. Harga adalah referensi katalog dan wajib dikonfirmasi admin sebelum pembayaran. True Store merupakan toko independen dan tidak berafiliasi dengan Apple Inc.</p></div></section>
 <section id="tentang"><div class="wrap"><div class="head"><div><h2>Belanja dengan jelas</h2><p>Pesanan diproses setelah detail dan pembayaran dikonfirmasi.</p></div></div><div class="benefits"><div class="benefit"><b>01 · Pilih produk</b><span>Pilih kategori, produk, dan jumlah barang yang diinginkan.</span></div><div class="benefit"><b>02 · Pembayaran</b><span>Periksa ringkasan pesanan dan informasi pembayaran di halaman pembayaran.</span></div><div class="benefit"><b>03 · Konfirmasi WhatsApp</b><span>Setelah transfer, kirim konfirmasi serta bukti pembayaran kepada admin untuk diperiksa.</span></div></div></div></section>
 <section id="kontak"><div class="wrap" style="text-align:center"><h2>Perlu bantuan?</h2><p class="small">Hubungi admin True Store untuk informasi produk dan stok.</p><a class="btn" target="_blank" rel="noopener" href="https://wa.me/6289682989482?text=Halo%20True%20Store%2C%20saya%20ingin%20bertanya%20tentang%20produk.">Chat WhatsApp</a></div></section>
 </main>
@@ -66,41 +66,83 @@ footer{border-top:1px solid var(--line);padding:25px 0 34px;color:var(--muted);f
 </div></div>
 <script>
 const WA='6289682989482';
+
 const photos={
- iPhone:'https://www.pbtech.co.nz/imgprod/M/P/MPHAPP817212.jpg?h=3366490703',
  iPad:'https://www.pbtech.co.nz/imgprod/T/A/TABAPP1825612.jpg?h=799642863',
  MacBook:'https://bizweb.dktcdn.net/thumb/1024x1024/100/410/941/products/gs-009693-feature-113974.jpg?v=1671173305353',
  iWatch:'https://www.maccenter.vn/App_Images/AppleWatch-Series11-JetBlack-SportBand-A.jpg'
 };
 const products=[
-{ id:1,cat:'iPhone',name:'iPhone 15',variant:'128GB',price:15499000,desc:'Layar Super Retina XDR · Kamera 48MP' },
-{ id:2,cat:'iPhone',name:'iPhone 16',variant:'128GB',price:17999000,desc:'Chip A18 · Kamera 48MP' },
-{ id:3,cat:'iPhone',name:'iPhone 17',variant:'256GB',price:20499000,desc:'Layar 6,3 inci · Chip A19' },
-{ id:4,cat:'iPhone',name:'iPhone 17 Pro',variant:'256GB',price:22999000,desc:'Model Pro · Sistem kamera Pro' },
-{ id:5,cat:'iPhone',name:'iPhone 17 Pro Max',variant:'256GB',price:29499000,desc:'Model Pro Max · Layar besar' },
-{ id:6,cat:'iPhone',name:'iPhone 18 Pro',variant:'256GB',price:27499000,desc:'Model Pro · 256GB' },
-{ id:7,cat:'iPhone',name:'iPhone 18 Pro Max',variant:'256GB',price:29999000,desc:'Model Pro Max · 256GB' },
-{ id:8,cat:'iPad',name:'iPad Gen 11 (A16)',variant:'128GB Wi-Fi',price:8999000,desc:'Layar 11 inci · Chip A16' },
-{ id:9,cat:'iPad',name:'iPad Air M4',variant:'11 inci · 128GB',price:14749000,desc:'iPad Air · Chip M4' },
-{ id:10,cat:'iPad',name:'iPad Pro M5',variant:'11 inci · 256GB',price:31499000,desc:'iPad Pro · Chip M5' },
-{ id:11,cat:'MacBook',name:'MacBook Air M2 2022',variant:'16GB / 256GB',price:8300000,fixed:true,desc:'Harga khusus True Store · Tanpa diskon tambahan' },
-{ id:12,cat:'MacBook',name:'MacBook Neo',variant:'256GB',price:12999000,desc:'Laptop Apple · Pilihan warna tersedia' },
-{ id:13,cat:'MacBook',name:'MacBook Air M5',variant:'16GB / 256GB',price:24949000,desc:'Laptop tipis · Chip M5' },
-{ id:14,cat:'iWatch',name:'Apple Watch SE 3',variant:'40mm GPS',price:4749000,desc:'Smartwatch · Fitur aktivitas harian' },
-{ id:15,cat:'iWatch',name:'Apple Watch Series 11',variant:'42mm GPS',price:6149000,desc:'Smartwatch Series 11' },
-{ id:16,cat:'iWatch',name:'Apple Watch Ultra 3',variant:'49mm',price:14199000,desc:'Ultra · Desain tangguh' }
+{id:1,cat:'iPhone',name:'iPhone 15',desc:'Dynamic Island · Kamera utama 48MP',image:'https://www.pbtech.co.nz/imgprod/M/P/MPHAPP215104.jpg?h=338657000',capacities:['128GB','256GB','512GB'],prices:{'128GB':13999000,'256GB':15499000,'512GB':null},colors:['Black','Blue','Green','Yellow','Pink']},
+{id:2,cat:'iPhone',name:'iPhone 15 Plus',desc:'Layar 6,7 inci · Kamera utama 48MP',image:'https://www.ronis.hr/Documents/Products/2632887/331301_497263.jpg',capacities:['128GB','256GB','512GB'],prices:{'128GB':11499000,'256GB':null,'512GB':null},colors:['Black','Blue','Green','Yellow','Pink']},
+{id:3,cat:'iPhone',name:'iPhone 16',desc:'Chip A18 · Kamera 48MP',image:'https://www.pbtech.co.nz/imgprod/M/P/MPHAPP817212.jpg?h=3366490703',capacities:['128GB','256GB','512GB'],prices:{'128GB':16499000,'256GB':18499000,'512GB':20499000},colors:['Black','White','Pink','Teal','Ultramarine']},
+{id:4,cat:'iPhone',name:'iPhone 16 Plus',desc:'Layar 6,7 inci · Chip A18',image:'https://www.dateks.lv/images/pic/1200/1200/516/1847.jpg',capacities:['128GB','256GB','512GB'],prices:{'128GB':16249000,'256GB':18249000,'512GB':20249000},colors:['Black','White','Pink','Teal','Ultramarine']},
+{id:5,cat:'iPhone',name:'iPhone 16 Pro',desc:'Titanium · Sistem kamera Pro',image:'https://cdn.mediamart.vn/images/product/apple-iphone-16-pro-512gb-titanium-vang-sa-mac_e9adf981.jpg',capacities:['128GB','256GB','512GB','1TB'],prices:{'128GB':17499000,'256GB':19999000,'512GB':23499000,'1TB':27999000},colors:['Black Titanium','White Titanium','Natural Titanium','Desert Titanium']},
+{id:6,cat:'iPhone',name:'iPhone 16 Pro Max',desc:'Layar besar · Sistem kamera Pro',image:'https://mtunda.ug/cdn/shop/files/iphone-16-pro.jpg?v=1727077527',capacities:['256GB','512GB','1TB'],prices:{'256GB':20499000,'512GB':21999000,'1TB':24999000},colors:['Black Titanium','White Titanium','Natural Titanium','Desert Titanium']},
+{id:7,cat:'iPhone',name:'iPhone Air',desc:'Desain ultra-tipis · Chip A19 Pro',image:'https://www.costco.com.au/medias/sys_master/images/hac/h2a/381563620229150.jpg',capacities:['256GB','512GB','1TB'],prices:{'256GB':16999000,'512GB':21749000,'1TB':25999000},colors:['Sky Blue','Light Gold','Cloud White','Space Black']},
+{id:8,cat:'iPhone',name:'iPhone 17',desc:'Layar 6,3 inci · Chip A19',image:'https://cdn.beebom.com/mobile/apple-iphone-17-air-front-and-back2.png.png',capacities:['256GB','512GB'],prices:{'256GB':20499000,'512GB':24499000},colors:['Black','White','Sage','Lavender','Mist Blue']},
+{id:9,cat:'iPhone',name:'iPhone 17 Pro',desc:'Model Pro · Sistem kamera Pro',image:'https://cdn.mediamart.vn/images/product/apple-iphone-16-pro-512gb-titanium-vang-sa-mac_e9adf981.jpg',capacities:['256GB','512GB','1TB'],prices:{'256GB':22999000,'512GB':27499000,'1TB':32249000},colors:['Silver','Cosmic Orange','Deep Blue']},
+{id:10,cat:'iPhone',name:'iPhone 17 Pro Max',desc:'Model Pro Max · Layar besar',image:'https://mtunda.ug/cdn/shop/files/iphone-16-pro.jpg?v=1727077527',capacities:['256GB','512GB','1TB','2TB'],prices:{'256GB':24999000,'512GB':29499000,'1TB':34249000,'2TB':43249000},colors:['Silver','Cosmic Orange','Deep Blue']},
+{id:11,cat:'iPad',name:'iPad Gen 11 (A16)',variant:'128GB Wi-Fi',price:8999000,desc:'Layar 11 inci · Chip A16'},
+{id:12,cat:'iPad',name:'iPad Air M4',variant:'11 inci · 128GB',price:14749000,desc:'iPad Air · Chip M4'},
+{id:13,cat:'iPad',name:'iPad Pro M5',variant:'11 inci · 256GB',price:31499000,desc:'iPad Pro · Chip M5'},
+{id:14,cat:'MacBook',name:'MacBook Air M2 2022',variant:'16GB / 256GB',price:8300000,fixed:true,desc:'Harga khusus True Store · Tanpa diskon tambahan'},
+{id:15,cat:'MacBook',name:'MacBook Neo',variant:'256GB',price:12999000,desc:'Laptop Apple · Pilihan warna tersedia'},
+{id:16,cat:'MacBook',name:'MacBook Air M5',variant:'16GB / 256GB',price:24949000,desc:'Laptop tipis · Chip M5'},
+{id:17,cat:'iWatch',name:'Apple Watch SE 3',variant:'40mm GPS',price:4749000,desc:'Smartwatch · Fitur aktivitas harian'},
+{id:18,cat:'iWatch',name:'Apple Watch Series 11',variant:'42mm GPS',price:6149000,desc:'Smartwatch Series 11'},
+{id:19,cat:'iWatch',name:'Apple Watch Ultra 3',variant:'49mm',price:14199000,desc:'Ultra · Desain tangguh'}
 ];
-const rupiah=n=>'Rp'+new Intl.NumberFormat('id-ID').format(n);const finalPrice=p=>p.fixed?p.price:Math.round(p.price*0.7);let cart={},currentCategory='iPhone',buyer={name:'',phone:''};
-function renderProducts(){let shown=products.filter(p=>p.cat===currentCategory);document.getElementById('productGrid').innerHTML=shown.map(p=>`<article class="product"><div class="photo"><img src="${photos[p.cat]}" alt="Foto produk Apple kategori ${p.cat}; contoh visual untuk ${p.name}" loading="lazy"></div><div class="details"><span class="tag">${p.cat.toUpperCase()}</span><h3>${p.name}</h3><p class="desc">${p.variant} · ${p.desc}</p><div class="price">${rupiah(finalPrice(p))}</div><div class="price-note">${p.fixed?'Harga khusus · tanpa diskon tambahan':`<s>${rupiah(p.price)}</s> · Promo 30%`}<br>Harga referensi, konfirmasi stok ke admin</div><div class="actions"><button class="btn blue" onclick="addCart(${p.id})">Tambah</button><button class="btn light" onclick="buyNow(${p.id})">Beli</button></div></div></article>`).join('')}
+
+const rupiah=n=>'Rp'+new Intl.NumberFormat('id-ID').format(n);
+const finalPrice=p=>p.price;
+let cart={},currentCategory='iPhone',buyer={name:'',phone:''};
+const chosen={};
+function productPrice(p,capacity){return p.prices ? (p.prices[capacity]||null) : finalPrice(p);}
+function selected(p){if(!chosen[p.id])chosen[p.id]={capacity:p.capacities?.[0]||'',color:p.colors?.[0]||''};return chosen[p.id]}
+function renderProducts(){
+ const shown=products.filter(p=>p.cat===currentCategory);
+ document.getElementById('productGrid').innerHTML=shown.map(p=>{
+  const s=selected(p),base=p.capacities?productPrice(p,s.capacity):p.price,price=base===null?'Hubungi admin':rupiah(base);
+  const capOptions=p.capacities?`<label class="variant-label" for="cap-${p.id}">Kapasitas penyimpanan</label><select class="variant-select" id="cap-${p.id}" onchange="setVariant(${p.id},'capacity',this.value)">${p.capacities.map(c=>`<option ${c===s.capacity?'selected':''}>${c}</option>`).join('')}</select>`:'';
+  const colorOptions=p.colors?`<span class="variant-label">Pilih warna</span><div class="color-options">${p.colors.map(c=>`<button type="button" class="color-chip ${c===s.color?'active':''}" onclick="setVariant(${p.id},'color',${JSON.stringify(c)})">${c}</button>`).join('')}</div>`:'';
+  const note=p.capacities?(base===null?'Harga varian ini perlu dikonfirmasi admin':`Harga referensi iBox ${rupiah(base)}`):(p.fixed?'Harga khusus · tanpa diskon tambahan':`Harga referensi ${rupiah(p.price)}`);
+  const image=p.image||photos[p.cat];
+  const sku='TS-'+String(p.id).padStart(3,'0')+(s.capacity?'-'+s.capacity.replace(/[^A-Za-z0-9]/g,'').toUpperCase():'');
+  const stock=p.stockLabel||'Konfirmasi admin';
+  return `<article class="product"><div class="photo"><img src="${image}" alt="${p.name}" loading="lazy" onerror="this.onerror=null;this.src='${photos[p.cat]||image}'"></div><div class="details"><span class="tag">${p.cat.toUpperCase()}</span><h3>${p.name}</h3><p class="desc">${p.variant||p.desc}</p><div class="price-note"><b>Kode produk:</b> ${sku}<br><b>Status stok:</b> ${stock}</div>${capOptions}${colorOptions}<div class="price">${price}</div><div class="price-note">${note}<br>Stok perlu dikonfirmasi admin sebelum transfer</div><div class="actions"><button class="btn blue" onclick="addCart(${p.id})">Tambah</button><button class="btn light" onclick="buyNow(${p.id})">Beli</button></div></div></article>`;
+ }).join('');
+}
+function setVariant(id,key,value){chosen[id]=chosen[id]||{};chosen[id][key]=value;renderProducts()}
 function setCategory(cat){currentCategory=cat;document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('active',b.dataset.cat===cat));renderProducts()}
-function addCart(id){cart[id]=(cart[id]||0)+1;updateCart()}
+function addCart(id){
+ const p=products.find(x=>x.id===id),s=selected(p),key=`${id}|${s.capacity}|${s.color}`;
+ cart[key]=cart[key]||{id,capacity:s.capacity,color:s.color,qty:0};cart[key].qty++;updateCart()
+}
 function buyNow(id){addCart(id);openCart()}
-function updateCart(){let entries=products.filter(p=>cart[p.id]),count=Object.values(cart).reduce((a,b)=>a+b,0);document.getElementById('cartCount').textContent=count;document.getElementById('cartItems').innerHTML=entries.length?entries.map(p=>`<div class="cartline"><div><b>${p.name}</b><br><span class="small">${p.variant} · ${rupiah(finalPrice(p))} × ${cart[p.id]}</span></div><div class="qty"><button onclick="changeQty(${p.id},-1)">−</button><b>${cart[p.id]}</b><button onclick="changeQty(${p.id},1)">+</button></div></div>`).join(''):'<p class="small">Keranjang masih kosong. Pilih produk terlebih dahulu.</p>';let total=entries.reduce((s,p)=>s+finalPrice(p)*cart[p.id],0);document.getElementById('cartTotal').textContent=rupiah(total);document.getElementById('paymentTotal').textContent=rupiah(total)}
-function changeQty(id,d){cart[id]=(cart[id]||0)+d;if(cart[id]<=0)delete cart[id];updateCart()}
+function cartEntries(){return Object.entries(cart).map(([key,item])=>({key,...item,p:products.find(p=>p.id===item.id)}))}
+function linePrice(item){const p=item.p;if(p.capacities){const base=productPrice(p,item.capacity);return base===null?0:base}return p.fixed?p.price:p.price}
+function updateCart(){
+ const entries=cartEntries(),count=entries.reduce((a,x)=>a+x.qty,0);
+ document.getElementById('cartCount').textContent=count;
+ document.getElementById('cartItems').innerHTML=entries.length?entries.map(x=>`<div class="cartline"><div><b>${x.p.name}</b><br><span class="small">${[x.capacity,x.color,x.p.variant].filter(Boolean).join(' · ')} · ${linePrice(x)?rupiah(linePrice(x)):'Harga konfirmasi admin'} × ${x.qty}</span></div><div class="qty"><button onclick="changeQty('${x.key}',-1)">−</button><b>${x.qty}</b><button onclick="changeQty('${x.key}',1)">+</button></div></div>`).join(''):'<p class="small">Keranjang masih kosong. Pilih produk terlebih dahulu.</p>';
+ const total=entries.reduce((s,x)=>s+linePrice(x)*x.qty,0);
+ document.getElementById('cartTotal').textContent=rupiah(total);document.getElementById('paymentTotal').textContent=rupiah(total);
+}
+function changeQty(key,d){if(!cart[key])return;cart[key].qty+=d;if(cart[key].qty<=0)delete cart[key];updateCart()}
 function openCart(){updateCart();document.getElementById('cartOverlay').classList.add('show')}
 function closeCart(){document.getElementById('cartOverlay').classList.remove('show')}
 document.getElementById('checkoutForm').addEventListener('submit',e=>{e.preventDefault();if(!Object.keys(cart).length){alert('Keranjang masih kosong.');return}buyer={name:document.getElementById('buyerName').value.trim(),phone:document.getElementById('buyerPhone').value.trim(),province:document.getElementById('buyerProvince').value.trim(),city:document.getElementById('buyerCity').value.trim(),district:document.getElementById('buyerDistrict').value.trim(),village:document.getElementById('buyerVillage').value.trim(),postal:document.getElementById('buyerPostal').value.trim(),street:document.getElementById('buyerStreet').value.trim(),address:document.getElementById('buyerAddress').value.trim(),note:document.getElementById('buyerNote').value.trim()};document.getElementById('buyerSummary').innerHTML='<b>Ringkasan penerima</b><br>'+buyer.name+' · '+buyer.phone+'<br>'+[buyer.street,buyer.address,'Kel. '+buyer.village,'Kec. '+buyer.district,buyer.city,buyer.province,'Kode Pos '+buyer.postal].join(', ');document.getElementById('paymentBox').classList.add('show');document.getElementById('paymentBox').scrollIntoView({behavior:'smooth',block:'start'})});
-function confirmWhatsApp(){let items=products.filter(p=>cart[p.id]);if(!items.length){alert('Keranjang masih kosong.');return}let total=items.reduce((s,p)=>s+finalPrice(p)*cart[p.id],0);let lines=items.map(p=>`- ${p.name} ${p.variant} x${cart[p.id]} = ${rupiah(finalPrice(p)*cart[p.id])}`).join('\n');let fullAddress=[buyer.street,buyer.address,'Kel. '+buyer.village,'Kec. '+buyer.district,buyer.city,buyer.province,'Kode Pos '+buyer.postal].join(', ');let msg=`Halo True Store, saya ingin konfirmasi pesanan setelah melakukan pembayaran.\n\nNama: ${buyer.name}\nNomor WhatsApp: ${buyer.phone}\nAlamat lengkap: ${fullAddress}\nCatatan kurir: ${buyer.note||'-'}\n\nDetail pesanan:\n${lines}\n\nTotal: ${rupiah(total)}\n\nSaya akan melampirkan bukti transfer di chat ini. Mohon admin memeriksa pembayaran dan mengonfirmasi pesanan saya. Terima kasih.`;window.open('https://wa.me/'+WA+'?text='+encodeURIComponent(msg),'_blank','noopener')}
+
+function confirmWhatsApp(){
+ let items=cartEntries();if(!items.length){alert('Keranjang masih kosong.');return}
+ if(items.some(x=>linePrice(x)===0)){alert('Ada varian yang harganya belum tersedia. Silakan konfirmasi harga kepada admin sebelum melanjutkan.');return}
+ let total=items.reduce((s,x)=>s+linePrice(x)*x.qty,0);
+ let lines=items.map(x=>`- ${x.p.name} ${[x.capacity,x.color,x.p.variant].filter(Boolean).join(' / ')} x${x.qty} = ${rupiah(linePrice(x)*x.qty)}`).join('\n');
+ let fullAddress=[buyer.street,buyer.address,'Kel. '+buyer.village,'Kec. '+buyer.district,buyer.city,buyer.province,'Kode Pos '+buyer.postal].join(', ');
+ let msg=`Halo True Store, saya ingin konfirmasi pesanan setelah melakukan pembayaran.\n\nNama: ${buyer.name}\nNomor WhatsApp: ${buyer.phone}\nAlamat lengkap: ${fullAddress}\nCatatan kurir: ${buyer.note||'-'}\n\nDetail pesanan:\n${lines}\n\nTotal: ${rupiah(total)}\n\nSaya akan melampirkan bukti transfer di chat ini. Mohon admin memeriksa pembayaran dan mengonfirmasi pesanan saya. Terima kasih.`;
+ window.open('https://wa.me/'+WA+'?text='+encodeURIComponent(msg),'_blank','noopener')
+}
 function copyAccount(){if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText('901633615122').then(()=>alert('Nomor rekening disalin.')).catch(()=>alert('Salin nomor rekening: 901633615122'))}else{alert('Salin nomor rekening: 901633615122')}}
 renderProducts();updateCart();
 </script></body></html>
