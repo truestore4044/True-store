@@ -18,7 +18,7 @@ section{padding:34px 0 55px}.head{display:flex;justify-content:space-between;ali
 .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}.product{background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 5px 20px #00000006}
 .photo{height:280px;background:#f8f8fa;display:grid;place-items:center;padding:20px}.photo img{width:100%;height:100%;object-fit:contain}.details{padding:20px;display:flex;flex-direction:column;flex:1}.product h3{font-size:20px;margin:10px 0 6px}.desc{font-size:14px;color:var(--muted);margin:0 0 14px}.price{font-size:24px;font-weight:900;letter-spacing:-.03em;color:#16834a}.price-note{font-size:12px;color:var(--muted);margin:6px 0 16px}.variant-label{font-size:13px;font-weight:800;margin:8px 0 4px;display:block}.variant-select{width:100%;border:1px solid #d9d9df;border-radius:12px;padding:12px;background:#fff;font:inherit;font-size:14px}.color-options{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 12px}.color-chip{border:1px solid #d5d5d8;background:#fff;border-radius:20px;padding:8px 12px;font-size:12px;cursor:pointer}.color-chip.active{border:2px solid #171717;padding:7px 11px;font-weight:800}.actions{display:flex;gap:10px;margin-top:auto}.actions button{flex:1;font-size:15px;padding:14px 10px;border-radius:24px}
 .note{font-size:12px;color:var(--muted);margin:18px 0 0;line-height:1.6}.benefits{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.benefit{background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px}.benefit b{display:block;margin-bottom:5px}.benefit span{color:var(--muted);font-size:13px}
-.overlay{position:fixed;inset:0;background:#0008;z-index:10;display:none;align-items:center;justify-content:center;padding:14px}.overlay.show{display:flex}.modal{background:#fff;border-radius:22px;width:min(540px,100%);max-height:92vh;overflow:auto;padding:20px}.modalhead{display:flex;justify-content:space-between;align-items:center}.modal h2{margin:0 0 10px}.close{border:0;background:#eee;border-radius:50%;width:35px;height:35px;font-size:20px}
+.overlay{position:fixed;inset:0;background:#0008;z-index:10;display:none;align-items:center;justify-content:center;padding:14px}.overlay.show{display:flex}.modal{background:#fff;border-radius:22px;width:min(540px,100%);max-height:92vh;overflow-y:auto;overflow-x:hidden;padding:20px;overscroll-behavior:contain;scroll-behavior:smooth; -webkit-overflow-scrolling:touch}.modalhead{display:flex;justify-content:space-between;align-items:center}.modal h2{margin:0 0 10px}.close{border:0;background:#eee;border-radius:50%;width:35px;height:35px;font-size:20px}
 .cartline{display:flex;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px solid var(--line);font-size:13px}.qty{display:flex;align-items:center;gap:8px}.qty button{border:1px solid var(--line);background:#f6f6f7;border-radius:8px;width:27px;height:27px}
 .total{display:flex;justify-content:space-between;font-weight:900;padding:14px 0;font-size:18px}.field{display:block;margin:11px 0;font-size:13px;font-weight:700}.field input{display:block;width:100%;margin-top:5px;padding:12px;border:1px solid #d5d5d8;border-radius:11px;font:inherit;font-weight:400}
 .small{font-size:12px;color:var(--muted);line-height:1.6}.payment{display:none;background:linear-gradient(145deg,#fff,#f2f3f5);border:1px solid #d9d9de;border-radius:17px;padding:17px;margin:15px 0}.payment.show{display:block}.pay-highlight{background:#fff;border:2px solid #171717;border-radius:15px;padding:15px;margin:12px 0 16px}.paybrand{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #e4e4e7;padding-bottom:11px;margin-bottom:12px}
@@ -189,8 +189,8 @@ footer{border-top:1px solid var(--line);padding:25px 0 34px;color:var(--muted);f
       document.getElementById('authArea').style.display = 'none';
       document.getElementById('checkoutArea').style.display = 'block';
       document.getElementById('userEmail').textContent = user.email;
-      // Jika keranjang sedang terbuka, langsung arahkan ke formulir checkout.
-      setTimeout(() => scrollToCheckout(), 120);
+      // Jika keranjang sedang terbuka, arahkan tepat ke kolom pertama formulir.
+      requestAnimationFrame(() => setTimeout(scrollToCheckout, 250));
     } else {
       document.getElementById('authArea').style.display = 'block';
       document.getElementById('checkoutArea').style.display = 'none';
@@ -368,19 +368,28 @@ function addCart(id){
   if(ex)ex.qty++;else cart.push({key,id,name:p.name,color,cap,price,qty:1});
   updateCart();
   openCart();
-  // Setelah tombol Tambah ditekan, gulir modal langsung ke area pengisian data.
-  setTimeout(() => scrollToCheckout(), 120);
+  // Setelah keranjang terbuka, pindahkan posisi modal tepat ke awal formulir.
+  requestAnimationFrame(() => setTimeout(scrollToCheckout, 250));
 }
 
 function scrollToCheckout(){
-  const modal = document.querySelector('#cartOverlay .modal');
-  if(!modal || !document.getElementById('cartOverlay').classList.contains('show')) return;
-  const checkout = document.getElementById('checkoutArea');
-  const auth = document.getElementById('authArea');
-  const target = checkout && checkout.style.display !== 'none' ? checkout : auth;
+  const overlay = document.getElementById('cartOverlay');
+  const modal = overlay && overlay.querySelector('.modal');
+  if(!modal || !overlay.classList.contains('show')) return;
+
+  // Akun yang sudah login langsung menuju kolom Nama Pembeli.
+  // Jika belum login, arahkan ke tombol Login Google.
+  const loggedIn = document.getElementById('checkoutArea').style.display !== 'none';
+  const target = loggedIn
+    ? document.getElementById('buyerName')?.closest('.field')
+    : document.querySelector('#authArea .btn-google');
   if(!target) return;
-  const top = target.getBoundingClientRect().top - modal.getBoundingClientRect().top + modal.scrollTop - 12;
-  modal.scrollTo({top: Math.max(0, top), behavior: 'smooth'});
+
+  // Hitung posisi relatif terhadap area scroll modal (bukan halaman di belakangnya).
+  const modalRect = modal.getBoundingClientRect();
+  const targetRect = target.getBoundingClientRect();
+  const nextTop = modal.scrollTop + targetRect.top - modalRect.top - 14;
+  modal.scrollTo({top: Math.max(0, nextTop), behavior: 'smooth'});
 }
 
 function updateCart(){
@@ -392,7 +401,10 @@ function updateCart(){
   document.getElementById('paymentTotal').textContent=fmt(tot);
 }
 function chQty(key,d){const i=cart.find(x=>x.key===key);if(!i)return;i.qty+=d;if(i.qty<=0)cart=cart.filter(x=>x.key!==key);updateCart();}
-function openCart(){document.getElementById('cartOverlay').classList.add('show');}
+function openCart(){
+  document.getElementById('cartOverlay').classList.add('show');
+  requestAnimationFrame(() => setTimeout(scrollToCheckout, 250));
+}
 function closeCart(){document.getElementById('cartOverlay').classList.remove('show');}
 function copyAccount(){navigator.clipboard.writeText('901633615122');alert('Nomor rekening disalin');}
 
