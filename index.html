@@ -424,7 +424,7 @@ function addCart(id){
   updateCart();
   openCart();
   // Setelah keranjang terbuka, pindahkan posisi modal tepat ke awal formulir.
-  requestAnimationFrame(() => setTimeout(scrollDiDalamModal, 250));
+  requestAnimationFrame(() => setTimeout(scrollDiDalamModal, 300));
 }
 
 function scrollDiDalamModal(){
@@ -432,19 +432,24 @@ function scrollDiDalamModal(){
   const modal = overlay && overlay.querySelector('.modal');
   if(!modal || !overlay.classList.contains('show')) return;
 
-  // Akun yang sudah login langsung menuju kolom Nama Pembeli.
-  // Jika belum login, arahkan ke tombol Login Google.
   const loggedIn = document.getElementById('checkoutArea').style.display !== 'none';
-  const target = loggedIn
-    ? document.getElementById('buyerName')?.closest('.field')
-    : document.querySelector('#authArea .btn-google');
+  const target = loggedIn ? document.getElementById('buyerName')?.closest('.field') : document.querySelector('#authArea .btn-google');
+  
   if(!target) return;
 
-  // Hitung posisi relatif terhadap area scroll modal (bukan halaman di belakangnya).
-  const modalRect = modal.getBoundingClientRect();
-  const targetRect = target.getBoundingClientRect();
-  const nextTop = modal.scrollTop + targetRect.top - modalRect.top - 14;
-  modal.scrollTo({top: Math.max(0, nextTop), behavior: 'smooth'});
+  // TRIK KHUSUS IPHONE/SAFARI:
+  setTimeout(() => {
+    const modalRect = modal.getBoundingClientRect();
+    const targetRect = target.getBoundingClientRect();
+    // Hitung jarak target dari atas modal
+    const scrollTarget = modal.scrollTop + (targetRect.top - modalRect.top) - 20;
+    
+    // Paksa scroll pakai dua metode (instan + smooth)
+    modal.scrollTop = scrollTarget;
+    try {
+      modal.scrollTo({ top: scrollTarget, behavior: 'smooth' });
+    } catch(e) {}
+  }, 400); // Jeda 400ms agar iPhone selesai me-render kotak modal
 }
 
 function updateCart(){
