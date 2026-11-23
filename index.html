@@ -358,7 +358,7 @@ function confirmWhatsApp(){
   const total=cart.reduce((s,i)=>s+i.price*i.qty,0);
   let msg='Halo True Store, saya mau pesan:%0A';
   cart.forEach(i=>{msg+=`- ${i.name} (${i.color}, ${i.cap}) x${i.qty} = ${fmt(i.price*i.qty)}%0A`;});
-  msg+=`%0ATotal: ${fmt(total)}%0ANama: ${document.getElementById('buyerName').value}%0ATelp: ${document.getElementById('buyerPhone').value}`;
+  msg+=`%0ATotal: ${fmt(total)}%0ANama: ${document.getElementById('buyerName').value}%0ATelp: ${document.getElementById('buyerPhone').value}%0AEmail: ${document.getElementById('userEmail').textContent}`;
   window.open(`https://wa.me/${WA}?text=${msg}`);
 }
 
