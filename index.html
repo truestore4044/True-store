@@ -70,6 +70,7 @@ footer{border-top:1px solid var(--line);padding:25px 0 34px;color:var(--muted);f
   .brand{font-size:18px;}
   .links{width:100%; justify-content:space-between; font-size:12px;}
   .carttop{width:100%; text-align:center; padding: 10px;}
+}
 </style>
 </head>
 <body>
@@ -498,7 +499,7 @@ document.getElementById('checkoutForm').addEventListener('submit',e=>{
   document.getElementById('checkoutArea').style.display = 'none';
 });
 
-function confirmWhatsApp(){
+async function confirmWhatsApp(){
   const total=cart.reduce((s,i)=>s+i.price*i.qty,0);
   let msg='Halo True Store, saya mau pesan:%0A';
   cart.forEach(i=>{msg+=`- ${i.name} (${i.color}, ${i.cap}) x${i.qty} = ${fmt(i.price*i.qty)}%0A`;});
@@ -512,7 +513,8 @@ historyData.push({
   total: document.getElementById('invTotal').innerText
 });
 localStorage.setItem('trueStoreHistory', JSON.stringify(historyData));
-  // Simpan ke database Firebase
+
+// Simpan ke database Firebase
 try {
   await addDoc(collection(window.db, "pesanan"), {
     invoice: document.getElementById('invNumber').innerText,
@@ -527,7 +529,9 @@ try {
 } catch (error) {
   console.error("Gagal simpan ke database: ", error);
 }
-  window.open(`https://wa.me/${WA}?text=${msg}`);
+
+// Lalu di bawahnya baru window.open
+window.open(https://wa.me/${WA}?text=${msg});
 }
 
 renderProducts();
