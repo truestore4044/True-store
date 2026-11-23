@@ -423,9 +423,27 @@ function addCart(id){
   if(ex)ex.qty++;else cart.push({key,id,name:p.name,color,cap,price,qty:1});
   updateCart();
   openCart();
-  // Setelah keranjang terbuka, pindahkan posisi modal tepat ke awal formulir.
-  requestAnimationFrame(() => setTimeout(scrollDiDalamModal, 300));
-}
+
+// TRIK PAKSA SCROLL DI IPHONE
+setTimeout(() => {
+  const isLoggedIn = document.getElementById('checkoutArea').style.display !== 'none';
+  const target = isLoggedIn 
+    ? document.getElementById('buyerName')?.closest('.field') 
+    : document.querySelector('#authArea .btn-google');
+    
+  if (target) {
+    const modal = document.querySelector('#cartOverlay .modal');
+    if (modal) {
+      // Gunakan getBoundingClientRect untuk menghitung posisi akurat
+      const modalRect = modal.getBoundingClientRect();
+      const targetRect = target.getBoundingClientRect();
+      const scrollTarget = modal.scrollTop + (targetRect.top - modalRect.top) - 20;
+      
+      // Paksa scroll
+      modal.scrollTo({ top: Math.max(0, scrollTarget), behavior: 'smooth' });
+    }
+  }
+}, 600);
 
 function scrollDiDalamModal(){
   const overlay = document.getElementById('cartOverlay');
