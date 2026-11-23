@@ -189,6 +189,7 @@ footer{border-top:1px solid var(--line);padding:25px 0 34px;color:var(--muted);f
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
   import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
 
+  import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
   // ==========================================
   // GANTI BAGIAN INI DENGAN KODE DARI FIREBASE ANDA
   // ==========================================
@@ -204,6 +205,8 @@ footer{border-top:1px solid var(--line);padding:25px 0 34px;color:var(--muted);f
 
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
+  const db = getFirestore(app);
+window.db = db;
   const provider = new GoogleAuthProvider();
 
   // Fungsi Login
@@ -509,6 +512,21 @@ historyData.push({
   total: document.getElementById('invTotal').innerText
 });
 localStorage.setItem('trueStoreHistory', JSON.stringify(historyData));
+  // Simpan ke database Firebase
+try {
+  await addDoc(collection(window.db, "pesanan"), {
+    invoice: document.getElementById('invNumber').innerText,
+    tanggal: document.getElementById('invDate').innerText,
+    nama: document.getElementById('buyerName').value,
+    whatsapp: document.getElementById('buyerPhone').value,
+    alamat: document.getElementById('buyerAddress').value,
+    total: document.getElementById('invTotal').innerText,
+    email: document.getElementById('userEmail').innerText
+  });
+  console.log("Data berhasil disimpan ke database!");
+} catch (error) {
+  console.error("Gagal simpan ke database: ", error);
+}
   window.open(`https://wa.me/${WA}?text=${msg}`);
 }
 
