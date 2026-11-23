@@ -171,7 +171,20 @@ footer{border-top:1px solid var(--line);padding:25px 0 34px;color:var(--muted);f
 </div>
 </div></div>
 
-<!-- LOAD FIREBASE SDK -->
+  <!-- MODAL RIWAYAT PESANAN -->
+<div class="overlay" id="historyOverlay" onclick="if(event.target===this)closeHistory()">
+  <div class="modal">
+    <div class="modalhead">
+      <h2>Riwayat Pesanan</h2>
+      <button class="close" onclick="closeHistory()">×</button>
+    </div>
+    <div id="historyItems" style="margin-top:15px;">
+      <!-- Data riwayat akan muncul di sini -->
+    </div>
+  </div>
+</div>
+
+  <!-- LOAD FIREBASE SDK -->
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
   import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
@@ -487,10 +500,47 @@ function confirmWhatsApp(){
   let msg='Halo True Store, saya mau pesan:%0A';
   cart.forEach(i=>{msg+=`- ${i.name} (${i.color}, ${i.cap}) x${i.qty} = ${fmt(i.price*i.qty)}%0A`;});
   msg+=`%0ATotal: ${fmt(total)}%0ANama: ${document.getElementById('buyerName').value}%0ATelp: ${document.getElementById('buyerPhone').value}%0AEmail: ${document.getElementById('userEmail').textContent}`;
+  // Simpan ke riwayat sebelum buka WA
+const historyData = JSON.parse(localStorage.getItem('trueStoreHistory')) || [];
+historyData.push({
+  invNumber: document.getElementById('invNumber').innerText,
+  date: document.getElementById('invDate').innerText,
+  items: document.getElementById('invItems').innerText.replace(/\n/g, ', '),
+  total: document.getElementById('invTotal').innerText
+});
+localStorage.setItem('trueStoreHistory', JSON.stringify(historyData));
   window.open(`https://wa.me/${WA}?text=${msg}`);
 }
 
 renderProducts();
+// --- FITUR RIWAYAT PESANAN ---
+window.openHistory = function() {
+  const historyOverlay = document.getElementById('historyOverlay');
+  const historyItems = document.getElementById('historyItems');
+  
+  const history = JSON.parse(localStorage.getItem('trueStoreHistory')) || [];
+  
+  if (history.length === 0) {
+    historyItems.innerHTML = '<p style="text-align:center; color:#777; padding: 20px 0;">Belum ada riwayat pesanan.</p>';
+  } else {
+    historyItems.innerHTML = history.reverse().map(item => `
+      <div style="border:1px solid #ddd; border-radius:10px; padding:12px; margin-bottom:10px; font-size:13px;">
+        <div style="display:flex; justify-content:space-between; font-weight:bold; margin-bottom:5px;">
+          <span>${item.invNumber}</span>
+          <span style="color:#16834a;">${item.date}</span>
+        </div>
+        <div>${item.items}</div>
+        <div style="font-weight:bold; margin-top:5px; text-align:right;">Total: ${item.total}</div>
+      </div>
+    `).join('');
+  }
+  
+  historyOverlay.classList.add('show');
+};
+
+window.closeHistory = function() {
+  document.getElementById('historyOverlay').classList.remove('show');
+};
 </script>
 </body>
 </html>
