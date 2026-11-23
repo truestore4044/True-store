@@ -189,6 +189,8 @@ footer{border-top:1px solid var(--line);padding:25px 0 34px;color:var(--muted);f
       document.getElementById('authArea').style.display = 'none';
       document.getElementById('checkoutArea').style.display = 'block';
       document.getElementById('userEmail').textContent = user.email;
+      // Jika keranjang sedang terbuka, langsung arahkan ke formulir checkout.
+      setTimeout(() => scrollToCheckout(), 120);
     } else {
       document.getElementById('authArea').style.display = 'block';
       document.getElementById('checkoutArea').style.display = 'none';
@@ -364,7 +366,21 @@ function addCart(id){
   const key=id+'-'+color+'-'+cap;
   const ex=cart.find(x=>x.key===key);
   if(ex)ex.qty++;else cart.push({key,id,name:p.name,color,cap,price,qty:1});
-  updateCart();openCart();
+  updateCart();
+  openCart();
+  // Setelah tombol Tambah ditekan, gulir modal langsung ke area pengisian data.
+  setTimeout(() => scrollToCheckout(), 120);
+}
+
+function scrollToCheckout(){
+  const modal = document.querySelector('#cartOverlay .modal');
+  if(!modal || !document.getElementById('cartOverlay').classList.contains('show')) return;
+  const checkout = document.getElementById('checkoutArea');
+  const auth = document.getElementById('authArea');
+  const target = checkout && checkout.style.display !== 'none' ? checkout : auth;
+  if(!target) return;
+  const top = target.getBoundingClientRect().top - modal.getBoundingClientRect().top + modal.scrollTop - 12;
+  modal.scrollTo({top: Math.max(0, top), behavior: 'smooth'});
 }
 
 function updateCart(){
