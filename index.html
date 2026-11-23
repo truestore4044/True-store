@@ -24,6 +24,12 @@ section{padding:34px 0 55px}.head{display:flex;justify-content:space-between;ali
 .small{font-size:12px;color:var(--muted);line-height:1.6}.payment{display:none;background:linear-gradient(145deg,#fff,#f2f3f5);border:1px solid #d9d9de;border-radius:17px;padding:17px;margin:15px 0}.payment.show{display:block}.pay-highlight{background:#fff;border:2px solid #171717;border-radius:15px;padding:15px;margin:12px 0 16px}.paybrand{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #e4e4e7;padding-bottom:11px;margin-bottom:12px}
 .meta{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#777;font-weight:800;margin-top:11px}.owner{font-size:19px;font-weight:900}.account{font-size:22px;font-weight:900;letter-spacing:.06em;margin:4px 0 10px}.copy{border:0;border-radius:20px;padding:9px 14px;background:#171717;color:#fff;font-weight:700}.payhr{border:0;border-top:1px solid #e4e4e7;margin:13px 0}
 footer{border-top:1px solid var(--line);padding:25px 0 34px;color:var(--muted);font-size:12px}.foot{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+/* CSS Tambahan untuk Login */
+.auth-section{display:flex; flex-direction:column; align-items:center; margin-top:20px; gap:15px}
+.btn-google{background:#fff; color:#171717; border:1px solid #d5d5d8; display:flex; align-items:center; justify-content:center; gap:10px; width:100%; padding:12px; border-radius:12px; font-weight:700; font-size:15px; cursor:pointer}
+.btn-google img{width:20px}
+.login-info{display:flex; justify-content:space-between; align-items:center; background:#f0f0f2; padding:10px 15px; border-radius:10px; margin-bottom:15px; font-size:13px}
+.btn-logout{background:#dc3545; color:#fff; border:none; padding:6px 12px; border-radius:15px; font-size:12px; font-weight:bold; cursor:pointer}
 @media(max-width:760px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.photo{height:220px}.benefits{grid-template-columns:1fr}.hero{padding:52px 0 42px}.links{gap:10px;font-size:12px}}
 @media(max-width:480px){.wrap{width:calc(100% - 22px)}.grid{grid-template-columns:1fr;gap:20px}.photo{height:280px;padding:20px}.details{padding:20px}.product h3{font-size:20px}.price{font-size:24px}.actions{flex-direction:row}.actions button{width:100%}.desc{font-size:13px}.head h2{font-size:26px}.nav{height:58px}.brand{font-size:16px}.links a:nth-child(2){display:none}.carttop{padding:9px 11px;font-size:12px}.tab{padding:10px 16px;font-size:13px}}
 </style>
@@ -40,19 +46,40 @@ footer{border-top:1px solid var(--line);padding:25px 0 34px;color:var(--muted);f
 <section id="kontak"><div class="wrap" style="text-align:center"><h2>Perlu bantuan?</h2><p class="small">Hubungi admin True Store untuk informasi produk dan stok.</p><a class="btn" target="_blank" rel="noopener" href="https://wa.me/6289682989482?text=Halo%20True%20Store%2C%20saya%20ingin%20bertanya%20tentang%20produk.">Chat WhatsApp</a></div></section>
 </main>
 <footer><div class="wrap foot"><span>© 2026 TRUE STORE</span><span>Apple Collection · Independent Store</span></div></footer>
+
 <div class="overlay" id="cartOverlay" onclick="if(event.target===this)closeCart()"><div class="modal">
 <div class="modalhead"><h2>Keranjang Pesanan</h2><button class="close" onclick="closeCart()">×</button></div>
 <div id="cartItems"></div><div class="total"><span>Total Pesanan</span><span id="cartTotal">Rp0</span></div>
-<form id="checkoutForm"><label class="field">Nama pembeli<input id="buyerName" required maxlength="60" placeholder="Nama lengkap"></label><label class="field">Nomor WhatsApp<input id="buyerPhone" required inputmode="tel" maxlength="20" placeholder="08xxxxxxxxxx"></label>
-<label class="field">Provinsi<input id="buyerProvince" required maxlength="60" placeholder="Provinsi"></label>
-<label class="field">Kota / Kabupaten<input id="buyerCity" required maxlength="60" placeholder="Kota atau kabupaten"></label>
-<label class="field">Kecamatan<input id="buyerDistrict" required maxlength="60" placeholder="Kecamatan"></label>
-<label class="field">Kelurahan / Desa<input id="buyerVillage" required maxlength="60" placeholder="Kelurahan atau desa"></label>
-<label class="field">Kode Pos<input id="buyerPostal" required inputmode="numeric" maxlength="10" placeholder="Kode pos"></label>
-<label class="field">Nama Jalan / Perumahan<input id="buyerStreet" required maxlength="120" placeholder="Nama jalan atau perumahan"></label>
-<label class="field">Alamat lengkap<textarea id="buyerAddress" required maxlength="400" rows="3" style="display:block;width:100%;margin-top:5px;padding:12px;border:1px solid #d5d5d8;border-radius:11px;font:inherit;font-weight:400" placeholder="Nomor rumah, blok, RT/RW, patokan"></textarea></label>
-<label class="field">Catatan kurir<textarea id="buyerNote" maxlength="250" rows="2" style="display:block;width:100%;margin-top:5px;padding:12px;border:1px solid #d5d5d8;border-radius:11px;font:inherit;font-weight:400" placeholder="Opsional"></textarea></label>
-<button class="btn blue" style="width:100%;margin-top:8px" type="submit">Lanjutkan Pesanan</button></form>
+
+<!-- AREA LOGIN & CHECKOUT -->
+<div id="authArea">
+  <div class="small" style="text-align:center; margin-bottom:15px; font-weight:bold">Silakan login menggunakan akun Gmail Anda untuk melanjutkan checkout.</div>
+  <button class="btn-google" onclick="loginWithGoogle()">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="G"> Login dengan Google
+  </button>
+</div>
+
+<div id="checkoutArea" style="display:none;">
+  <div class="login-info">
+    <span>Login sebagai: <b id="userEmail"></b></span>
+    <button class="btn-logout" onclick="logout()">Logout</button>
+  </div>
+  
+  <form id="checkoutForm">
+    <label class="field">Nama pembeli<input id="buyerName" required maxlength="60" placeholder="Nama lengkap"></label>
+    <label class="field">Nomor WhatsApp<input id="buyerPhone" required inputmode="tel" maxlength="20" placeholder="08xxxxxxxxxx"></label>
+    <label class="field">Provinsi<input id="buyerProvince" required maxlength="60" placeholder="Provinsi"></label>
+    <label class="field">Kota / Kabupaten<input id="buyerCity" required maxlength="60" placeholder="Kota atau kabupaten"></label>
+    <label class="field">Kecamatan<input id="buyerDistrict" required maxlength="60" placeholder="Kecamatan"></label>
+    <label class="field">Kelurahan / Desa<input id="buyerVillage" required maxlength="60" placeholder="Kelurahan atau desa"></label>
+    <label class="field">Kode Pos<input id="buyerPostal" required inputmode="numeric" maxlength="10" placeholder="Kode pos"></label>
+    <label class="field">Nama Jalan / Perumahan<input id="buyerStreet" required maxlength="120" placeholder="Nama jalan atau perumahan"></label>
+    <label class="field">Alamat lengkap<textarea id="buyerAddress" required maxlength="400" rows="3" style="display:block;width:100%;margin-top:5px;padding:12px;border:1px solid #d5d5d8;border-radius:11px;font:inherit;font-weight:400" placeholder="Nomor rumah, blok, RT/RW, patokan"></textarea></label>
+    <label class="field">Catatan kurir<textarea id="buyerNote" maxlength="250" rows="2" style="display:block;width:100%;margin-top:5px;padding:12px;border:1px solid #d5d5d8;border-radius:11px;font:inherit;font-weight:400" placeholder="Opsional"></textarea></label>
+    <button class="btn blue" style="width:100%;margin-top:8px" type="submit">Lanjutkan Pesanan</button>
+  </form>
+</div>
+
 <div class="payment" id="paymentBox">
 <div class="paybrand"><strong>TRUE STORE</strong><span class="paybadge">OFFICIAL PAYMENT</span></div>
 <div class="small" id="buyerSummary" style="background:#f7f7f9;border-radius:12px;padding:12px;margin:10px 0"><b>Ringkasan penerima</b><br>Alamat pembeli akan ditampilkan di sini setelah formulir diisi.</div>
@@ -62,6 +89,55 @@ footer{border-top:1px solid var(--line);padding:25px 0 34px;color:var(--muted);f
 <button class="btn blue" style="width:100%" type="button" onclick="confirmWhatsApp()">Saya Sudah Bayar — Konfirmasi via WhatsApp</button>
 </div>
 </div></div>
+
+<!-- LOAD FIREBASE SDK -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+  import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+
+  // ==========================================
+  // GANTI BAGIAN INI DENGAN KODE DARI FIREBASE ANDA
+  // ==========================================
+  const firebaseConfig = {
+  apiKey: "AIzaSyBEmnd4MAMnbRzMH4cRBNJ18BbhPiHX41A",
+  authDomain: "truestore-8192c.firebaseapp.com",
+  projectId: "truestore-8192c",
+  storageBucket: "truestore-8192c.firebasestorage.app",
+  messagingSenderId: "397958886536",
+  appId: "1:397958886536:web:1b506295581a3e1aa11b3d"
+  // ==========================================
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const provider = new GoogleAuthProvider();
+
+  // Fungsi Login
+  window.loginWithGoogle = () => {
+    signInWithPopup(auth, provider).catch((error) => {
+      alert("Gagal login: " + error.message);
+    });
+  };
+
+  // Fungsi Logout
+  window.logout = () => {
+    signOut(auth);
+  };
+
+  // Pantau Status Login
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      document.getElementById('authArea').style.display = 'none';
+      document.getElementById('checkoutArea').style.display = 'block';
+      document.getElementById('userEmail').textContent = user.email;
+    } else {
+      document.getElementById('authArea').style.display = 'block';
+      document.getElementById('checkoutArea').style.display = 'none';
+      document.getElementById('paymentBox').classList.remove('show');
+    }
+  });
+</script>
+
+<!-- SCRIPT UTAMA TOKO -->
 <script>
 const WA='6289682989482';
 let cart=[];
@@ -147,7 +223,6 @@ const products=[
 {k:'Starlight',n:'Starlight',img:'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-mini-select-wifi-starlight-202410?wid=5120&hei=2880&fmt=p-jpg'}]},
 
 // ============ MACBOOK ============
-// MACBOOK AIR M2 2022 (16/256GB, Midnight Only, Rp 8.300.000)
 {id:32,cat:'MacBook',name:'MacBook Air M2 (2022)',desc:'Layar Liquid Retina · Chip M2 · RAM 16GB',capacities:['256GB'],prices:{'256GB':8300000},discount:0,colors:[
 {k:'Midnight',n:'Midnight',img:'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/macbook-air-midnight-select-20220606?wid=5120&hei=2880&fmt=p-jpg'}]},
 {id:30,cat:'MacBook',name:'MacBook Air 13" (M3)',desc:'Chip M3 · Layar Liquid Retina',capacities:['256GB','512GB','1TB'],prices:{'256GB':14999000,'512GB':17499000,'1TB':20999000},discount:10,colors:[
@@ -203,7 +278,6 @@ function renderProducts(){
   }).join('');
 }
 
-// RESPON KLIK INSTAN (Tanpa Delay)
 function pickColor(id,key,btn){
   const p=products.find(x=>x.id===id);
   const c=p.colors.find(x=>x.k===key);
@@ -268,4 +342,3 @@ renderProducts();
 </script>
 </body>
 </html>
-```
