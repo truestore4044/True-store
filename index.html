@@ -424,27 +424,24 @@ function addCart(id){
   updateCart();
   openCart();
 
-// TRIK PAKSA SCROLL DI IPHONE
-setTimeout(() => {
-  const isLoggedIn = document.getElementById('checkoutArea').style.display !== 'none';
-  const target = isLoggedIn 
-    ? document.getElementById('buyerName')?.closest('.field') 
-    : document.querySelector('#authArea .btn-google');
-    
-  if (target) {
-    const modal = document.querySelector('#cartOverlay .modal');
-    if (modal) {
-      // Gunakan getBoundingClientRect untuk menghitung posisi akurat
-      const modalRect = modal.getBoundingClientRect();
-      const targetRect = target.getBoundingClientRect();
-      const scrollTarget = modal.scrollTop + (targetRect.top - modalRect.top) - 20;
+  // TRIK PAKSA SCROLL DI IPHONE
+  setTimeout(() => {
+    const isLoggedIn = document.getElementById('checkoutArea').style.display !== 'none';
+    const target = isLoggedIn 
+      ? document.getElementById('buyerName')?.closest('.field') 
+      : document.querySelector('#authArea .btn-google');
       
-      // Paksa scroll
-      modal.scrollTo({ top: Math.max(0, scrollTarget), behavior: 'smooth' });
+    if (target) {
+      const modal = document.querySelector('#cartOverlay .modal');
+      if (modal) {
+        const modalRect = modal.getBoundingClientRect();
+        const targetRect = target.getBoundingClientRect();
+        const scrollTarget = modal.scrollTop + (targetRect.top - modalRect.top) - 20;
+        modal.scrollTo({ top: Math.max(0, scrollTarget), behavior: 'smooth' });
+      }
     }
-  }
-}, 600);
-
+  }, 600);
+}
 function scrollDiDalamModal(){
   const overlay = document.getElementById('cartOverlay');
   const modal = overlay && overlay.querySelector('.modal');
