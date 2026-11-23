@@ -183,15 +183,31 @@ footer{border-top:1px solid var(--line);padding:25px 0 34px;color:var(--muted);f
     signOut(auth);
   };
 
-  // Pantau Status Login
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      document.getElementById('authArea').style.display = 'none';
-      document.getElementById('checkoutArea').style.display = 'block';
-      document.getElementById('userEmail').textContent = user.email;
-      // Jika keranjang sedang terbuka, arahkan tepat ke kolom pertama formulir.
-      requestAnimationFrame(() => setTimeout(scrollToCheckout, 250));
-    } else {
+// Fungsi untuk scroll ke formulir checkout
+window.scrollToCheckout = () => {
+  const checkoutArea = document.getElementById('checkoutArea');
+  if (checkoutArea && checkoutArea.style.display !== 'none') {
+    // Scroll ke area checkout dengan animasi halus
+    checkoutArea.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    
+    // Opsional: fokus ke input pertama (Nama Pembeli)
+    const firstInput = document.getElementById('buyerName');
+    if (firstInput) {
+      setTimeout(() => firstInput.focus({ preventScroll: true }), 300);
+    }
+  }
+};
+
+// Pantau Status Login
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    document.getElementById('authArea').style.display = 'none';
+    document.getElementById('checkoutArea').style.display = 'block';
+    document.getElementById('userEmail').textContent = user.email;
+    
+    // Panggil fungsi scroll setelah area checkout muncul
+    setTimeout(() => window.scrollToCheckout(), 100);
+  } else {
       document.getElementById('authArea').style.display = 'block';
       document.getElementById('checkoutArea').style.display = 'none';
       document.getElementById('paymentBox').classList.remove('show');
@@ -369,10 +385,10 @@ function addCart(id){
   updateCart();
   openCart();
   // Setelah keranjang terbuka, pindahkan posisi modal tepat ke awal formulir.
-  requestAnimationFrame(() => setTimeout(scrollToCheckout, 250));
+  requestAnimationFrame(() => setTimeout(scrollDiDalamModal, 250));
 }
 
-function scrollToCheckout(){
+function scrollDiDalamModal(){
   const overlay = document.getElementById('cartOverlay');
   const modal = overlay && overlay.querySelector('.modal');
   if(!modal || !overlay.classList.contains('show')) return;
