@@ -122,12 +122,20 @@ header { background: rgba(255, 255, 255, 0.9); backdrop-filter: saturate(180%) b
 .card{background:#fff;border-radius:15px;padding:20px;margin-bottom:15px;box-shadow:0 2px 10px rgba(0,0,0,0.03);}
 .card-title{font-size:16px;font-weight:800;margin-bottom:15px;display:flex;justify-content:space-between;align-items:center;}
 
+/* OPSI PENGIRIMAN */
 .ship-option{display:flex;align-items:flex-start;gap:15px;padding:15px;border:2px solid var(--line);border-radius:12px;margin-bottom:12px;cursor:pointer;transition:all 0.2s;}
 .ship-option.active{border-color:var(--blue);background:#f8fbff;}
 .ship-option input[type="radio"]{margin-top:4px;accent-color:var(--blue);transform:scale(1.2);}
-.ship-details h4{margin:0 0 5px;font-size:15px;font-weight:700;}
+.ship-details h4{margin:0 0 5px;font-size:15px;font-weight:700;display:flex; justify-content:space-between;}
 .ship-details p{margin:0;font-size:13px;color:var(--muted);line-height:1.4;}
 .ship-details .store-name{color:var(--blue);font-weight:700;margin-top:5px;display:block;}
+.badge-estimasi{background:#e8f5e9; color:#16834a; font-size:11px; padding:2px 8px; border-radius:10px; font-weight:700; margin-left:5px; display:inline-block;}
+
+/* GARANSI BANNER */
+.garansi-banner { background: #f8fbff; border: 1px dashed var(--blue); border-radius: 12px; padding: 15px; margin-top: 15px; }
+.garansi-title { font-size: 14px; font-weight: 800; color: var(--blue); margin-bottom: 5px; display: flex; align-items: center; gap: 8px; }
+.garansi-title svg { width: 20px; height: 20px; fill: var(--blue); }
+.garansi-text { font-size: 12px; color: #333; line-height: 1.5; }
 
 .form-group{margin-bottom:15px;}
 .form-group label{display:block;font-size:13px;font-weight:700;margin-bottom:8px;color:#333;}
@@ -144,6 +152,14 @@ header { background: rgba(255, 255, 255, 0.9); backdrop-filter: saturate(180%) b
 .pay-method{display:flex;align-items:center;gap:15px;padding:15px;border:1px solid var(--line);border-radius:12px;margin-bottom:10px;cursor:pointer;transition:all 0.2s;}
 .pay-method.active{border-color:var(--blue);background:#f8fbff;}
 .pay-icon{width:45px;height:45px;background:#eee;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:12px;color:#555;}
+
+/* INFO REKENING */
+.bank-info { background: #f8fbff; border: 1px solid #cce3ff; border-radius: 12px; padding: 15px; margin-top: 15px; }
+.bank-info-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; font-size: 14px; }
+.bank-info-row:last-child { margin-bottom: 0; }
+.bank-label { color: var(--muted); font-weight: 500; }
+.bank-value { font-weight: 800; color: var(--ink); font-size: 15px; letter-spacing: 0.5px; }
+.bank-name { color: var(--blue); font-weight: 700; }
 
 /* COUNTDOWN PEMBAYARAN */
 .countdown-box { background: #1d1d1f; color: #fff; border-radius: 15px; padding: 25px; text-align: center; margin-bottom: 15px; box-shadow: 0 6px 20px rgba(0,0,0,0.15); }
@@ -322,24 +338,36 @@ header { background: rgba(255, 255, 255, 0.9); backdrop-filter: saturate(180%) b
       <div class="card-title">Produk Pesanan</div>
       <div id="cartItemsList"></div>
     </div>
+    
     <div class="card">
-      <div class="card-title">Metode Pengambilan</div>
-      <label class="ship-option active" onclick="selectShipping('pickup')">
+      <div class="card-title">Metode Pengiriman / Pengambilan</div>
+      
+      <label class="ship-option active" id="optPickup" onclick="selectShipping('pickup')">
         <input type="radio" name="shipping" checked>
         <div class="ship-details">
-          <h4>Click & PickUp</h4>
-          <p>Siap diambil hari ini</p>
+          <h4>PickUp di Toko</h4>
           <p class="store-name">TRUE STORE - Mall PIK Avenue Jakarta Utara</p>
+          <p style="margin-top:8px; color:var(--ink); font-weight:600;">⏰ Jam Pengambilan: <span style="color:var(--blue); font-weight:800;">11:00 - 12:00 WIB</span></p>
         </div>
       </label>
-      <label class="ship-option" onclick="selectShipping('delivery')">
+
+      <label class="ship-option" id="optExpress" onclick="selectShipping('express')">
         <input type="radio" name="shipping">
         <div class="ship-details">
-          <h4>Pengiriman Kurir</h4>
-          <p>Estimasi 2-3 hari kerja</p>
+          <h4>Belanja Online - Express <span class="badge-estimasi">1 Hari Sampai</span></h4>
+          <p>Dikirim via kurir instan / same day.</p>
+        </div>
+      </label>
+
+      <label class="ship-option" id="optReguler" onclick="selectShipping('reguler')">
+        <input type="radio" name="shipping">
+        <div class="ship-details">
+          <h4>Belanja Online - Reguler <span class="badge-estimasi">3-5 Hari Sampai</span></h4>
+          <p>Dikirim via ekspedisi reguler.</p>
         </div>
       </label>
     </div>
+
     <div class="card" id="addressForm" style="display:none;">
       <div class="card-title">Alamat Pengiriman</div>
       <div class="form-group">
@@ -355,6 +383,18 @@ header { background: rgba(255, 255, 255, 0.9); backdrop-filter: saturate(180%) b
         <textarea id="buyerAddress" rows="4" placeholder="Nama jalan, nomor rumah, RT/RW, kelurahan, kecamatan, kota, kode pos"></textarea>
       </div>
     </div>
+
+    <!-- KETERANGAN GARANSI ONLINE -->
+    <div class="garansi-banner" id="garansiOnline" style="display:none;">
+      <div class="garansi-title">
+        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="M9 12l2 2 4-4" stroke="#fff" stroke-width="2" fill="none"></path></svg>
+        Garansi Kerusakan Pengiriman
+      </div>
+      <div class="garansi-text">
+        <strong>WAJIB VIDEO UNBOXING:</strong> Untuk belanja online, jika barang rusak dapat diretur dengan syarat wajib melampirkan <b>Video Unboxing Paket</b> (tanpa jeda/edit). Klaim tanpa video tidak dapat diproses.
+      </div>
+    </div>
+
     <div class="card">
       <div class="card-title">Ringkasan Belanja</div>
       <div class="summary-row"><span>Total Harga (<span id="sumQty">0</span> Barang)</span><span id="sumPrice">Rp 0</span></div>
@@ -385,19 +425,28 @@ header { background: rgba(255, 255, 255, 0.9); backdrop-filter: saturate(180%) b
       <div class="countdown-note" id="countdownNote">Pesanan akan otomatis dibatalkan jika waktu habis.</div>
     </div>
     <div class="card">
-      <div class="card-title">Pilih Metode Pembayaran</div>
-      <div class="pay-method active" onclick="selectPayMethod(this)">
+      <div class="card-title">Metode Pembayaran</div>
+      <div class="pay-method active">
         <div class="pay-icon">VA</div>
         <div style="flex:1">
-          <div style="font-weight:700">Virtual Account (SeaBank)</div>
-          <div style="font-size:12px;color:var(--muted)">Otomatis terverifikasi</div>
+          <div style="font-weight:700">Transfer Bank (SeaBank)</div>
+          <div style="font-size:12px;color:var(--muted)">Transfer sesuai nominal tagihan</div>
         </div>
       </div>
-      <div class="pay-method" onclick="selectPayMethod(this)">
-        <div class="pay-icon">QR</div>
-        <div style="flex:1">
-          <div style="font-weight:700">QRIS (Semua Bank)</div>
-          <div style="font-size:12px;color:var(--muted)">Scan dari aplikasi apa saja</div>
+      
+      <!-- INFO REKENING SEABANK -->
+      <div class="bank-info">
+        <div class="bank-info-row">
+          <span class="bank-label">Bank</span>
+          <span class="bank-value bank-name">SeaBank Indonesia</span>
+        </div>
+        <div class="bank-info-row">
+          <span class="bank-label">Nomor Rekening</span>
+          <span class="bank-value" id="vaNumber" style="font-size:18px; color:var(--blue);">901633615122</span>
+        </div>
+        <div class="bank-info-row">
+          <span class="bank-label">Atas Nama</span>
+          <span class="bank-value">M Yuda</span>
         </div>
       </div>
     </div>
@@ -449,10 +498,10 @@ header { background: rgba(255, 255, 255, 0.9); backdrop-filter: saturate(180%) b
 
 <script>
 // ==========================================
-// NOMOR WHATSAPP TOKO — GANTI DENGAN NOMOR ASLI ANDA
-// Format: kode negara tanpa + (contoh: 6281234567890)
+// KONFIGURASI TOKO
 // ==========================================
-const WA_NUMBER = "6281234567890";
+const WA_NUMBER = "6289682989482"; // WA Asli
+const REK_SEABANK = "901633615122"; // Rekening SeaBank
 
 // ==========================================
 // DATA PRODUK
@@ -669,7 +718,7 @@ let selectedCapacity = '';
 let selectedColor = null;
 let selectedShipping = 'pickup';
 let countdownInterval = null;
-let countdownSeconds = 1200;
+let countdownSeconds = 1200; 
 let paymentExpired = false;
 let buyerData = { name: '', phone: '', address: '', shipping: 'pickup' };
 
@@ -853,21 +902,28 @@ function selectShipping(type) {
     selectedShipping = type;
     const options = document.querySelectorAll('.ship-option');
     options.forEach(opt => opt.classList.remove('active'));
+    
     if(type === 'pickup') {
-        options[0].classList.add('active');
-        options[0].querySelector('input').checked = true;
+        document.getElementById('optPickup').classList.add('active');
+        document.getElementById('optPickup').querySelector('input').checked = true;
         document.getElementById('addressForm').style.display = 'none';
+        document.getElementById('garansiOnline').style.display = 'none';
     } else {
-        options[1].classList.add('active');
-        options[1].querySelector('input').checked = true;
         document.getElementById('addressForm').style.display = 'block';
+        document.getElementById('garansiOnline').style.display = 'block';
+        if(type === 'express') {
+            document.getElementById('optExpress').classList.add('active');
+            document.getElementById('optExpress').querySelector('input').checked = true;
+        } else {
+            document.getElementById('optReguler').classList.add('active');
+            document.getElementById('optReguler').querySelector('input').checked = true;
+        }
     }
 }
 
 function goToPayment() {
-    // Simpan data pembeli
     buyerData.shipping = selectedShipping;
-    if(selectedShipping === 'delivery') {
+    if(selectedShipping !== 'pickup') {
         const name = document.getElementById('buyerName').value.trim();
         const phone = document.getElementById('buyerPhone').value.trim();
         const address = document.getElementById('buyerAddress').value.trim();
@@ -879,13 +935,9 @@ function goToPayment() {
         buyerData.phone = phone;
         buyerData.address = address;
     } else {
-        // Pickup: nama & phone opsional, tapi kita minta minimal nama & phone via prompt
         const name = document.getElementById('buyerName').value.trim();
         const phone = document.getElementById('buyerPhone').value.trim();
-        // Untuk pickup, form alamat tersembunyi. Kita tetap minta data via form yang selalu ada di checkout? 
-        // Karena form tersembunyi, kita gunakan data kosong atau minta via prompt sederhana.
         if(!name || !phone) {
-            // Minta data minimal
             const n = prompt('Masukkan Nama Lengkap Anda:');
             const p = prompt('Masukkan Nomor WhatsApp Anda:');
             if(!n || !p) { alert('Nama dan Nomor WhatsApp wajib diisi untuk konfirmasi.'); return; }
@@ -899,6 +951,8 @@ function goToPayment() {
         }
     }
     
+    document.getElementById('vaNumber').textContent = REK_SEABANK;
+
     const total = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
     document.getElementById('paySumPrice').textContent = `Rp ${total.toLocaleString('id-ID')}`;
     document.getElementById('paySumTotal').textContent = `Rp ${total.toLocaleString('id-ID')}`;
@@ -917,7 +971,7 @@ function selectPayMethod(el) {
 // ==========================================
 function startCountdown() {
     if (countdownInterval) clearInterval(countdownInterval);
-    countdownSeconds = 1200; // 20 menit
+    countdownSeconds = 1200; 
     paymentExpired = false;
     
     const timerEl = document.getElementById('countdownTimer');
@@ -956,7 +1010,6 @@ function updateCountdownDisplay() {
     const s = countdownSeconds % 60;
     document.getElementById('countdownTimer').textContent = `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
     
-    // Tombol aktif setelah 1 MENIT (60 detik berlalu)
     const btn = document.getElementById('btnConfirmPay');
     const elapsed = 1200 - countdownSeconds;
     if (elapsed >= 60 && countdownSeconds > 0 && !paymentExpired) {
@@ -992,9 +1045,14 @@ function openWhatsApp() {
         rincian += `${idx+1}. ${item.name}\n   Kapasitas: ${item.capacity}\n   Warna: ${item.color}\n   Jumlah: ${item.qty}x\n   Subtotal: Rp ${subtotal.toLocaleString('id-ID')}\n\n`;
     });
 
-    const shippingText = buyerData.shipping === 'pickup' 
-        ? 'Click & PickUp — TRUE STORE Mall PIK Avenue Jakarta Utara' 
-        : 'Pengiriman Kurir';
+    let shippingText = '';
+    if (buyerData.shipping === 'pickup') {
+        shippingText = 'PickUp di Toko (Jam 11:00 - 12:00 WIB)';
+    } else if (buyerData.shipping === 'express') {
+        shippingText = 'Belanja Online - Express (1 Hari Sampai)';
+    } else {
+        shippingText = 'Belanja Online - Reguler (3-5 Hari Sampai)';
+    }
 
     const pesan = 
 `Halo TRUE STORE, saya sudah melakukan pembayaran.
@@ -1006,6 +1064,11 @@ ${rincian}
 ━━━━━━━━━━━━━━━━━━
 💰 *TOTAL: Rp ${total.toLocaleString('id-ID')}*
 ━━━━━━━━━━━━━━━━━━
+
+🏦 *TRANSFER KE:*
+Bank: SeaBank
+No. Rek: ${REK_SEABANK}
+Atas Nama: M Yuda
 
 🚚 *METODE:* ${shippingText}
 
@@ -1025,7 +1088,6 @@ Mohon segera diproses. Terima kasih.`;
 function backToPayment() {
     document.getElementById('confirmWaPage').classList.remove('show');
     document.getElementById('paymentPage').classList.add('show');
-    // Restart countdown jika belum expired
     if (!paymentExpired && countdownSeconds > 0) {
         startCountdown();
     }
