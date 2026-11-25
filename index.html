@@ -994,9 +994,11 @@ function goToPayment() {
     const total = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
     document.getElementById('paySumPrice').textContent = `Rp ${total.toLocaleString('id-ID')}`;
     document.getElementById('paySumTotal').textContent = `Rp ${total.toLocaleString('id-ID')}`;
-    document.getElementById('checkoutPage').classList.remove('show');
-    document.getElementById('paymentPage').classList.add('show');
-    startCountdown();
+    saveOrder();
+    
+document.getElementById('checkoutPage').classList.remove('show');
+document.getElementById('paymentPage').classList.add('show');
+startCountdown();
 }
 
 function selectPayMethod(el) {
@@ -1073,7 +1075,12 @@ function confirmPayment() {
         countdownInterval = null;
     }
 
-    saveOrder();
+    let orders = JSON.parse(localStorage.getItem("trueStoreOrders") || "[]");
+
+if (orders.length > 0) {
+    orders[0].status = "Menunggu Verifikasi";
+    localStorage.setItem("trueStoreOrders", JSON.stringify(orders));
+}
 
     document.getElementById('paymentPage').classList.remove('show');
     document.getElementById('confirmWaPage').classList.add('show');
@@ -1171,7 +1178,7 @@ function saveOrder() {
     phone: buyerData.phone,
     total: total,
     items: items,
-    status: "Menunggu Verifikasi"
+    status: "Menunggu Pembayaran"
   };
 
   orders.unshift(order);
