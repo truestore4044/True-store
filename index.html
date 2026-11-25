@@ -1156,33 +1156,55 @@ function closePayment() {
 
 renderProducts();
 updateCartCount();
+let activeOrderId = null;
+
 function saveOrder() {
-  let orders = JSON.parse(localStorage.getItem("trueStoreOrders") || "[]");
+    const orders = JSON.parse(localStorage.getItem("trueStoreOrders") || "[]");
 
-  let total = 0;
-  const items = cart.map(item => {
-    total += item.price * item.qty;
-    return {
-      name: item.name,
-      capacity: item.capacity,
-      color: item.color,
-      qty: item.qty,
-      price: item.price
-    };
-  });
+    const items = cart.map(item => ({
+        name: item.name,
+        capacity: item.capacity,
+        color: item.color,
+        qty: item.qty,
+        price: item.price
+    }));
 
-  const order = {
-    id: "TS-" + Date.now(),
-    date: new Date().toLocaleString("id-ID"),
-    name: buyerData.name,
-    phone: buyerData.phone,
-    total: total,
-    items: items,
-    status: "Menunggu Pembayaran"
-  };
+    const total = items.reduce((sum, item) => sum + item.price * item.qty, 0);
 
-  orders.unshift(order);
-  localStorage.setItem("trueStoreOrders", JSON.stringify(orders));
+    let order = activeOrderId
+        ? orders.find(o => o.id === activeOrderId)
+        : null;
+
+    if (order) {
+        Object.assign(order, {
+            date: new Date().toLocaleString("id-ID"),
+            name: buyerData.name,
+            phone: buyerData.phone,
+            address: buyerData.address,
+            shipping: selectedShipping,
+            total: total,
+            items: items
+        });
+    } else {
+        order = {
+            id: "TS-" + Date.now(),
+            date: new Date().toLocaleString("id-ID"),
+            name: buyerData.name,
+            phone: buyerData.phone,
+            address: buyerData.address,
+            shipping: selectedShipping,
+            total: total,
+            items: items,
+            status: "Menunggu Pembayaran",
+            expiresAt: Date.now() + 1200000
+        };
+
+        orders.unshift(order);
+        activeOrderId = order.id;
+    }
+
+    localStorage.setItem("trueStoreOrders", JSON.stringify(orders));
+    return activeOrderId;
 }
 
 function openHistory() {
