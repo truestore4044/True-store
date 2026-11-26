@@ -219,20 +219,49 @@ header { background: rgba(255, 255, 255, 0.9); backdrop-filter: saturate(180%) b
     .countdown-timer { font-size: 36px; }
 }
     /* RIWAYAT PESANAN */
-.history-btn {
-  border: 1px solid #d2d2d7;
-  background: white;
-  color: #1d1d1f;
-  padding: 10px 16px;
+.history-card {
+  border: 1px solid #e5e5e7;
+  border-radius: 16px;
+  padding: 18px;
+  margin: 14px 0;
+  background: #fff;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.04);
+}
+
+.history-total {
+  color: #16834a;
+  font-size: 19px;
+  font-weight: 800;
+}
+
+.history-status {
+  color: #d97706;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.history-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 15px;
+}
+
+.history-actions button {
+  border: none;
   border-radius: 20px;
+  padding: 10px 14px;
+  font-size: 13px;
   cursor: pointer;
 }
-.history-card {
-  border: 1px solid #d2d2d7;
-  border-radius: 14px;
-  padding: 15px;
-  margin: 12px 0;
-  background: #fff;
+
+.btn-resume {
+  background: #1D1D1F;
+  color: white;
+}
+
+.btn-cancel {
+  background: #F2F2F2;
+  color: #555;
 }
 </style>
 </head>
@@ -1208,31 +1237,104 @@ function saveOrder() {
 }
 
 function openHistory() {
-  const page = document.getElementById("historyPage");
-  const list = document.getElementById("historyList");
-  page.style.display = "block";
+    const page = document.getElementById("historyPage");
+    const list = document.getElementById("historyList");
+    page.style.display = "block";
 
-  const orders = JSON.parse(localStorage.getItem("trueStoreOrders") || "[]");
+    const orders = JSON.parse(localStorage.getItem("trueStoreOrders") || "[]");
 
-  if (!orders.length) {
-    list.innerHTML = "<p>Belum ada pesanan.</p>";
-    return;
-  }
+    if (!orders.length) {
+        list.innerHTML = "<p>Belum ada pesanan.</p>";
+        return;
+    }
 
-  list.innerHTML = orders.map(order => `
-    <div class="history-card">
-      <b>${order.id}</b>
-      <p>${order.date}</p>
-      <p>Nama: ${order.name}</p>
-      <p>Total: Rp ${order.total.toLocaleString("id-ID")}</p>
-      <p>Status: ${order.status}</p>
-    </div>
-  `).join("");
+    list.innerHTML = orders.map(order => `
+        <div class="history-card">
+            <b>${order.id}</b>
+            <p>${order.date}</p>
+            <p>Nama: ${order.name}</p>
+            <p class="history-total">Rp ${order.total.toLocaleString("id-ID")}</p>
+            <p class="history-status">${order.status}</p>
+
+            <div class="history-actions">
+                <button class="btn-resume" onclick="resumeOrder('${order.id}')">
+                    Lanjutkan Pembayaran
+                </button>
+                <button class="btn-cancel" onclick="cancelOrder('${order.id}')">
+                    Batalkan
+                </button>
+            </div>
+        </div>
+    `).join("");
 }
 
 function closeHistory() {
   document.getElementById("historyPage").style.display = "none";
 }
+    function cancelOrder(orderId) {
+    if (!confirm("Yakin ingin membatalkan pesanan ini?")) {
+        return;
+    }
+
+    let orders = JSON.parse(localStorage.getItem("trueStoreOrders") || "[]");
+
+    orders = orders.filter(order => order.id !== orderId);
+
+    localStorage.setItem("trueStoreOrders", JSON.stringify(orders));
+
+    if (activeOrderId === orderId) {
+        activeOrderId = null;
+    }
+
+    openHistory();
+}
+    function resumeOrder(orderId) {
+    const orders = JSON.parse(localStorage.getItem("trueStoreOrders") || "[]");
+    const order = orders.find(o => o.id === orderId);
+
+    if (!order) {
+        alert("Pesanan tidak ditemukan.");
+        return;
+    }
+
+    if (order.status !== "Menunggu Pembayaran") {
+        alert("Pesanan ini tidak bisa dilanjutkan.");
+        return;
+    }
+
+    activeOrderId = order.id;
+    buyerData.name = order.name;
+    buyerData.phone = order.phone;
+    buyerData.address = order.address || "";
+    selectedShipping = order.shipping || "pickup";
+
+    cart = order.items.map(item => ({
+        ...item
+    }));
+
+    document.getElementById("vaNumber").textContent = REK_SEABANK;
+
+    document.getElementById("paySumPrice").textContent =
+        `Rp ${order.total.toLocaleString("id-ID")}`;
+
+    document.getElementById("paySumTotal").textContent =
+        `Rp ${order.total.toLocaleString("id-ID")}`;
+
+    document.getElementById("historyPage").style.display = "none";
+    document.getElementById("checkoutPage").classList.remove("show");
+    document.getElementById("paymentPage").classList.add("show");
+
+    const remaining = order.expiresAt
+        ? Math.ceil((order.expiresAt - Date.now()) / 1000)
+        : 1200;
+
+    if (remaining <= 0) {
+        alert("Waktu pembayaran pesanan ini sudah habis. Silakan buat pesanan baru.");
+        return;
+    }
+
+    startCountdown(remaining);
+    }
 </script>
 </body>
 </html>
