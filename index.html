@@ -1038,9 +1038,9 @@ function selectPayMethod(el) {
 // ==========================================
 // COUNTDOWN PEMBAYARAN 20 MENIT
 // ==========================================
-function startCountdown() {
+function startCountdown(seconds = 1200) {
     if (countdownInterval) clearInterval(countdownInterval);
-    countdownSeconds = 1200; 
+    countdownSeconds = seconds; 
     paymentExpired = false;
     
     const timerEl = document.getElementById('countdownTimer');
