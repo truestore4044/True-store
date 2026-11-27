@@ -257,6 +257,22 @@ header { background: rgba(255, 255, 255, 0.9); backdrop-filter: saturate(180%) b
 .history-actions button { border: none; border-radius: 20px; padding: 10px 14px; font-size: 13px; cursor: pointer; }
 .btn-resume { background: #1D1D1F; color: white; }
 .btn-cancel { background: #F2F2F2; color: #555; }
+
+/* LOGIN TRUE STORE */
+.auth-nav{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.auth-nav button{padding:8px 14px;border-radius:20px;font-size:13px;font-weight:800}
+.auth-login{background:#f0f0f2;color:#1d1d1f}
+.auth-register{background:#0071e3;color:#fff}
+.auth-user{font-size:12px;color:#16834a;font-weight:700;max-width:150px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.auth-overlay{position:fixed;inset:0;background:rgba(0,0,0,.48);z-index:500;display:none;align-items:center;justify-content:center;padding:20px}
+.auth-overlay.show{display:flex}
+.auth-box{width:100%;max-width:390px;background:#fff;border-radius:20px;padding:28px 22px;text-align:center;box-shadow:0 15px 50px rgba(0,0,0,.2)}
+.auth-box h2{margin:0 0 8px;font-size:24px}
+.auth-box p{margin:0 0 20px;color:#86868b;font-size:14px}
+.auth-google{width:100%;padding:14px;border-radius:12px;background:#0071e3;color:#fff;font-weight:800;font-size:15px}
+.auth-cancel{margin-top:12px;padding:10px 18px;color:#555;font-weight:700}
+@media(max-width:768px){.auth-nav{justify-content:center}.auth-user{max-width:110px}}
+
 </style>
 </head>
 <body>
@@ -268,6 +284,18 @@ header { background: rgba(255, 255, 255, 0.9); backdrop-filter: saturate(180%) b
     <button onclick="closeHistory()" style="background:#1d1d1f;color:#fff;border-radius:20px;padding:8px 16px;font-weight:700;">← Kembali</button>
   </div>
   <div id="historyList"><p>Belum ada pesanan.</p></div>
+</div>
+
+
+<!-- LOGIN / DAFTAR AKUN TRUE STORE -->
+<div class="auth-overlay" id="authOverlay" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+  <div class="auth-box">
+    <h2 id="authTitle">Masuk ke TRUE STORE</h2>
+    <p id="authDescription">Gunakan akun Google Anda untuk melanjutkan belanja dan checkout.</p>
+    <button class="auth-google" id="authGoogleButton" onclick="startGoogleAuth()">Lanjutkan dengan Google</button>
+    <div id="authMessage" style="font-size:12px;color:#86868b;margin-top:12px"></div>
+    <button class="auth-cancel" onclick="hideAuth()">Tutup</button>
+  </div>
 </div>
 
 <header>
@@ -285,6 +313,10 @@ header { background: rgba(255, 255, 255, 0.9); backdrop-filter: saturate(180%) b
             Bag (<span id="cartCount">0</span>)
         </button>
         <button class="history-btn" onclick="openHistory()">Riwayat Pesanan</button>
+        <div class="auth-nav" id="authNav">
+          <button class="auth-login" onclick="showAuth('login')">MASUK</button>
+          <button class="auth-register" onclick="showAuth('register')">DAFTAR</button>
+        </div>
     </div>
 </header>
 
@@ -954,6 +986,11 @@ function renderVouchers(subtotal) {
 // CHECKOUT
 // ==========================================
 function openCheckout() {
+    if (!window.trueStoreUser) {
+        window.trueStorePendingAction = 'checkout';
+        showAuth('login');
+        return;
+    }
     if(cart.length === 0) { alert('Keranjang masih kosong! Silakan pilih produk terlebih dahulu.'); return; }
     const list = document.getElementById('cartItemsList');
     list.innerHTML = '';
@@ -1039,6 +1076,11 @@ function selectShipping(type) {
 // LANJUT PEMBAYARAN
 // ==========================================
 function goToPayment() {
+    if (!window.trueStoreUser) {
+        window.trueStorePendingAction = 'checkout';
+        showAuth('login');
+        return;
+    }
     buyerData.shipping = selectedShipping;
     if(selectedShipping !== 'pickup') {
         const name = document.getElementById('buyerName').value.trim();
@@ -1407,5 +1449,97 @@ function resumeOrder(orderId) {
 renderProducts();
 updateCartCount();
 </script>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import {
+  getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, signOut,
+  getAdditionalUserInfo
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBEmnd4MAMnbRzMH4cRBNJ18BbhPiHX41A",
+  authDomain: "truestore-8192c.firebaseapp.com",
+  projectId: "truestore-8192c",
+  storageBucket: "truestore-8192c.firebasestorage.app",
+  messagingSenderId: "397958886536",
+  appId: "1:397958886536:web:1b506295581a3e1aa11b3d",
+  measurementId: "G-QJMGLYEM90"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const provider = new GoogleAuthProvider();
+provider.setCustomParameters({ prompt: "select_account" });
+
+let authMode = "login";
+window.trueStoreUser = null;
+window.trueStorePendingAction = null;
+
+window.showAuth = function(mode = "login") {
+  authMode = mode;
+  const isRegister = mode === "register";
+  document.getElementById("authTitle").textContent = isRegister ? "Daftar Akun TRUE STORE" : "Masuk ke TRUE STORE";
+  document.getElementById("authDescription").textContent = isRegister
+    ? "Buat akun menggunakan Google. Jika ini pertama kali, akun Anda akan dibuat otomatis."
+    : "Masuk menggunakan akun Google yang sudah Anda miliki untuk melanjutkan checkout.";
+  document.getElementById("authMessage").textContent = "";
+  document.getElementById("authGoogleButton").textContent = isRegister ? "Daftar dengan Google" : "Masuk dengan Google";
+  document.getElementById("authOverlay").classList.add("show");
+};
+
+window.hideAuth = function() {
+  document.getElementById("authOverlay").classList.remove("show");
+};
+
+window.startGoogleAuth = async function() {
+  const button = document.getElementById("authGoogleButton");
+  const message = document.getElementById("authMessage");
+  button.disabled = true;
+  button.textContent = "Menghubungkan...";
+  message.textContent = "Mohon tunggu, sedang menghubungkan akun Google Anda.";
+  try {
+    const result = await signInWithPopup(auth, provider);
+    const info = getAdditionalUserInfo(result);
+    message.textContent = info?.isNewUser
+      ? "Akun TRUE STORE berhasil dibuat."
+      : "Berhasil masuk ke akun TRUE STORE.";
+    window.trueStorePendingAction = window.trueStorePendingAction || null;
+    window.hideAuth();
+    if (window.trueStorePendingAction === "checkout") {
+      window.trueStorePendingAction = null;
+      if (typeof window.openCheckout === "function") window.openCheckout();
+    }
+  } catch (error) {
+    console.error("Google authentication error:", error);
+    message.textContent = error.code === "auth/unauthorized-domain"
+      ? "Domain website belum diizinkan di Firebase Authentication."
+      : "Gagal masuk. Silakan coba lagi atau pilih akun Google lain.";
+  } finally {
+    button.disabled = false;
+    button.textContent = authMode === "register" ? "Daftar dengan Google" : "Masuk dengan Google";
+  }
+};
+
+onAuthStateChanged(auth, (user) => {
+  window.trueStoreUser = user || null;
+  const nav = document.getElementById("authNav");
+  if (!nav) return;
+  if (user) {
+    nav.innerHTML = `
+      <span class="auth-user" title="${(user.email || "").replace(/"/g, "&quot;")}">${user.displayName || user.email || "Akun TRUE STORE"}</span>
+      <button class="auth-login" id="signOutButton">KELUAR</button>`;
+    document.getElementById("signOutButton").addEventListener("click", async () => {
+      try { await signOut(auth); }
+      catch (error) { alert("Tidak dapat keluar. Silakan coba lagi."); }
+    });
+  } else {
+    nav.innerHTML = `
+      <button class="auth-login" onclick="showAuth('login')">MASUK</button>
+      <button class="auth-register" onclick="showAuth('register')">DAFTAR</button>`;
+  }
+});
+</script>
+
 </body>
 </html>
