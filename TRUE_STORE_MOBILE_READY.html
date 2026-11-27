@@ -1,0 +1,1650 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#ffffff"><title>TRUE STORE — Apple Collection</title>
+<style>
+:root {
+    --ink: #1d1d1f; 
+    --muted: #86868b; 
+    --line: #d2d2d7; 
+    --bg: #ffffff; 
+    --bg-alt: #f5f5f7; 
+    --blue: #0071e3; 
+    --green: #16834a;
+    --red: #dc3545;
+    --warning-bg: #fff8e6;
+    --warning-border: #ffd60a;
+    --warning-text: #6b4e00;
+    --wa: #25D366;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; cursor: pointer; border: none; background: none; }
+
+/* HEADER */
+header { background: rgba(255, 255, 255, 0.9); backdrop-filter: saturate(180%) blur(20px); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid var(--line); }
+.nav { height: 60px; display: flex; align-items: center; justify-content: space-between; max-width: 1024px; margin: 0 auto; padding: 0 20px; }
+.brand { font-weight: 800; font-size: 26px; letter-spacing: -0.05em; color: #000; }
+.nav-links { display: flex; gap: 30px; font-size: 14px; font-weight: 500; color: var(--ink); }
+.nav-links a:hover { color: var(--blue); }
+.cart-btn { font-size: 14px; font-weight: 600; color: var(--ink); display: flex; align-items: center; gap: 5px; }
+.cart-btn:hover { color: var(--blue); }
+.history-btn { font-size: 14px; font-weight: 600; color: var(--ink); }
+.history-btn:hover { color: var(--blue); }
+
+/* BANNER PERINGATAN PENIPUAN */
+.scam-alert { background: linear-gradient(135deg, #fff8e6 0%, #fffdf5 100%); border-bottom: 1px solid var(--warning-border); padding: 14px 20px; display: flex; align-items: center; justify-content: center; gap: 12px; position: relative; z-index: 99; }
+.scam-alert-content { max-width: 1024px; width: 100%; display: flex; align-items: center; gap: 14px; padding-right: 30px; }
+.scam-alert-icon { flex-shrink: 0; width: 38px; height: 38px; background: #ffd60a; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(255, 214, 10, 0.4); }
+.scam-alert-icon svg { width: 22px; height: 22px; stroke: #6b4e00; fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+.scam-alert-text { flex: 1; font-size: 13.5px; color: var(--warning-text); line-height: 1.45; }
+.scam-alert-text strong { font-weight: 800; color: #4a3600; display: block; margin-bottom: 2px; font-size: 14px; }
+.scam-alert-text span { font-weight: 400; color: #7a5c00; }
+.scam-alert-close { position: absolute; right: 14px; top: 50%; transform: translateY(-50%); width: 26px; height: 26px; border-radius: 50%; background: rgba(255, 214, 10, 0.3); color: #6b4e00; font-size: 16px; font-weight: 700; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background 0.2s; line-height: 1; }
+.scam-alert-close:hover { background: rgba(255, 214, 10, 0.6); }
+
+/* BANNER PROMO IPHONE DUO */
+.hero-banner { width:100%; background:radial-gradient(circle at 75% 45%,#34465f 0%,#111827 48%,#05070b 100%); padding:36px clamp(18px,5vw,64px); border-bottom:1px solid var(--line); position:relative; overflow:hidden; min-height:340px; display:flex; align-items:center; justify-content:space-between; gap:28px; color:#fff; }
+.hero-copy { position:relative; z-index:2; max-width:520px; }
+.hero-badge { display:inline-block; background:#d9e6f7; color:#101827; font-size:11px; font-weight:900; padding:6px 13px; border-radius:20px; letter-spacing:1px; margin-bottom:16px; text-transform:uppercase; }
+.hero-title { font-size:clamp(30px,4vw,48px); font-weight:850; letter-spacing:-.04em; margin:0 0 10px; color:#fff; line-height:1.05; }
+.hero-title span { color:#c9dcf5; }
+.hero-subtitle { font-size:15px; color:rgba(255,255,255,.82); font-weight:500; margin:0 0 18px; }
+.hero-price { font-size:14px; color:#fff; margin:0 0 18px; }
+.hero-price strong { font-size:20px; }
+.hero-buy { background:#fff; color:#111827; border-radius:24px; padding:13px 28px; font-size:14px; font-weight:850; box-shadow:0 5px 20px rgba(0,0,0,.25); }
+.hero-buy:hover { background:#dce9f8; }
+.hero-art { width:min(48%,570px); max-height:300px; object-fit:contain; position:relative; z-index:1; filter:drop-shadow(0 20px 25px rgba(0,0,0,.3)); }
+@media(max-width:700px){.hero-banner{min-height:0;flex-direction:column-reverse;text-align:center;padding:24px 18px 30px;gap:8px}.hero-art{width:100%;max-height:190px}.hero-copy{max-width:100%}.hero-title{font-size:30px}.hero-subtitle{font-size:13px}.hero-price strong{font-size:18px}}
+
+/* SECTION KATEGORI */
+.category-section { background: var(--bg); padding: 30px 20px; border-bottom: 1px solid var(--line); }
+.category-grid { max-width: 1024px; margin: 0 auto; display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+.cat-card { background: #fff; text-align: center; padding: 20px 10px; cursor: pointer; transition: transform 0.2s; border-radius: 16px; border: 1px solid #f0f0f2; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.02);}
+.cat-card:hover { transform: translateY(-5px); background: var(--bg-alt); border-color: var(--line); }
+.cat-icon { width: 44px; height: 44px; margin-bottom: 10px; color: var(--ink); }
+.cat-card h3 { font-size: 14px; font-weight: 600; margin: 0; color: var(--ink); }
+
+/* SECTION PRODUK */
+.product-section { background: var(--bg-alt); padding: 60px 20px; min-height: 50vh;}
+.section-title { text-align: center; max-width: 1024px; margin: 0 auto 40px; }
+.section-title h2 { font-size: 32px; font-weight: 700; margin: 0 0 10px; letter-spacing: -0.03em; }
+.section-title p { color: var(--muted); font-size: 16px; margin: 0; }
+
+.product-grid { max-width: 1024px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.product-card { background: #fff; border-radius: 18px; padding: 30px 20px 24px; text-align: center; transition: transform 0.3s, box-shadow 0.3s; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.02); display: flex; flex-direction: column; position: relative; overflow: hidden;}
+.product-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
+
+/* WADAH GAMBAR SERAGAM */
+.product-card .img-wrap { width: 100%; height: 200px; background: #fff; border-radius: 14px; display: flex; align-items: center; justify-content: center; margin-bottom: 18px; padding: 12px; overflow: hidden; position: relative; }
+.product-card .img-wrap img { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; mix-blend-mode: multiply; transition: transform 0.3s; display: block; }
+.product-card:hover .img-wrap img { transform: scale(1.05); }
+.product-card h3 { font-size: 18px; font-weight: 600; margin: 0 0 8px; }
+.product-card .price { font-size: 14px; color: var(--ink); font-weight: 500; margin: 0; margin-top: auto;}
+
+/* LABEL NEW */
+.badge-new { position: absolute; top: 15px; left: 15px; background: #ff9500; color: #fff; font-size: 10px; font-weight: 800; padding: 4px 8px; border-radius: 6px; letter-spacing: 0.5px; z-index: 2; }
+
+/* MODAL DETAIL PRODUK */
+.detail-overlay{position:fixed;inset:0;background:#fff;z-index:100;display:none;flex-direction:column;overflow-y:auto;}
+.detail-overlay.show{display:flex;}
+.detail-header{position:sticky;top:0;background:#fff;padding:15px 20px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);z-index:10;}
+.detail-header h2{margin:0;font-size:16px;font-weight:700;}
+.btn-close{background:#f0f0f2;border:none;width:32px;height:32px;border-radius:50%;font-size:18px;display:flex;align-items:center;justify-content:center;cursor:pointer;}
+.detail-content{padding:20px;max-width:600px;margin:0 auto;width:100%;}
+.detail-img-wrapper{width:100%;height:340px;background:#fff;display:flex;justify-content:center;align-items:center;margin-bottom:20px;border-radius:20px; position:relative; padding:20px; overflow:hidden;}
+.detail-img{max-width:100%; max-height:100%; width:auto; height:auto; object-fit:contain; transition:0.3s; mix-blend-mode: multiply;}
+.detail-title{font-size:26px;font-weight:800;letter-spacing:-0.5px;margin-bottom:5px;line-height:1.2; display:flex; align-items:center; gap:10px;}
+.detail-desc{color:var(--muted);font-size:14px;margin-bottom:20px;}
+
+.option-label{font-size:14px;font-weight:700;margin-bottom:12px;display:block;}
+.color-options{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:25px;}
+.color-circle{width:38px;height:38px;border-radius:50%;border:2px solid #e5e5e7;cursor:pointer;position:relative;transition:all 0.2s;box-shadow:inset 0 0 5px rgba(0,0,0,0.1);}
+.color-circle.active{border-color:var(--blue);transform:scale(1.1);}
+.color-circle.active::after{content:'✓';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#fff;font-size:18px;font-weight:bold;text-shadow:0 1px 3px rgba(0,0,0,0.6);}
+
+.capacity-options{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:25px;}
+.cap-btn{border:1px solid var(--line);background:#fff;padding:12px 20px;border-radius:10px;font-weight:600;font-size:14px;cursor:pointer;transition:all 0.2s;}
+.cap-btn.active{border:2px solid var(--blue);background:#f0f7ff;color:var(--blue);}
+
+.detail-price-area{margin-bottom:20px;}
+.detail-price-old{font-size:16px;color:var(--muted);text-decoration:line-through;margin-bottom:2px;display:none;}
+.detail-price{font-size:28px;font-weight:900;color:var(--green);display:flex;align-items:center;gap:10px;}
+.detail-price span{font-size:14px;font-weight:700;background:var(--red);color:#fff;padding:4px 8px;border-radius:6px;}
+
+.bottom-action{position:sticky;bottom:0;background:#fff;padding:15px 20px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:15px;z-index:10;box-shadow:0 -4px 15px rgba(0,0,0,0.05);}
+.bottom-price{font-size:22px;font-weight:900;color:var(--green);}
+.btn-add-cart{background:var(--blue);color:#fff;border-radius:30px;padding:15px 30px;font-size:16px;font-weight:800;flex:1;max-width:220px;text-align:center;transition:background 0.2s;}
+.btn-add-cart:hover{background:#005bb5;}
+
+/* CHECKOUT & PEMBAYARAN */
+.checkout-page{position:fixed;inset:0;background:var(--bg-alt);z-index:200;display:none;flex-direction:column;overflow-y:auto;}
+.checkout-page.show{display:flex;}
+.checkout-header{background:#fff;padding:15px 20px;display:flex;align-items:center;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:10;}
+.checkout-header h2{margin:0;font-size:18px;flex:1;text-align:center;font-weight:700;}
+.checkout-content{padding:20px;max-width:600px;margin:0 auto;width:100%;flex:1;}
+
+.card{background:#fff;border-radius:15px;padding:20px;margin-bottom:15px;box-shadow:0 2px 10px rgba(0,0,0,0.03);}
+.card-title{font-size:16px;font-weight:800;margin-bottom:15px;display:flex;justify-content:space-between;align-items:center;}
+
+/* OPSI PENGIRIMAN */
+.ship-option{display:flex;align-items:flex-start;gap:15px;padding:15px;border:2px solid var(--line);border-radius:12px;margin-bottom:12px;cursor:pointer;transition:all 0.2s;}
+.ship-option.active{border-color:var(--blue);background:#f8fbff;}
+.ship-option input[type="radio"]{margin-top:4px;accent-color:var(--blue);transform:scale(1.2);}
+.ship-details h4{margin:0 0 5px;font-size:15px;font-weight:700;display:flex; justify-content:space-between;}
+.ship-details p{margin:0;font-size:13px;color:var(--muted);line-height:1.4;}
+.ship-details .store-name{color:var(--blue);font-weight:700;margin-top:5px;display:block;}
+.badge-estimasi{background:#e8f5e9; color:#16834a; font-size:11px; padding:2px 8px; border-radius:10px; font-weight:700; margin-left:5px; display:inline-block;}
+
+/* GARANSI BANNER */
+.garansi-banner { background: #f8fbff; border: 1px dashed var(--blue); border-radius: 12px; padding: 15px; margin-top: 15px; }
+.garansi-title { font-size: 14px; font-weight: 800; color: var(--blue); margin-bottom: 5px; display: flex; align-items: center; gap: 8px; }
+.garansi-title svg { width: 20px; height: 20px; fill: var(--blue); }
+.garansi-text { font-size: 12px; color: #333; line-height: 1.5; }
+
+.form-group{margin-bottom:15px;}
+.form-group label{display:block;font-size:13px;font-weight:700;margin-bottom:8px;color:#333;}
+.form-group input, .form-group textarea{width:100%;padding:14px;border:1px solid #d5d5d8;border-radius:10px;font:inherit;font-size:14px;background:#fafafa;transition:border 0.2s;}
+.form-group input:focus, .form-group textarea:focus{outline:none;border-color:var(--blue);background:#fff;}
+
+.summary-row{display:flex;justify-content:space-between;margin-bottom:10px;font-size:14px;color:var(--muted);}
+.summary-row.discount-row{color:var(--green);font-weight:700;}
+.summary-total{display:flex;justify-content:space-between;margin-top:15px;padding-top:15px;border-top:1px dashed var(--line);font-size:18px;font-weight:900;}
+
+/* VOUCHER SECTION */
+.voucher-list { display: flex; flex-direction: column; gap: 10px; margin-top: 10px; }
+.voucher-item { border: 2px solid var(--line); border-radius: 12px; padding: 15px; cursor: pointer; transition: all 0.2s; background: #fff; position: relative; }
+.voucher-item:hover { border-color: var(--blue); background: #f8fbff; }
+.voucher-item.active { border-color: var(--blue); background: #f0f7ff; box-shadow: 0 0 0 2px rgba(0,113,227,0.15); }
+.voucher-item.disabled { opacity: 0.5; cursor: not-allowed; background: #f5f5f7; }
+.voucher-item.disabled:hover { border-color: var(--line); background: #f5f5f7; }
+.voucher-head { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; }
+.voucher-name { font-weight: 900; font-size: 16px; color: var(--blue); letter-spacing: 0.5px; }
+.voucher-cut { font-weight: 900; font-size: 18px; color: var(--green); }
+.voucher-min { font-size: 12px; color: var(--muted); margin-top: 4px; }
+.voucher-note { font-size: 11px; color: var(--red); font-weight: 700; margin-top: 6px; display: none; }
+.voucher-item.disabled .voucher-note { display: block; }
+.voucher-badge-active { background: var(--green); color: #fff; font-size: 10px; padding: 3px 8px; border-radius: 10px; font-weight: 800; letter-spacing: 0.5px; }
+.no-voucher { text-align: center; padding: 12px; border: 1px dashed var(--line); border-radius: 10px; color: var(--muted); font-size: 13px; cursor: pointer; }
+.no-voucher.active { border-color: var(--blue); background: #f0f7ff; color: var(--blue); font-weight: 700; }
+
+.checkout-bottom{position:sticky;bottom:0;background:#fff;padding:15px 20px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:15px;z-index:10;box-shadow:0 -4px 15px rgba(0,0,0,0.05);}
+.btn-next{background:var(--blue);color:#fff;border-radius:30px;padding:15px 30px;font-size:16px;font-weight:800;flex:1;max-width:250px;text-align:center;transition:background 0.2s;}
+.btn-next:hover{background:#005bb5;}
+
+.pay-method{display:flex;align-items:center;gap:15px;padding:15px;border:1px solid var(--line);border-radius:12px;margin-bottom:10px;cursor:pointer;transition:all 0.2s;}
+.pay-method.active{border-color:var(--blue);background:#f8fbff;}
+.pay-icon{width:45px;height:45px;background:#eee;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:12px;color:#555;}
+
+/* INFO REKENING */
+.bank-info { background: #f8fbff; border: 1px solid #cce3ff; border-radius: 12px; padding: 15px; margin-top: 15px; }
+.bank-info-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; font-size: 14px; }
+.bank-info-row:last-child { margin-bottom: 0; }
+.bank-label { color: var(--muted); font-weight: 500; }
+.bank-value { font-weight: 800; color: var(--ink); font-size: 15px; letter-spacing: 0.5px; }
+.bank-name { color: var(--blue); font-weight: 700; }
+
+/* COUNTDOWN PEMBAYARAN */
+.countdown-box { background: #1d1d1f; color: #fff; border-radius: 15px; padding: 25px; text-align: center; margin-bottom: 15px; box-shadow: 0 6px 20px rgba(0,0,0,0.15); }
+.countdown-label { font-size: 13px; color: #a1a1a6; margin-bottom: 6px; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; }
+.countdown-timer { font-size: 44px; font-weight: 900; letter-spacing: 2px; font-variant-numeric: tabular-nums; color: #ffd60a; line-height: 1.1; }
+.countdown-note { font-size: 12px; color: #86868b; margin-top: 10px; line-height: 1.5; }
+.countdown-expired { color: #ff453a !important; }
+
+/* TOMBOL KONFIRMASI BAYAR */
+.btn-confirm-pay { background: #ccc; color: #fff; border-radius: 30px; padding: 15px 30px; font-size: 16px; font-weight: 800; width: 100%; max-width: 320px; margin: 0 auto; display: block; transition: background 0.2s; cursor: not-allowed; }
+.btn-confirm-pay.active { background: var(--wa); cursor: pointer; }
+.btn-confirm-pay.active:hover { background: #1da851; }
+
+/* HALAMAN KONFIRMASI WA */
+.confirm-content { padding: 30px 20px 40px; text-align: center; max-width: 520px; margin: 0 auto; }
+.confirm-icon { width: 80px; height: 80px; background: var(--wa); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3); }
+.confirm-icon svg { width: 44px; height: 44px; }
+.confirm-title { font-size: 22px; font-weight: 800; margin-bottom: 10px; }
+.confirm-desc { color: var(--muted); font-size: 14px; line-height: 1.6; margin-bottom: 20px; }
+.confirm-steps { background: #fff; border-radius: 15px; padding: 20px; text-align: left; margin-bottom: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.03); }
+.confirm-steps h4 { margin: 0 0 12px; font-size: 15px; font-weight: 800; }
+.confirm-steps ol { margin: 0; padding-left: 20px; font-size: 13.5px; color: #444; line-height: 1.8; }
+.confirm-steps ol li { margin-bottom: 4px; }
+.btn-wa { background: var(--wa); color: #fff; border-radius: 30px; padding: 16px 30px; font-size: 16px; font-weight: 800; width: 100%; max-width: 340px; margin: 0 auto 12px; display: flex; align-items: center; justify-content: center; gap: 10px; transition: background 0.2s; box-shadow: 0 6px 16px rgba(37, 211, 102, 0.35); }
+.btn-wa:hover { background: #1da851; }
+.btn-wa svg { width: 22px; height: 22px; }
+.btn-back-home { background: #f0f0f2; color: var(--ink); border-radius: 30px; padding: 14px 30px; font-size: 15px; font-weight: 700; width: 100%; max-width: 340px; margin: 0 auto; display: block; }
+
+@media (max-width: 768px) {
+    .nav { height: auto; flex-direction: column; padding: 15px; gap: 15px; }
+    .nav-links { display: none; }
+    .brand { font-size: 28px; }
+    .hero-banner { padding: 30px 15px; }
+    .hero-title { font-size: 24px; }
+    .hero-subtitle { font-size: 13px; }
+    .hero-voucher-code .code-value { font-size: 16px; }
+    .category-grid { grid-template-columns: repeat(3, 1fr); gap: 10px; }
+    .cat-card { padding: 15px 5px; }
+    .cat-icon { width: 32px; height: 32px; }
+    .cat-card h3 { font-size: 12px; }
+    .product-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .product-card { padding: 15px; border-radius: 12px; }
+    .product-card .img-wrap { height: 130px; padding: 8px; margin-bottom: 10px; }
+    .product-card h3 { font-size: 14px; }
+    .product-card .price { font-size: 12px; }
+    .detail-img-wrapper{height:260px;}
+    .bottom-action{flex-direction:column; padding:15px;}
+    .btn-add-cart{max-width:100%; width:100%;}
+    .checkout-bottom{flex-direction:column;}
+    .btn-next{max-width:100%; width:100%;}
+    .scam-alert { padding: 12px 14px; }
+    .scam-alert-content { gap: 10px; padding-right: 24px; }
+    .scam-alert-icon { width: 32px; height: 32px; }
+    .scam-alert-icon svg { width: 18px; height: 18px; }
+    .scam-alert-text { font-size: 12px; }
+    .scam-alert-text strong { font-size: 12.5px; }
+    .countdown-timer { font-size: 36px; }
+}
+
+/* RIWAYAT PESANAN */
+.history-card {
+  border: 1px solid #e5e5e7;
+  border-radius: 16px;
+  padding: 18px;
+  margin: 14px 0;
+  background: #fff;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.04);
+}
+.history-total { color: #16834a; font-size: 19px; font-weight: 800; }
+.history-status { color: #d97706; font-weight: 700; font-size: 13px; }
+.history-actions { display: flex; gap: 8px; margin-top: 15px; }
+.history-actions button { border: none; border-radius: 20px; padding: 10px 14px; font-size: 13px; cursor: pointer; }
+.btn-resume { background: #1D1D1F; color: white; }
+.btn-cancel { background: #F2F2F2; color: #555; }
+
+/* LOGIN TRUE STORE */
+.auth-nav{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.auth-nav button{padding:8px 14px;border-radius:20px;font-size:13px;font-weight:800}
+.auth-login{background:#f0f0f2;color:#1d1d1f}
+.auth-register{background:#0071e3;color:#fff}
+.auth-user{font-size:12px;color:#16834a;font-weight:700;max-width:150px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.auth-overlay{position:fixed;inset:0;background:rgba(0,0,0,.48);z-index:500;display:none;align-items:center;justify-content:center;padding:20px}
+.auth-overlay.show{display:flex}
+.auth-box{width:100%;max-width:390px;background:#fff;border-radius:20px;padding:28px 22px;text-align:center;box-shadow:0 15px 50px rgba(0,0,0,.2)}
+.auth-box h2{margin:0 0 8px;font-size:24px}
+.auth-box p{margin:0 0 20px;color:#86868b;font-size:14px}
+.auth-google{width:100%;padding:14px;border-radius:12px;background:#0071e3;color:#fff;font-weight:800;font-size:15px}
+.auth-cancel{margin-top:12px;padding:10px 18px;color:#555;font-weight:700}
+@media(max-width:768px){.auth-nav{justify-content:center}.auth-user{max-width:110px}}
+
+
+
+/* ===== PENYEMPURNAAN MOBILE TRUE STORE ===== */
+@media (max-width: 600px) {
+  html { scroll-padding-top: 76px; }
+  body { overflow-x: hidden; }
+  header { position: sticky; top: 0; }
+  .nav {
+    min-height: 58px;
+    height: auto;
+    padding: 9px 13px;
+    gap: 8px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .brand { font-size: 21px; letter-spacing: -0.045em; }
+  .nav-links { display: none !important; }
+  .cart-btn, .history-btn, .auth-nav button {
+    min-height: 40px;
+    padding: 8px 10px;
+    border-radius: 10px;
+    font-size: 12px;
+  }
+  .nav > :last-child { max-width: 100%; }
+  .auth-nav { gap: 5px; }
+  .scam-alert {
+    padding: 10px 38px 10px 12px;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .scam-alert-content { gap: 8px; align-items: flex-start; }
+  .scam-alert-text { font-size: 11px; line-height: 1.45; }
+  .scam-alert-text strong { display: block; font-size: 11px; margin-bottom: 2px; }
+  .scam-alert-icon { width: 22px; min-width: 22px; }
+  .scam-alert-close { right: 8px; top: 8px; }
+  .hero-banner {
+    min-height: 0;
+    padding: 22px 16px 24px;
+    gap: 12px;
+    border-radius: 0;
+  }
+  .hero-art { width: 100%; max-height: 175px; object-fit: contain; }
+  .hero-title { font-size: clamp(27px, 8vw, 34px); line-height: 1.08; }
+  .hero-subtitle { font-size: 12px; line-height: 1.5; max-width: 330px; margin-left: auto; margin-right: auto; }
+  .hero-price { margin: 10px 0; font-size: 12px; }
+  .hero-buy { min-height: 46px; min-width: 145px; border-radius: 24px; }
+  .category-section { padding: 16px 12px; }
+  .category-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+  .cat-card { min-height: 88px; padding: 12px 6px; border-radius: 13px; }
+  .cat-icon { width: 32px; height: 32px; margin-bottom: 6px; }
+  .cat-card h3 { font-size: 12px; }
+  .product-section { padding: 30px 12px 42px; }
+  .section-title { margin-bottom: 20px; }
+  .section-title h2 { font-size: 24px; margin-bottom: 5px; }
+  .section-title p { font-size: 13px; }
+  .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .product-card {
+    min-width: 0;
+    padding: 12px 9px 14px;
+    border-radius: 14px;
+    box-shadow: 0 2px 10px rgba(0,0,0,.045);
+  }
+  .product-card img { max-width: 100%; }
+  .product-card h3 { font-size: 13px; line-height: 1.35; }
+  .product-card p { font-size: 12px; }
+  .product-card button { min-height: 40px; }
+  .detail-overlay { padding-bottom: env(safe-area-inset-bottom); }
+  .detail-header { padding: 12px 14px; }
+  .detail-content { padding: 14px; }
+  .detail-img-wrapper { max-height: 36vh; }
+  .detail-img { max-height: 34vh; object-fit: contain; }
+  .option-label { font-size: 13px; }
+  .detail-content button, .detail-header button { min-height: 42px; }
+  input, select, textarea { font-size: 16px !important; }
+  footer { padding: 26px 14px !important; }
+}
+@media (max-width: 360px) {
+  .brand { font-size: 19px; }
+  .cart-btn, .history-btn, .auth-nav button { padding: 7px 8px; font-size: 11px; }
+  .product-grid { gap: 8px; }
+  .product-card { padding: 10px 7px 12px; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- HALAMAN RIWAYAT PESANAN -->
+<div id="historyPage" style="display:none;padding:25px;max-width:900px;margin:auto;min-height:100vh;background:#f5f5f7;">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+    <h2 style="margin:0;">Riwayat Pesanan</h2>
+    <button onclick="closeHistory()" style="background:#1d1d1f;color:#fff;border-radius:20px;padding:8px 16px;font-weight:700;">← Kembali</button>
+  </div>
+  <div id="historyList"><p>Belum ada pesanan.</p></div>
+</div>
+
+
+<!-- LOGIN / DAFTAR AKUN TRUE STORE -->
+<div class="auth-overlay" id="authOverlay" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+  <div class="auth-box">
+    <h2 id="authTitle">Masuk ke TRUE STORE</h2>
+    <p id="authDescription">Gunakan akun Google Anda untuk melanjutkan belanja dan checkout.</p>
+    <button class="auth-google" id="authGoogleButton" onclick="startGoogleAuth()">Lanjutkan dengan Google</button>
+    <div id="authMessage" style="font-size:12px;color:#86868b;margin-top:12px"></div>
+    <button class="auth-cancel" onclick="hideAuth()">Tutup</button>
+  </div>
+</div>
+
+<header>
+    <div class="nav">
+        <a href="#" class="brand">TRUE STORE</a>
+        <nav class="nav-links">
+            <a href="#produk" onclick="setCategory('MacBook')">Mac</a>
+            <a href="#produk" onclick="setCategory('iPad')">iPad</a>
+            <a href="#produk" onclick="setCategory('iPhone')">iPhone</a>
+            <a href="#produk" onclick="setCategory('Watch')">Watch</a>
+            <a href="#produk" onclick="setCategory('Music')">Music</a>
+        </nav>
+        <button class="cart-btn" onclick="openCheckout()">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+            Bag (<span id="cartCount">0</span>)
+        </button>
+        <button class="history-btn" onclick="openHistory()">Riwayat Pesanan</button>
+        <div class="auth-nav" id="authNav">
+          <button class="auth-login" onclick="showAuth('login')">MASUK</button>
+          <button class="auth-register" onclick="showAuth('register')">DAFTAR</button>
+        </div>
+    </div>
+</header>
+
+<div class="scam-alert" id="scamAlert">
+    <div class="scam-alert-content">
+        <div class="scam-alert-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="M9 12l2 2 4-4"></path></svg>
+        </div>
+        <div class="scam-alert-text">
+            <strong>Hati-hati Penipuan Mengatasnamakan TRUE STORE</strong>
+            <span>WhatsApp resmi kami <b>hanya ada di website ini</b>. Kami tidak pernah meminta transfer ke rekening pribadi atau mengirim link pembayaran di luar halaman checkout resmi. Pastikan Anda bertransaksi hanya melalui situs ini.</span>
+        </div>
+    </div>
+    <button class="scam-alert-close" onclick="document.getElementById('scamAlert').style.display='none'" aria-label="Tutup peringatan">×</button>
+</div>
+
+<!-- BANNER IKLAN IPHONE DUO -->
+<section class="hero-banner" aria-label="Promo iPhone Duo TRUE STORE">
+    <div class="hero-copy">
+        <div class="hero-badge">NEW ARRIVAL · TRUE STORE</div>
+        <h1 class="hero-title">iPhone <span>Duo.</span><br>Era baru layar lipat.</h1>
+        <p class="hero-subtitle">Layar besar. Desain titanium yang dapat dilipat. Pilih warna dan kapasitas favoritmu.</p>
+        <p class="hero-price">Mulai dari <strong>Rp 45.678.910</strong></p>
+        <button class="hero-buy" type="button" onclick="buyIPhoneDuo()">BUY NOW</button>
+    </div>
+    <img class="hero-art" src="https://www.pbtech.co.nz/imgprod/M/P/MPHAPP881000__7.jpg?h=4252470279" alt="iPhone Duo warna Night Sky dan Star White dalam posisi terbuka">
+</section>
+
+<section class="category-section">
+    <div class="category-grid">
+        <div class="cat-card" onclick="setCategory('MacBook')">
+            <svg class="cat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+            <h3>Mac</h3>
+        </div>
+        <div class="cat-card" onclick="setCategory('iPad')">
+            <svg class="cat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
+            <h3>iPad</h3>
+        </div>
+        <div class="cat-card" onclick="setCategory('iPhone')">
+            <svg class="cat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
+            <h3>iPhone</h3>
+        </div>
+        <div class="cat-card" onclick="setCategory('Watch')">
+            <svg class="cat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="7"></circle><polyline points="12 9 12 12 13.5 13.5"></polyline><path d="M16.51 17.35l-.35 3.83a2 2 0 0 1-2 1.82H9.83a2 2 0 0 1-2-1.82l-.35-3.83m.01-10.7l.35-3.83A2 2 0 0 1 9.83 1h4.35a2 2 0 0 1 2 1.82l.35 3.83"></path></svg>
+            <h3>Watch</h3>
+        </div>
+        <div class="cat-card" onclick="setCategory('Music')">
+            <svg class="cat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"></path><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path></svg>
+            <h3>Music</h3>
+        </div>
+    </div>
+</section>
+
+<section class="product-section" id="produk">
+    <div class="section-title">
+        <h2 id="kategoriJudul">Semua Produk</h2>
+        <p>Jelajahi produk Apple favorit Anda.</p>
+    </div>
+    <div class="product-grid" id="productGrid"></div>
+</section>
+
+<footer style="background:#fff; padding:40px 20px; font-size:12px; color:var(--muted); text-align:center; border-top:1px solid var(--line);">
+    <p>Harga dan ketersediaan dapat berubah. Voucher berlaku untuk transaksi pertama.</p>
+    <p>Copyright © 2026 TRUE STORE. All rights reserved.</p>
+    <p>True Store adalah toko independen dan tidak berafiliasi dengan Apple Inc.</p>
+</footer>
+
+<!-- MODAL DETAIL PRODUK -->
+<div class="detail-overlay" id="productDetail">
+  <div class="detail-header">
+    <h2>Detail Produk</h2>
+    <button class="btn-close" onclick="closeDetail()">×</button>
+  </div>
+  <div class="detail-content">
+    <div class="detail-img-wrapper"><img id="dtImage" class="detail-img" src="" alt="Produk"></div>
+    <div class="detail-title">
+        <span id="dtName"></span>
+        <span id="dtNewBadge" class="badge-new" style="position:static; display:none;">NEW</span>
+    </div>
+    <div class="detail-desc" id="dtDesc"></div>
+    <span class="option-label">Pilih Warna: <span id="dtColorName" style="font-weight:400;color:var(--muted)"></span></span>
+    <div class="color-options" id="dtColorOptions"></div>
+    <span class="option-label">Pilih Kapasitas:</span>
+    <div class="capacity-options" id="dtCapacityOptions"></div>
+    <div class="detail-price-area">
+      <div class="detail-price-old" id="dtPriceOld"></div>
+      <div class="detail-price" id="dtPrice"></div>
+    </div>
+  </div>
+  <div class="bottom-action">
+    <div class="bottom-price" id="dtBottomPrice"></div>
+    <button class="btn-add-cart" onclick="addToCartFromDetail()">Tambah Keranjang</button>
+  </div>
+</div>
+
+<!-- HALAMAN CHECKOUT -->
+<div class="checkout-page" id="checkoutPage">
+  <div class="checkout-header">
+    <button class="btn-close" style="background:none;font-size:24px;width:auto" onclick="closeCheckout()">←</button>
+    <h2>Pengiriman</h2>
+    <div style="width:35px"></div>
+  </div>
+  <div class="checkout-content">
+    <div class="card" id="cartItemsArea">
+      <div class="card-title">Produk Pesanan</div>
+      <div id="cartItemsList"></div>
+    </div>
+    
+    <div class="card">
+      <div class="card-title">Metode Pengiriman / Pengambilan</div>
+      <label class="ship-option active" id="optPickup" onclick="selectShipping('pickup')">
+        <input type="radio" name="shipping" checked>
+        <div class="ship-details">
+          <h4>PickUp di Toko</h4>
+          <p class="store-name">TRUE STORE - Mall PIK Avenue Jakarta Utara</p>
+          <p style="margin-top:8px; color:var(--ink); font-weight:600;">⏰ Jam Pengambilan: <span style="color:var(--blue); font-weight:800;">11:00 - 12:00 WIB</span></p>
+        </div>
+      </label>
+      <label class="ship-option" id="optExpress" onclick="selectShipping('express')">
+        <input type="radio" name="shipping">
+        <div class="ship-details">
+          <h4>Belanja Online - Express <span class="badge-estimasi">1 Hari Sampai</span></h4>
+          <p>Dikirim via kurir instan / same day.</p>
+        </div>
+      </label>
+      <label class="ship-option" id="optReguler" onclick="selectShipping('reguler')">
+        <input type="radio" name="shipping">
+        <div class="ship-details">
+          <h4>Belanja Online - Reguler <span class="badge-estimasi">3-5 Hari Sampai</span></h4>
+          <p>Dikirim via ekspedisi reguler.</p>
+        </div>
+      </label>
+    </div>
+
+    <div class="card" id="addressForm" style="display:none;">
+      <div class="card-title">Alamat Pengiriman</div>
+      <div class="form-group">
+        <label>Nama Lengkap</label>
+        <input type="text" id="buyerName" placeholder="Masukkan nama lengkap Anda">
+      </div>
+      <div class="form-group">
+        <label>Nomor WhatsApp</label>
+        <input type="tel" id="buyerPhone" placeholder="Contoh: 081234567890">
+      </div>
+      <div class="form-group">
+        <label>Alamat Lengkap</label>
+        <textarea id="buyerAddress" rows="4" placeholder="Nama jalan, nomor rumah, RT/RW, kelurahan, kecamatan, kota, kode pos"></textarea>
+      </div>
+    </div>
+
+    <div class="garansi-banner" id="garansiOnline" style="display:none;">
+      <div class="garansi-title">
+        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="M9 12l2 2 4-4" stroke="#fff" stroke-width="2" fill="none"></path></svg>
+        Garansi Kerusakan Pengiriman
+      </div>
+      <div class="garansi-text">
+        <strong>WAJIB VIDEO UNBOXING:</strong> Untuk belanja online, jika barang rusak dapat diretur dengan syarat wajib melampirkan <b>Video Unboxing Paket</b> (tanpa jeda/edit). Klaim tanpa video tidak dapat diproses.
+      </div>
+    </div>
+
+    <!-- VOUCHER BELANJA -->
+    <div class="card">
+      <div class="card-title">Voucher Belanja</div>
+      <p style="font-size:13px;color:var(--muted);margin:0 0 5px;">Pilih voucher yang tersedia sesuai minimum belanja Anda.</p>
+      <div class="voucher-list" id="voucherList"></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Ringkasan Belanja</div>
+      <div class="summary-row"><span>Total Harga (<span id="sumQty">0</span> Barang)</span><span id="sumPrice">Rp 0</span></div>
+      <div class="summary-row discount-row" id="voucherRow" style="display:none;"><span>Potongan Voucher</span><span id="sumVoucher">-Rp 0</span></div>
+      <div class="summary-total"><span>Total Pembayaran</span><span id="sumTotal" style="color:var(--blue)">Rp 0</span></div>
+    </div>
+  </div>
+  <div class="checkout-bottom">
+    <div>
+      <div style="font-size:12px;color:var(--muted);font-weight:600">Total Tagihan</div>
+      <div style="font-size:20px;font-weight:900;color:var(--green)" id="bottomTotal">Rp 0</div>
+    </div>
+    <button class="btn-next" onclick="goToPayment()">Lanjut Pembayaran</button>
+  </div>
+</div>
+
+<!-- HALAMAN PEMBAYARAN -->
+<div class="checkout-page" id="paymentPage">
+  <div class="checkout-header">
+    <button class="btn-close" style="background:none;font-size:24px;width:auto" onclick="closePayment()">←</button>
+    <h2>Pembayaran</h2>
+    <div style="width:35px"></div>
+  </div>
+  <div class="checkout-content">
+    <div class="countdown-box" id="countdownBox">
+      <div class="countdown-label">Selesaikan Pembayaran Dalam</div>
+      <div class="countdown-timer" id="countdownTimer">20:00</div>
+      <div class="countdown-note" id="countdownNote">Pesanan akan otomatis dibatalkan jika waktu habis.</div>
+    </div>
+    <div class="card">
+      <div class="card-title">Metode Pembayaran</div>
+      <div class="pay-method active">
+        <div class="pay-icon">VA</div>
+        <div style="flex:1">
+          <div style="font-weight:700">Transfer Bank (SeaBank)</div>
+          <div style="font-size:12px;color:var(--muted)">Transfer sesuai nominal tagihan</div>
+        </div>
+      </div>
+      <div class="bank-info">
+        <div class="bank-info-row"><span class="bank-label">Bank</span><span class="bank-value bank-name">SeaBank Indonesia</span></div>
+        <div class="bank-info-row"><span class="bank-label">Nomor Rekening</span><span class="bank-value" id="vaNumber" style="font-size:18px; color:var(--blue);">901633615122</span></div>
+        <div class="bank-info-row"><span class="bank-label">Atas Nama</span><span class="bank-value">M Yuda</span></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">Ringkasan Pembayaran</div>
+      <div class="summary-row"><span>Total Harga</span><span id="paySumPrice">Rp 0</span></div>
+      <div class="summary-row discount-row" id="payVoucherRow" style="display:none;"><span>Potongan Voucher</span><span id="paySumVoucher">-Rp 0</span></div>
+      <div class="summary-total"><span>Total Bayar</span><span id="paySumTotal" style="color:var(--blue)">Rp 0</span></div>
+    </div>
+    <div style="padding: 5px 0 15px;">
+      <button class="btn-confirm-pay" id="btnConfirmPay" onclick="confirmPayment()" disabled>Menunggu Pembayaran...</button>
+    </div>
+  </div>
+  <div class="checkout-bottom">
+    <button class="btn-next" onclick="closePayment()" style="background:#f0f0f2;color:var(--ink);">Kembali</button>
+  </div>
+</div>
+
+<!-- HALAMAN KONFIRMASI WHATSAPP -->
+<div class="checkout-page" id="confirmWaPage">
+  <div class="checkout-header">
+    <button class="btn-close" style="background:none;font-size:24px;width:auto" onclick="backToPayment()">←</button>
+    <h2>Konfirmasi Pembayaran</h2>
+    <div style="width:35px"></div>
+  </div>
+  <div class="confirm-content">
+    <div class="confirm-icon">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+    </div>
+    <h2 class="confirm-title">Silakan Konfirmasi ke WhatsApp</h2>
+    <p class="confirm-desc">Pembayaran Anda sedang diverifikasi. Silakan lanjutkan konfirmasi melalui WhatsApp resmi kami dengan <b>melampirkan bukti pembayaran</b>.</p>
+    <div class="confirm-steps">
+      <h4>Langkah Konfirmasi:</h4>
+      <ol>
+        <li>Klik tombol <b>"Konfirmasi via WhatsApp"</b> di bawah.</li>
+        <li>Pesan rincian pesanan Anda <b>sudah terisi otomatis</b>.</li>
+        <li><b>Lampirkan foto/screenshot bukti pembayaran</b> Anda.</li>
+        <li>Kirim pesan. Admin akan memverifikasi pesanan Anda.</li>
+      </ol>
+    </div>
+    <button class="btn-wa" onclick="openWhatsApp()">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+      Konfirmasi via WhatsApp
+    </button>
+    <button class="btn-back-home" onclick="location.reload()">Kembali ke Beranda</button>
+  </div>
+</div>
+
+<script>
+// ==========================================
+// KONFIGURASI TOKO
+// ==========================================
+const WA_NUMBER = "6289682989482";
+const REK_SEABANK = "901633615122";
+
+// ==========================================
+// DATA VOUCHER
+// ==========================================
+const vouchers = [
+    { code: 'TRUESPECIAL', min: 10000000, cut: 1000000, label: 'Potongan Rp 1.000.000' },
+    { code: 'TRUESPECIAL', min: 15000000, cut: 1500000, label: 'Potongan Rp 1.500.000' },
+    { code: 'TRUESPECIAL', min: 20000000, cut: 2500000, label: 'Potongan Rp 2.500.000' }
+];
+let selectedVoucher = null;
+
+// ==========================================
+// DATA PRODUK (TANPA DISKON)
+// ==========================================
+const IMG_DUMMY = "https://placehold.co/400x400/f5f5f7/1d1d1f?text=Foto+Produk";
+
+const products = [
+    // --- iPHONE ---
+    {id:1, cat:'iPhone', name:'iPhone 15', desc:'Dynamic Island · Kamera utama 48MP', capacities:['128GB','256GB','512GB'], prices:{'128GB':14499000,'256GB':15499000,'512GB':null}, isNew:false, colors:[
+        {k:'Black',n:'Hitam',bg:'#1a1a1a',img:'https://raw.githubusercontent.com/truestore4044/True-store/refs/heads/main/IMG-20261125-WA0000.jpg'},
+        {k:'Pink',n:'Merah Muda',bg:'#f3c6d6',img:'https://raw.githubusercontent.com/truestore4044/True-store/refs/heads/main/IMG-20261125-WA0003.jpg'},
+        {k:'Yellow',n:'Kuning',bg:'#e1d6a6',img:'https://raw.githubusercontent.com/truestore4044/True-store/refs/heads/main/IMG-20261125-WA0002.jpg'},
+        {k:'Blue',n:'Biru',bg:'#2b4e7c',img:'https://raw.githubusercontent.com/truestore4044/True-store/refs/heads/main/IMG-20261125-WA0001.jpg'},
+        {k:'Green',n:'Hijau',bg:'#a8c8b0',img:'https://raw.githubusercontent.com/truestore4044/True-store/refs/heads/main/IMG-20261125-WA0004.jpg'}
+    ]},
+    {id:2, cat:'iPhone', name:'iPhone 15 Plus', desc:'Layar 6,7 inci · Kamera utama 48MP', capacities:['128GB','256GB','512GB'], prices:{'128GB':16499000,'256GB':null,'512GB':null}, isNew:false, colors:[
+        {k:'Black',n:'Hitam',bg:'#1a1a1a',img:'https://raw.githubusercontent.com/truestore4044/True-store/refs/heads/main/IMG-20261125-WA0000.jpg'},
+        {k:'Blue',n:'Biru',bg:'#2b4e7c',img:'https://raw.githubusercontent.com/truestore4044/True-store/refs/heads/main/IMG-20261125-WA0003.jpg'},
+        {k:'Green',n:'Hijau',bg:'#a8c8b0',img:'https://raw.githubusercontent.com/truestore4044/True-store/refs/heads/main/IMG-20261125-WA0004.jpg'},
+        {k:'Yellow',n:'Kuning',bg:'#e1d6a6',img:'https://raw.githubusercontent.com/truestore4044/True-store/refs/heads/main/IMG-20261125-WA0002.jpg'},
+        {k:'Pink',n:'Merah Muda',bg:'#f3c6d6',img:'https://raw.githubusercontent.com/truestore4044/True-store/refs/heads/main/IMG-20261125-WA0001.jpg'}
+    ]},
+    {id:3, cat:'iPhone', name:'iPhone 16', desc:'Chip A18 · Kamera 48MP', capacities:['128GB','256GB','512GB'], 
+     prices:{'128GB':14999000,'256GB':16999000,'512GB':19999000}, 
+     isNew:true,
+     colors:[
+        {k:'Black',n:'Hitam',bg:'#1a1a1a',img:'https://github.com/truestore4044/True-store/blob/main/16bh.jpg?raw=true'},
+        {k:'White',n:'Putih',bg:'#f4f4f4',img:'https://github.com/truestore4044/True-store/blob/main/16bpp.jpg?raw=true'},
+        {k:'Blue',n:'Biru',bg:'#2b4e7c',img:'https://github.com/truestore4044/True-store/blob/main/16b.jpg?raw=true'},
+        {k:'Pink',n:'Merah Muda',bg:'#f3c6d6',img:'https://github.com/truestore4044/True-store/raw/main/IMG-20261125-WA0005.jpg?raw=true'}
+    ]},
+    {id:4, cat:'iPhone', name:'iPhone 16 Plus', desc:'Layar 6,7 inci · Chip A18', capacities:['128GB','256GB','512GB'], 
+     prices:{'128GB':16999000,'256GB':18999000,'512GB':21999000}, 
+     isNew:true,
+     colors:[
+        {k:'Black',n:'Hitam',bg:'#1a1a1a',img:'https://github.com/truestore4044/True-store/blob/main/16bh.jpg?raw=true'},
+        {k:'White',n:'Putih',bg:'#f4f4f4',img:'https://github.com/truestore4044/True-store/blob/main/16bpp.jpg?raw=true'},
+        {k:'Blue',n:'Biru',bg:'#2b4e7c',img:'https://github.com/truestore4044/True-store/blob/main/16b.jpg?raw=true'},
+        {k:'Pink',n:'Merah Muda',bg:'#f3c6d6',img:'https://github.com/truestore4044/True-store/raw/main/IMG-20261125-WA0005.jpg?raw=true'}
+    ]},
+    {id:12, cat:'iPhone', name:'iPhone 16 Pro', desc:'Model Pro · Sistem kamera Pro', capacities:['128GB','256GB','512GB','1TB'], 
+     prices:{'128GB':17999000,'256GB':19999000,'512GB':22999000,'1TB':25999000}, 
+     isNew:true,
+     colors:[
+        {k:'Black Titanium',n:'Black Titanium',bg:'#2a2a2a',img:'https://github.com/truestore4044/True-store/blob/main/16pro.jpg?raw=true'},
+        {k:'White Titanium',n:'White Titanium',bg:'#e0e0e0',img:'https://github.com/truestore4044/True-store/blob/main/16prow.jpg?raw=true'},
+        {k:'Desert Titanium',n:'Desert Titanium',bg:'#c8b8a0',img:'https://github.com/truestore4044/True-store/blob/main/pro16.jpg?raw=true'}
+    ]},
+    {id:5, cat:'iPhone', name:'iPhone 16 Pro Max', desc:'Layar besar · Sistem kamera Pro', capacities:['256GB','512GB','1TB'], 
+     prices:{'256GB':20499000,'512GB':21999000,'1TB':24999000}, 
+     isNew:true,
+     colors:[
+        {k:'Black Titanium',n:'Black Titanium',bg:'#2a2a2a',img:'https://github.com/truestore4044/True-store/blob/main/16pro.jpg?raw=true'},
+        {k:'White Titanium',n:'White Titanium',bg:'#e0e0e0',img:'https://github.com/truestore4044/True-store/blob/main/16prow.jpg?raw=true'},
+        {k:'Desert Titanium',n:'Desert Titanium',bg:'#c8b8a0',img:'https://github.com/truestore4044/True-store/blob/main/pro16.jpg?raw=true'}
+    ]},
+    {id:6, cat:'iPhone', name:'iPhone 17', desc:'Layar 6,3 inci · Chip A19', capacities:['256GB','512GB'], 
+     prices:{'256GB':19999000,'512GB':24499000}, 
+     isNew:true,
+     colors:[
+        {k:'Black',n:'Hitam',bg:'#1a1a1a',img:'https://github.com/truestore4044/True-store/blob/main/17xxxx.jpg?raw=true'},
+        {k:'Green',n:'Hijau',bg:'a8c8b0',img:'https://github.com/truestore4044/True-store/blob/main/17xxxxxxxx.jpg?raw=true'},
+        {k:'Blue',n:'Biru',bg:'#87ceeb',img:'https://github.com/truestore4044/True-store/blob/main/17xx.jpg?raw=true'},
+        {k:'Pink',n:'Merah Muda',bg:'#f3c6d6',img:'https://github.com/truestore4044/True-store/raw/main/iphone-17-lavender-1000_1_1.webp?raw=true'}
+    ]},
+    {id:7, cat:'iPhone', name:'iPhone 17 Pro', desc:'Model Pro · Sistem kamera Pro', capacities:['256GB','512GB','1TB'], 
+     prices:{'256GB':22999000,'512GB':27499000,'1TB':32249000}, 
+     isNew:true,
+     colors:[
+        {k:'Silver',n:'Silver',bg:'#e0e0e0',img:'https://github.com/truestore4044/True-store/blob/main/17pro.jpg?raw=true'},
+        {k:'Deep Blue',n:'Deep Blue',bg:'#2b4e7c',img:'https://raw.githubusercontent.com/truestore4044/True-store/refs/heads/main/17pm11.jpg'},
+        {k:'Orange',n:'Orange',bg:'#ff9500',img:'https://github.com/truestore4044/True-store/raw/main/IMG-20261125-WA0006.jpg?raw=true'}
+    ]},
+    {id:8, cat:'iPhone', name:'iPhone 17 Pro Max', desc:'Model Pro Max · Layar besar', capacities:['256GB','512GB','1TB','2TB'], 
+     prices:{'256GB':24999000,'512GB':29499000,'1TB':34249000,'2TB':43249000}, 
+     isNew:true,
+     colors:[
+        {k:'Silver',n:'Silver',bg:'#e0e0e0',img:'https://github.com/truestore4044/True-store/blob/main/17pro.jpg?raw=true'},
+        {k:'Deep Blue',n:'Deep Blue',bg:'#2b4e7c',img:'https://raw.githubusercontent.com/truestore4044/True-store/refs/heads/main/17pm11.jpg'},
+        {k:'Orange',n:'Orange',bg:'#ff9500',img:'https://github.com/truestore4044/True-store/raw/main/IMG-20261125-WA0006.jpg?raw=true'}
+    ]},
+    {id:9, cat:'iPhone', name:'iPhone 18 Pro', desc:'Model Pro · Pilihan warna Glacier, Burgundy, Black', capacities:['256GB','512GB','1TB'], 
+     prices:{'256GB':27999000,'512GB':31999000,'1TB':41999000}, 
+     isNew:true,
+     colors:[
+        {k:'Glacier',n:'Glacier',bg:'#e0f0f8',img:'https://github.com/truestore4044/True-store/blob/main/18pro.jpg?raw=true'},
+        {k:'Burgundy',n:'Burgundy',bg:'#800020',img:'https://github.com/truestore4044/True-store/blob/main/18pro1111.jpg?raw=true'},
+        {k:'Black',n:'Black',bg:'#1a1a1a',img:'https://github.com/truestore4044/True-store/raw/main/IMG-20261125-WA0009.jpg?raw=true'}
+    ]},
+    {id:10, cat:'iPhone', name:'iPhone 18 Pro Max', desc:'Layar 6,9 inci · Super Retina XDR · Chip A19 Pro', capacities:['256GB','512GB','1TB','2TB'], 
+     prices:{'256GB':29999000,'512GB':34999000,'1TB':44499000,'2TB':58999000}, 
+     isNew:true,
+     colors:[
+        {k:'Glacier',n:'Glacier',bg:'#e0f0f8',img:'https://github.com/truestore4044/True-store/blob/main/18pro.jpg?raw=true'},
+        {k:'Burgundy',n:'Burgundy',bg:'#800020',img:'https://github.com/truestore4044/True-store/blob/main/18pro1111.jpg?raw=true'},
+        {k:'Black',n:'Black',bg:'#1a1a1a',img:'https://github.com/truestore4044/True-store/raw/main/IMG-20261125-WA0009.jpg?raw=true'}
+    ]},
+    {id:11, cat:'iPhone', name:'iPhone Air', desc:'Desain ultra-tipis · Chip A19 Pro', capacities:['256GB','512GB','1TB'], 
+     prices:{'256GB':16999000,'512GB':21749000,'1TB':25999000}, 
+     isNew:true,
+     colors:[
+        {k:'Sky Blue',n:'Sky Blue',bg:'#87ceeb',img:'https://github.com/truestore4044/True-store/blob/main/iphone-air-sky-blue-1000_1_2.webp?raw=true'},
+        {k:'Space Black',n:'Space Black',bg:'#1a1a1a',img:'https://github.com/truestore4044/True-store/blob/main/iphone-air-space-black-1000_1_2.webp?raw=true'}
+    ]},
+
+    // --- iPAD ---
+    {id:21, cat:'iPad', name:'iPad Gen 11 (A16)', desc:'Layar 11 inci · Chip A16 · Touch ID', capacities:['128GB','256GB','512GB'], 
+     prices:{'128GB':8999000,'256GB':10999000,'512GB':15999000}, 
+     isNew:true,
+     colors:[
+        {k:'Silver',n:'Silver',bg:'#e0e0e0',img:'https://github.com/truestore4044/True-store/blob/main/ipad1111.jpg?raw=true'},
+        {k:'Blue',n:'Biru',bg:'#87ceeb',img:'https://github.com/truestore4044/True-store/blob/main/gen11.jpg?raw=true'},
+        {k:'Pink',n:'Merah Muda',bg:'#f3c6d6',img:'https://github.com/truestore4044/True-store/blob/main/gen11pik.jpg?raw=true'},
+        {k:'Yellow',n:'Kuning',bg:'#e1d6a6',img:'https://github.com/truestore4044/True-store/blob/main/ipadddddddddd.jpg?raw=true'}
+    ]},
+    {id:22, cat:'iPad', name:'iPad Pro 13" (M4)', desc:'Layar Ultra Retina XDR · Chip M4', capacities:['256GB','512GB','1TB','2TB'], prices:{'256GB':20999000,'512GB':24999000,'1TB':30999000,'2TB':37999000}, isNew:true, colors:[
+        {k:'Silver',n:'Silver',bg:'#e0e0e0',img:'https://raw.githubusercontent.com/truestore4044/True-store/refs/heads/main/ipad_pro_13-inch_m4_wi-fi_silver_1_5.jpeg'},
+        {k:'Space Black',n:'Space Black',bg:'#1a1a1a',img:'https://raw.githubusercontent.com/truestore4044/True-store/refs/heads/main/ipad_pro_13-inch_m4_wi-fi_space_black_1_5.jpeg'}
+    ]},
+    {id:23, cat:'iPad', name:'iPad Pro 11" (M4)', desc:'Layar Ultra Retina XDR · Chip M4', capacities:['256GB','512GB','1TB'], prices:{'256GB':17999000,'512GB':21999000,'1TB':25999000}, isNew:true, colors:[
+        {k:'Silver',n:'Silver',bg:'#e0e0e0',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-ipad-pro-11-2024-1.jpg'},
+        {k:'Space Black',n:'Space Black',bg:'#1a1a1a',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-ipad-pro-11-2024-2.jpg'}
+    ]},
+    {id:24, cat:'iPad', name:'iPad Air 13" (M2)', desc:'Layar Liquid Retina · Chip M2', capacities:['128GB','256GB','512GB','1TB'], prices:{'128GB':13999000,'256GB':15999000,'512GB':18999000,'1TB':21999000}, isNew:true, colors:[
+        {k:'Blue',n:'Biru',bg:'#2b4e7c',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-ipad-air-13-2024-1.jpg'},
+        {k:'Purple',n:'Ungu',bg:'#c2b5d8',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-ipad-air-13-2024-2.jpg'}
+    ]},
+    {id:25, cat:'iPad', name:'iPad Air 11" (M2)', desc:'Layar Liquid Retina · Chip M2', capacities:['128GB','256GB','512GB'], prices:{'128GB':10999000,'256GB':12999000,'512GB':15999000}, isNew:true, colors:[
+        {k:'Blue',n:'Biru',bg:'#2b4e7c',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-ipad-air-11-2024-1.jpg'},
+        {k:'Starlight',n:'Starlight',bg:'#f4f4f4',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-ipad-air-11-2024-2.jpg'}
+    ]},
+    {id:26, cat:'iPad', name:'iPad Mini 6', desc:'Layar 8,3 inci · Chip A15 Bionic', capacities:['64GB','256GB'], prices:{'64GB':6999000,'256GB':9499000}, isNew:false, colors:[
+        {k:'Space Gray',n:'Space Gray',bg:'#6e6e73',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-ipad-mini-6-1.jpg'},
+        {k:'Purple',n:'Ungu',bg:'#c2b5d8',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-ipad-mini-6-2.jpg'}
+    ]},
+    {id:27, cat:'iPad', name:'iPad Gen 10', desc:'Layar 10,9 inci · Chip A14', capacities:['64GB','256GB'], prices:{'64GB':4999000,'256GB':7499000}, isNew:false, colors:[
+        {k:'Silver',n:'Silver',bg:'#e0e0e0',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-ipad-10-1.jpg'},
+        {k:'Pink',n:'Pink',bg:'#f3c6d6',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-ipad-10-3.jpg'}
+    ]},
+    {id:28, cat:'iPad', name:'iPad Pro 12.9" (M2)', desc:'Layar Liquid Retina XDR · Chip M2', capacities:['128GB','256GB','512GB'], prices:{'128GB':15999000,'256GB':17999000,'512GB':20999000}, isNew:false, colors:[
+        {k:'Space Gray',n:'Space Gray',bg:'#6e6e73',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-ipad-pro-12-9-2022-1.jpg'},
+        {k:'Silver',n:'Silver',bg:'#e0e0e0',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-ipad-pro-12-9-2022-2.jpg'}
+    ]},
+
+    // --- MACBOOK ---
+    {id:30, cat:'MacBook', name:'MacBook Air M2 (2022)', desc:'Layar Liquid Retina 13,6 inci · Chip M2', capacities:['256GB','512GB'], prices:{'256GB':9999000,'512GB':11999000}, isNew:false, colors:[
+        {k:'Midnight',n:'Midnight',bg:'#2a2a2a',img:'https://github.com/truestore4044/True-store/blob/main/mac.jpg?raw=true'},
+        {k:'Starlight',n:'Starlight',bg:'#f4f4f4',img:'https://github.com/truestore4044/True-store/blob/main/mac2.jpg?raw=true'}
+    ]},
+    {id:31, cat:'MacBook', name:'MacBook Pro 14" (M5)', desc:'Chip M5 · CPU 10Core GPU 10core', capacities:['512GB','1TB'], prices:{'512GB':26999000,'1TB':37999000}, isNew:true, colors:[
+        {k:'Space Gray',n:'Space Gray',bg:'#6e6e73',img:'https://github.com/truestore4044/True-store/blob/main/apple_macbook_pro_14_inci_m5_2025_space_black_1_1.webp?raw=true'},
+        {k:'Silver',n:'Silver',bg:'#e0e0e0',img:'https://github.com/truestore4044/True-store/blob/main/apple_macbook_pro_14_inci_m5_2025_silver_1_1.webp?raw=true'}
+    ]},
+    {id:32, cat:'MacBook', name:'MacBook Pro 16" (M3)', desc:'Chip M3 Pro · Layar Liquid Retina XDR', capacities:['512GB','1TB'], prices:{'512GB':29999000,'1TB':33999000}, isNew:true, colors:[
+        {k:'Space Black',n:'Space Black',bg:'#1a1a1a',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-macbook-pro-16-2023-1.jpg'},
+        {k:'Silver',n:'Silver',bg:'#e0e0e0',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-macbook-pro-16-2023-2.jpg'}
+    ]},
+    {id:33, cat:'MacBook', name:'MacBook Air 15" (M3)', desc:'Desain tipis · Chip M3', capacities:['256GB','512GB'], prices:{'256GB':19999000,'512GB':22999000}, isNew:true, colors:[
+        {k:'Midnight',n:'Midnight',bg:'#2a2a2a',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-macbook-air-15-2023-1.jpg'},
+        {k:'Starlight',n:'Starlight',bg:'#f4f4f4',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-macbook-air-15-2023-2.jpg'}
+    ]},
+    {id:34, cat:'MacBook', name:'MacBook Pro 13" (M2)', desc:'Chip M2 · Touch Bar', capacities:['256GB','512GB'], prices:{'256GB':15999000,'512GB':17999000}, isNew:false, colors:[
+        {k:'Space Gray',n:'Space Gray',bg:'#6e6e73',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-macbook-pro-13-2022-1.jpg'},
+        {k:'Silver',n:'Silver',bg:'#e0e0e0',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-macbook-pro-13-2022-2.jpg'}
+    ]},
+
+    // --- iWATCH ---
+    {id:40, cat:'Watch', name:'Apple Watch Ultra 2', desc:'Titanium · Layar Cerah 3000 nits', capacities:['49mm'], prices:{'49mm':13999000}, isNew:true, colors:[
+        {k:'Titanium',n:'Natural Titanium',bg:'#8a8682',img:'https://github.com/truestore4044/True-store/blob/main/WAC.jpg?raw=true'},
+        {k:'Black',n:'Black Titanium',bg:'#1a1a1a',img:'https://github.com/truestore4044/True-store/blob/main/WEAC.jpeg?raw=true'}
+    ]},
+    {id:41, cat:'Watch', name:'Apple Watch Series 9', desc:'Kesehatan & kebugaran', capacities:['41mm','45mm'], prices:{'41mm':5999000,'45mm':6499000}, isNew:true, colors:[
+        {k:'Pink',n:'Pink',bg:'#f3c6d6',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-watch-series-9-1.jpg'},
+        {k:'Midnight',n:'Midnight',bg:'#2a2a2a',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-watch-series-9-2.jpg'}
+    ]},
+    {id:42, cat:'Watch', name:'Apple Watch SE (Gen 2)', desc:'Fitur keselamatan penting', capacities:['40mm','44mm'], prices:{'40mm':3499000,'44mm':3799000}, isNew:false, colors:[
+        {k:'Silver',n:'Silver',bg:'#e0e0e0',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-watch-se-2022-1.jpg'},
+        {k:'Midnight',n:'Midnight',bg:'#2a2a2a',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-watch-se-2022-2.jpg'}
+    ]},
+    {id:43, cat:'Watch', name:'Apple Watch Series 8', desc:'Sensor suhu · Deteksi kecelakaan', capacities:['41mm','45mm'], prices:{'41mm':4999000,'45mm':5299000}, isNew:false, colors:[
+        {k:'Midnight',n:'Midnight',bg:'#2a2a2a',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-watch-series-8-1.jpg'},
+        {k:'Starlight',n:'Starlight',bg:'#f4f4f4',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-watch-series-8-2.jpg'}
+    ]},
+    {id:44, cat:'Watch', name:'Apple Watch Ultra (Gen 1)', desc:'Titanium · Petualangan', capacities:['49mm'], prices:{'49mm':11999000}, isNew:false, colors:[
+        {k:'Titanium',n:'Titanium',bg:'#8a8682',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-watch-ultra-1.jpg'}
+    ]},
+    {id:45, cat:'Watch', name:'Apple Watch Series 7', desc:'Layar lebih besar · Cepat', capacities:['41mm','45mm'], prices:{'41mm':4499000,'45mm':4799000}, isNew:false, colors:[
+        {k:'Blue',n:'Blue',bg:'#2b4e7c',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-watch-series-7-1.jpg'},
+        {k:'Green',n:'Green',bg:'#a8c8b0',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-watch-series-7-2.jpg'}
+    ]},
+    {id:46, cat:'Watch', name:'Apple Watch SE (Gen 1)', desc:'Pilihan hemat', capacities:['40mm','44mm'], prices:{'40mm':2999000,'44mm':3199000}, isNew:false, colors:[
+        {k:'Silver',n:'Silver',bg:'#e0e0e0',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-watch-se-2020-1.jpg'},
+        {k:'Space Gray',n:'Space Gray',bg:'#6e6e73',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-watch-se-2020-2.jpg'}
+    ]},
+    {id:47, cat:'Watch', name:'Apple Watch Series 6', desc:'Sensor oksigen darah', capacities:['40mm','44mm'], prices:{'40mm':3999000,'44mm':4299000}, isNew:false, colors:[
+        {k:'Blue',n:'Blue',bg:'#2b4e7c',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-watch-series-6-1.jpg'},
+        {k:'Red',n:'Red',bg:'#dc2626',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-watch-series-6-2.jpg'}
+    ]},
+
+    // --- AIRPODS ---
+    {id:50, cat:'Music', name:'AirPods Pro (Gen 2)', desc:'Peredam kebisingan aktif · USB-C', capacities:['Standard'], prices:{'Standard':3499000}, isNew:true, colors:[
+        {k:'White',n:'Putih',bg:'#ffffff',img:'https://github.com/truestore4044/True-store/blob/main/air121.jpg?raw=true'}
+    ]},
+    {id:51, cat:'Music', name:'AirPods 3', desc:'Audio Spasial · Desain nyaman', capacities:['Standard'], prices:{'Standard':2499000}, isNew:false, colors:[
+        {k:'White',n:'Putih',bg:'#ffffff',img:'https://github.com/truestore4044/True-store/blob/main/air3.jpg?raw=true'}
+    ]},
+    {id:52, cat:'Music', name:'AirPods 4', desc:'Desain baru · Audio Spasial', capacities:['Standard','ANC'], prices:{'Standard':1999000,'ANC':2499000}, isNew:true, colors:[
+        {k:'White',n:'Putih',bg:'#ffffff',img:'https://github.com/truestore4044/True-store/blob/main/air4.jpg?raw=true'}
+    ]},
+    {id:53, cat:'Music', name:'AirPods Max', desc:'Headphone over-ear · Audio Spasial', capacities:['Standard'], prices:{'Standard':8499000}, isNew:false, colors:[
+        {k:'Space Gray',n:'Space Gray',bg:'#6e6e73',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-airpods-max-1.jpg'},
+        {k:'Silver',n:'Silver',bg:'#e0e0e0',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-airpods-max-2.jpg'}
+    ]},
+    // --- IPHONE DUO ---
+    {id:60, cat:'iPhone', name:'iPhone Duo', desc:'iPhone layar lipat · Layar dalam 7,6 inci · Chip A20 Pro', capacities:['256GB','512GB','1TB','2TB'], prices:{'256GB':45678910,'512GB':51999000,'1TB':61999000,'2TB':75999000}, isNew:true, colors:[
+        {k:'Star White',n:'Star White',bg:'#f2f1ec',img:'https://www.pbtech.co.nz/imgprod/M/P/MPHAPP881001.jpg?h=687457154'},
+        {k:'Night Sky',n:'Night Sky',bg:'#182638',img:'https://www.pbtech.co.nz/imgprod/M/P/MPHAPP881000__7.jpg?h=4252470279'}
+    ]}
+];
+
+let cart = [];
+let currentCategory = 'iPhone';
+let currentProduct = null; 
+let selectedCapacity = '';
+let selectedColor = null;
+let selectedShipping = 'pickup';
+let countdownInterval = null;
+let countdownSeconds = 1200; 
+let paymentExpired = false;
+let buyerData = { name: '', phone: '', address: '', shipping: 'pickup' };
+let activeOrderId = null;
+let orderSubtotal = 0;
+
+// ==========================================
+// RENDER PRODUK TANPA DISKON
+// ==========================================
+function renderProducts() {
+    const grid = document.getElementById('productGrid');
+    grid.innerHTML = '';
+    document.getElementById('kategoriJudul').innerText = currentCategory === 'MacBook' ? 'Mac' : currentCategory;
+    const filtered = products.filter(p => p.cat === currentCategory);
+    if(filtered.length === 0){
+        grid.innerHTML = '<p style="grid-column:1/-1;text-align:center;color:#777;padding:40px;">Belum ada produk untuk kategori ini.</p>';
+        return;
+    }
+    filtered.forEach(p => {
+        const firstColorImg = p.colors[0].img; 
+        let startPrice = p.prices[p.capacities[0]];
+        const card = document.createElement('div');
+        card.className = 'product-card';
+        card.onclick = () => openDetail(p.id);
+        let newBadge = p.isNew ? `<div class="badge-new">NEW</div>` : '';
+        card.innerHTML = `
+            ${newBadge}
+            <div class="img-wrap"><img src="${firstColorImg}" alt="${p.name}"></div>
+            <h3>${p.name}</h3>
+            <div class="price">Mulai Rp ${startPrice ? startPrice.toLocaleString('id-ID') : 'N/A'}</div>
+        `;
+        grid.appendChild(card);
+    });
+}
+
+function setCategory(cat) {
+    currentCategory = cat;
+    renderProducts();
+    document.getElementById('produk').scrollIntoView({behavior: "smooth"});
+}
+
+function openDetail(id) {
+    currentProduct = products.find(p => p.id === id);
+    if (!currentProduct) return;
+    selectedCapacity = currentProduct.capacities[0];
+    selectedColor = currentProduct.colors[0];
+    document.getElementById('dtName').textContent = currentProduct.name;
+    document.getElementById('dtDesc').textContent = currentProduct.desc;
+    document.getElementById('dtImage').src = selectedColor.img;
+    document.getElementById('dtNewBadge').style.display = currentProduct.isNew ? 'inline-block' : 'none';
+
+    const capContainer = document.getElementById('dtCapacityOptions');
+    capContainer.innerHTML = '';
+    currentProduct.capacities.forEach((cap) => {
+        const btn = document.createElement('button');
+        btn.className = `cap-btn ${cap === selectedCapacity ? 'active' : ''}`;
+        btn.textContent = cap;
+        btn.onclick = () => {
+            selectedCapacity = cap;
+            updateDetailPrice();
+            document.querySelectorAll('.cap-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+        };
+        capContainer.appendChild(btn);
+    });
+
+    const colorContainer = document.getElementById('dtColorOptions');
+    colorContainer.innerHTML = '';
+    currentProduct.colors.forEach(c => {
+        const circle = document.createElement('div');
+        circle.className = `color-circle ${c.k === selectedColor.k ? 'active' : ''}`;
+        circle.style.backgroundColor = c.bg;
+        circle.title = c.n;
+        circle.onclick = () => {
+            selectedColor = c;
+            document.getElementById('dtImage').src = c.img; 
+            document.getElementById('dtColorName').textContent = c.n; 
+            document.querySelectorAll('.color-circle').forEach(cc => cc.classList.remove('active'));
+            circle.classList.add('active');
+        };
+        colorContainer.appendChild(circle);
+    });
+    
+    document.getElementById('dtColorName').textContent = selectedColor.n;
+    updateDetailPrice();
+    document.getElementById('productDetail').classList.add('show');
+}
+
+function updateDetailPrice() {
+    const price = currentProduct.prices[selectedCapacity];
+    const oldPriceEl = document.getElementById('dtPriceOld');
+    const priceEl = document.getElementById('dtPrice');
+    const bottomPriceEl = document.getElementById('dtBottomPrice');
+
+    if (price) {
+        oldPriceEl.style.display = 'none';
+        priceEl.textContent = `Rp ${price.toLocaleString('id-ID')}`;
+        priceEl.style.color = 'var(--green)';
+        bottomPriceEl.textContent = `Rp ${price.toLocaleString('id-ID')}`;
+        bottomPriceEl.style.color = 'var(--green)';
+    } else {
+        oldPriceEl.style.display = 'none';
+        priceEl.textContent = 'Hubungi Admin';
+        priceEl.style.color = 'var(--red)';
+        bottomPriceEl.textContent = 'Hubungi Admin';
+        bottomPriceEl.style.color = 'var(--red)';
+    }
+}
+
+function closeDetail() { document.getElementById('productDetail').classList.remove('show'); }
+
+function addToCartFromDetail() {
+    if (!currentProduct) return;
+    let price = currentProduct.prices[selectedCapacity];
+    if (!price) { alert('Varian ini belum tersedia harganya. Hubungi admin.'); return; }
+
+    const existingItem = cart.find(item => item.id === currentProduct.id && item.capacity === selectedCapacity && item.color === selectedColor.n);
+    if (existingItem) existingItem.qty += 1;
+    else cart.push({ id: currentProduct.id, name: currentProduct.name, capacity: selectedCapacity, color: selectedColor.n, price: price, qty: 1, img: selectedColor.img });
+
+    updateCartCount();
+    closeDetail();
+    openCheckout();
+}
+
+// Tombol BUY NOW pada banner: langsung siapkan iPhone Duo 256GB Star White di checkout.
+function buyIPhoneDuo() {
+    const product = products.find(p => p.id === 60);
+    if (!product) { alert('Produk iPhone Duo belum tersedia.'); return; }
+    const capacity = '256GB';
+    const color = product.colors.find(c => c.k === 'Star White') || product.colors[0];
+    // Pembelian dari banner dibuat khusus untuk iPhone Duo, tanpa item keranjang lain.
+    cart = [{ id: product.id, name: product.name, capacity, color: color.n, price: product.prices[capacity], qty: 1, img: color.img }];
+    updateCartCount();
+    openCheckout();
+}
+
+function updateCartCount() {
+    const totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
+    document.getElementById('cartCount').textContent = totalQty;
+}
+
+// ==========================================
+// RENDER VOUCHER DI CHECKOUT
+// ==========================================
+function renderVouchers(subtotal) {
+    const list = document.getElementById('voucherList');
+    list.innerHTML = '';
+
+    const noVoucherDiv = document.createElement('div');
+    noVoucherDiv.className = 'no-voucher' + (selectedVoucher === null ? ' active' : '');
+    noVoucherDiv.textContent = 'Tidak menggunakan voucher';
+    noVoucherDiv.onclick = () => {
+        selectedVoucher = null;
+        updateCheckoutTotals();
+    };
+    list.appendChild(noVoucherDiv);
+
+    vouchers.forEach((v, idx) => {
+        const isEligible = subtotal >= v.min;
+        const item = document.createElement('div');
+        item.className = 'voucher-item';
+        if (selectedVoucher && selectedVoucher.code === v.code && selectedVoucher.min === v.min) item.classList.add('active');
+        if (!isEligible) item.classList.add('disabled');
+        item.innerHTML = `
+            <div class="voucher-head">
+                <div>
+                    <div class="voucher-name">${v.code}</div>
+                    <div class="voucher-min">Min. belanja Rp ${v.min.toLocaleString('id-ID')}</div>
+                </div>
+                <div class="voucher-cut">${v.label}</div>
+            </div>
+            <div class="voucher-note">Belum memenuhi minimum belanja</div>
+        `;
+        if (isEligible) {
+            item.onclick = () => {
+                selectedVoucher = v;
+                updateCheckoutTotals();
+            };
+        }
+        list.appendChild(item);
+    });
+}
+
+// ==========================================
+// CHECKOUT
+// ==========================================
+function openCheckout() {
+    if (!window.trueStoreUser) {
+        window.trueStorePendingAction = 'checkout';
+        showAuth('login');
+        return;
+    }
+    if(cart.length === 0) { alert('Keranjang masih kosong! Silakan pilih produk terlebih dahulu.'); return; }
+    const list = document.getElementById('cartItemsList');
+    list.innerHTML = '';
+    let totalHarga = 0, totalQty = 0;
+    cart.forEach(item => {
+        totalHarga += item.price * item.qty;
+        totalQty += item.qty;
+        const div = document.createElement('div');
+        div.style.display = 'flex';
+        div.style.gap = '15px';
+        div.style.marginBottom = '15px';
+        div.style.alignItems = 'center';
+        div.innerHTML = `
+            <div style="width:60px;height:60px;background:#f8f8fa;border-radius:8px;padding:5px;"><img src="${item.img}" style="width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply;"></div>
+            <div style="flex:1">
+                <div style="font-weight:700;font-size:14px">${item.name}</div>
+                <div style="font-size:12px;color:var(--muted)">${item.capacity} · ${item.color} (x${item.qty})</div>
+                <div style="font-weight:700;color:var(--green);font-size:14px">Rp ${(item.price * item.qty).toLocaleString('id-ID')}</div>
+            </div>
+        `;
+        list.appendChild(div);
+    });
+    orderSubtotal = totalHarga;
+    selectedVoucher = null; // reset voucher setiap buka checkout
+    document.getElementById('sumQty').textContent = totalQty;
+    document.getElementById('sumPrice').textContent = `Rp ${totalHarga.toLocaleString('id-ID')}`;
+    renderVouchers(totalHarga);
+    updateCheckoutTotals();
+    selectShipping('pickup');
+    document.getElementById('checkoutPage').classList.add('show');
+}
+
+function updateCheckoutTotals() {
+    const subtotal = orderSubtotal;
+    let discount = 0;
+    if (selectedVoucher && subtotal >= selectedVoucher.min) {
+        discount = selectedVoucher.cut;
+    }
+    const total = subtotal - discount;
+
+    // Ringkasan checkout
+    document.getElementById('sumTotal').textContent = `Rp ${total.toLocaleString('id-ID')}`;
+    document.getElementById('bottomTotal').textContent = `Rp ${total.toLocaleString('id-ID')}`;
+    const voucherRow = document.getElementById('voucherRow');
+    const sumVoucher = document.getElementById('sumVoucher');
+    if (discount > 0) {
+        voucherRow.style.display = 'flex';
+        sumVoucher.textContent = `-Rp ${discount.toLocaleString('id-ID')}`;
+    } else {
+        voucherRow.style.display = 'none';
+    }
+
+    // Re-render daftar voucher untuk update status aktif
+    renderVouchers(subtotal);
+}
+
+function closeCheckout() { document.getElementById('checkoutPage').classList.remove('show'); }
+
+function selectShipping(type) {
+    selectedShipping = type;
+    const options = document.querySelectorAll('.ship-option');
+    options.forEach(opt => opt.classList.remove('active'));
+    
+    if(type === 'pickup') {
+        document.getElementById('optPickup').classList.add('active');
+        document.getElementById('optPickup').querySelector('input').checked = true;
+        document.getElementById('addressForm').style.display = 'none';
+        document.getElementById('garansiOnline').style.display = 'none';
+    } else {
+        document.getElementById('addressForm').style.display = 'block';
+        document.getElementById('garansiOnline').style.display = 'block';
+        if(type === 'express') {
+            document.getElementById('optExpress').classList.add('active');
+            document.getElementById('optExpress').querySelector('input').checked = true;
+        } else {
+            document.getElementById('optReguler').classList.add('active');
+            document.getElementById('optReguler').querySelector('input').checked = true;
+        }
+    }
+}
+
+// ==========================================
+// LANJUT PEMBAYARAN
+// ==========================================
+function goToPayment() {
+    if (!window.trueStoreUser) {
+        window.trueStorePendingAction = 'checkout';
+        showAuth('login');
+        return;
+    }
+    buyerData.shipping = selectedShipping;
+    if(selectedShipping !== 'pickup') {
+        const name = document.getElementById('buyerName').value.trim();
+        const phone = document.getElementById('buyerPhone').value.trim();
+        const address = document.getElementById('buyerAddress').value.trim();
+        if(!name || !phone || !address) { 
+            alert('Mohon lengkapi Nama Lengkap, Nomor WhatsApp, dan Alamat Pengiriman Anda.'); 
+            return; 
+        }
+        buyerData.name = name;
+        buyerData.phone = phone;
+        buyerData.address = address;
+    } else {
+        const name = document.getElementById('buyerName').value.trim();
+        const phone = document.getElementById('buyerPhone').value.trim();
+        if(!name || !phone) {
+            const n = prompt('Masukkan Nama Lengkap Anda:');
+            const p = prompt('Masukkan Nomor WhatsApp Anda:');
+            if(!n || !p) { alert('Nama dan Nomor WhatsApp wajib diisi untuk konfirmasi.'); return; }
+            buyerData.name = n;
+            buyerData.phone = p;
+            buyerData.address = 'Ambil di toko - Mall PIK Avenue Jakarta Utara';
+        } else {
+            buyerData.name = name;
+            buyerData.phone = phone;
+            buyerData.address = 'Ambil di toko - Mall PIK Avenue Jakarta Utara';
+        }
+    }
+    
+    document.getElementById('vaNumber').textContent = REK_SEABANK;
+
+    // Hitung total setelah voucher
+    let discount = 0;
+    if (selectedVoucher && orderSubtotal >= selectedVoucher.min) {
+        discount = selectedVoucher.cut;
+    }
+    const total = orderSubtotal - discount;
+
+    document.getElementById('paySumPrice').textContent = `Rp ${orderSubtotal.toLocaleString('id-ID')}`;
+    document.getElementById('paySumTotal').textContent = `Rp ${total.toLocaleString('id-ID')}`;
+    const payVoucherRow = document.getElementById('payVoucherRow');
+    const paySumVoucher = document.getElementById('paySumVoucher');
+    if (discount > 0) {
+        payVoucherRow.style.display = 'flex';
+        paySumVoucher.textContent = `-Rp ${discount.toLocaleString('id-ID')}`;
+    } else {
+        payVoucherRow.style.display = 'none';
+    }
+    
+    saveOrder();
+    
+    document.getElementById('checkoutPage').classList.remove('show');
+    document.getElementById('paymentPage').classList.add('show');
+    startCountdown();
+}
+
+// ==========================================
+// COUNTDOWN PEMBAYARAN
+// ==========================================
+function startCountdown(seconds = 1200) {
+    if (countdownInterval) clearInterval(countdownInterval);
+    countdownSeconds = seconds; 
+    paymentExpired = false;
+    
+    const timerEl = document.getElementById('countdownTimer');
+    const noteEl = document.getElementById('countdownNote');
+    const btn = document.getElementById('btnConfirmPay');
+    timerEl.classList.remove('countdown-expired');
+    noteEl.textContent = 'Pesanan akan otomatis dibatalkan jika waktu habis.';
+    noteEl.style.color = '#86868b';
+    btn.disabled = true;
+    btn.classList.remove('active');
+    btn.textContent = 'Menunggu Pembayaran... (1 menit)';
+
+    updateCountdownDisplay();
+    
+    countdownInterval = setInterval(() => {
+        countdownSeconds--;
+        if (countdownSeconds <= 0) {
+            clearInterval(countdownInterval);
+            countdownInterval = null;
+            paymentExpired = true;
+            timerEl.textContent = '00:00';
+            timerEl.classList.add('countdown-expired');
+            noteEl.textContent = 'Waktu pembayaran habis. Silakan kembali dan buat pesanan ulang.';
+            noteEl.style.color = '#ff453a';
+            btn.disabled = true;
+            btn.classList.remove('active');
+            btn.textContent = 'Waktu Habis';
+        } else {
+            updateCountdownDisplay();
+        }
+    }, 1000);
+}
+
+function updateCountdownDisplay() {
+    const m = Math.floor(countdownSeconds / 60);
+    const s = countdownSeconds % 60;
+    document.getElementById('countdownTimer').textContent = `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+    
+    const btn = document.getElementById('btnConfirmPay');
+    const elapsed = 1200 - countdownSeconds;
+    if (elapsed >= 60 && countdownSeconds > 0 && !paymentExpired) {
+        btn.disabled = false;
+        btn.classList.add('active');
+        btn.textContent = 'Saya Sudah Bayar';
+    } else if (!paymentExpired) {
+        btn.disabled = true;
+        btn.classList.remove('active');
+        const sisa = 60 - elapsed;
+        btn.textContent = `Tunggu ${sisa} detik...`;
+    }
+}
+
+function confirmPayment() {
+    if (paymentExpired) {
+        alert('Waktu pembayaran sudah habis.');
+        return;
+    }
+    if (countdownInterval) {
+        clearInterval(countdownInterval);
+        countdownInterval = null;
+    }
+
+    let orders = JSON.parse(localStorage.getItem("trueStoreOrders") || "[]");
+    if (orders.length > 0) {
+        orders[0].status = "Menunggu Verifikasi";
+        localStorage.setItem("trueStoreOrders", JSON.stringify(orders));
+    }
+
+    document.getElementById('paymentPage').classList.remove('show');
+    document.getElementById('confirmWaPage').classList.add('show');
+}
+
+// ==========================================
+// WHATSAPP
+// ==========================================
+function openWhatsApp() {
+    if (countdownInterval) { clearInterval(countdownInterval); countdownInterval = null; }
+    
+    let subtotal = 0;
+    let rincian = '';
+    cart.forEach((item, idx) => {
+        const sub = item.price * item.qty;
+        subtotal += sub;
+        rincian += `${idx+1}. ${item.name}\n   Kapasitas: ${item.capacity}\n   Warna: ${item.color}\n   Jumlah: ${item.qty}x\n   Subtotal: Rp ${sub.toLocaleString('id-ID')}\n\n`;
+    });
+
+    let discount = 0;
+    if (selectedVoucher && subtotal >= selectedVoucher.min) {
+        discount = selectedVoucher.cut;
+    }
+    const total = subtotal - discount;
+
+    let shippingText = '';
+    if (buyerData.shipping === 'pickup') {
+        shippingText = 'PickUp di Toko (Jam 11:00 - 12:00 WIB)';
+    } else if (buyerData.shipping === 'express') {
+        shippingText = 'Belanja Online - Express (1 Hari Sampai)';
+    } else {
+        shippingText = 'Belanja Online - Reguler (3-5 Hari Sampai)';
+    }
+
+    let voucherText = '';
+    if (selectedVoucher && discount > 0) {
+        voucherText = `\n🎟️ *VOUCHER: ${selectedVoucher.code}* (Potongan Rp ${discount.toLocaleString('id-ID')})\n`;
+    }
+
+    const pesan = 
+`Halo TRUE STORE, saya sudah melakukan pembayaran.
+
+━━━━━━━━━━━━━━━━━━
+📋 *RINCIAN PESANAN*
+━━━━━━━━━━━━━━━━━━
+${rincian}
+━━━━━━━━━━━━━━━━━━
+Subtotal: Rp ${subtotal.toLocaleString('id-ID')}${voucherText}
+💰 *TOTAL: Rp ${total.toLocaleString('id-ID')}*
+━━━━━━━━━━━━━━━━━━
+
+🏦 *TRANSFER KE:*
+Bank: SeaBank
+No. Rek: ${REK_SEABANK}
+Atas Nama: M Yuda
+
+🚚 *METODE:* ${shippingText}
+
+👤 *DATA PEMBELI*
+Nama Lengkap: ${buyerData.name}
+No. WhatsApp: ${buyerData.phone}
+Alamat: ${buyerData.address}
+
+━━━━━━━━━━━━━━━━━━
+📎 Saya lampirkan bukti pembayaran di chat ini.
+Mohon segera diproses. Terima kasih.`;
+
+    const url = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(pesan)}`;
+    window.open(url, '_blank');
+}
+
+function backToPayment() {
+    document.getElementById('confirmWaPage').classList.remove('show');
+    document.getElementById('paymentPage').classList.add('show');
+    if (!paymentExpired && countdownSeconds > 0) {
+        startCountdown();
+    }
+}
+
+function closePayment() { 
+    if (countdownInterval) { clearInterval(countdownInterval); countdownInterval = null; }
+    document.getElementById('paymentPage').classList.remove('show'); 
+    document.getElementById('checkoutPage').classList.add('show'); 
+}
+
+// ==========================================
+// SIMPAN PESANAN
+// ==========================================
+function saveOrder() {
+    const orders = JSON.parse(localStorage.getItem("trueStoreOrders") || "[]");
+
+    const items = cart.map(item => ({
+        name: item.name,
+        capacity: item.capacity,
+        color: item.color,
+        qty: item.qty,
+        price: item.price
+    }));
+
+    const subtotal = items.reduce((sum, item) => sum + item.price * item.qty, 0);
+    let discount = 0;
+    if (selectedVoucher && subtotal >= selectedVoucher.min) {
+        discount = selectedVoucher.cut;
+    }
+    const total = subtotal - discount;
+
+    let order = activeOrderId
+        ? orders.find(o => o.id === activeOrderId)
+        : null;
+
+    if (order) {
+        Object.assign(order, {
+            date: new Date().toLocaleString("id-ID"),
+            name: buyerData.name,
+            phone: buyerData.phone,
+            address: buyerData.address,
+            shipping: selectedShipping,
+            subtotal: subtotal,
+            discount: discount,
+            voucher: selectedVoucher ? selectedVoucher.code : null,
+            total: total,
+            items: items
+        });
+    } else {
+        order = {
+            id: "TS-" + Date.now(),
+            date: new Date().toLocaleString("id-ID"),
+            name: buyerData.name,
+            phone: buyerData.phone,
+            address: buyerData.address,
+            shipping: selectedShipping,
+            subtotal: subtotal,
+            discount: discount,
+            voucher: selectedVoucher ? selectedVoucher.code : null,
+            total: total,
+            items: items,
+            status: "Menunggu Pembayaran",
+            expiresAt: Date.now() + 1200000
+        };
+
+        orders.unshift(order);
+        activeOrderId = order.id;
+    }
+
+    localStorage.setItem("trueStoreOrders", JSON.stringify(orders));
+    return activeOrderId;
+}
+
+// ==========================================
+// RIWAYAT PESANAN
+// ==========================================
+function openHistory() {
+    const page = document.getElementById("historyPage");
+    const list = document.getElementById("historyList");
+    page.style.display = "block";
+
+    const orders = JSON.parse(localStorage.getItem("trueStoreOrders") || "[]");
+
+    if (!orders.length) {
+        list.innerHTML = "<p>Belum ada pesanan.</p>";
+        return;
+    }
+
+    list.innerHTML = orders.map(order => `
+        <div class="history-card">
+            <b>${order.id}</b>
+            <p>${order.date}</p>
+            <p>Nama: ${order.name}</p>
+            ${order.voucher ? `<p style="font-size:13px;color:var(--green);">Voucher: ${order.voucher} (-Rp ${(order.discount||0).toLocaleString("id-ID")})</p>` : ''}
+            <p class="history-total">Rp ${order.total.toLocaleString("id-ID")}</p>
+            <p class="history-status">${order.status}</p>
+            <div class="history-actions">
+                <button class="btn-resume" onclick="resumeOrder('${order.id}')">Lanjutkan Pembayaran</button>
+                <button class="btn-cancel" onclick="cancelOrder('${order.id}')">Batalkan</button>
+            </div>
+        </div>
+    `).join("");
+}
+
+function closeHistory() {
+  document.getElementById("historyPage").style.display = "none";
+}
+
+function cancelOrder(orderId) {
+    if (!confirm("Yakin ingin membatalkan pesanan ini?")) return;
+    let orders = JSON.parse(localStorage.getItem("trueStoreOrders") || "[]");
+    orders = orders.filter(order => order.id !== orderId);
+    localStorage.setItem("trueStoreOrders", JSON.stringify(orders));
+    if (activeOrderId === orderId) activeOrderId = null;
+    openHistory();
+}
+
+function resumeOrder(orderId) {
+    const orders = JSON.parse(localStorage.getItem("trueStoreOrders") || "[]");
+    const order = orders.find(o => o.id === orderId);
+    if (!order) { alert("Pesanan tidak ditemukan."); return; }
+    if (order.status !== "Menunggu Pembayaran") { alert("Pesanan ini tidak bisa dilanjutkan."); return; }
+
+    activeOrderId = order.id;
+    buyerData.name = order.name;
+    buyerData.phone = order.phone;
+    buyerData.address = order.address || "";
+    selectedShipping = order.shipping || "pickup";
+    cart = order.items.map(item => ({ ...item }));
+
+    // set ulang data voucher dari order
+    orderSubtotal = order.subtotal || cart.reduce((s,i)=>s+i.price*i.qty,0);
+    if (order.voucher) {
+        selectedVoucher = vouchers.find(v => v.code === order.voucher && v.min <= orderSubtotal && v.cut === order.discount) || null;
+    } else {
+        selectedVoucher = null;
+    }
+
+    document.getElementById("vaNumber").textContent = REK_SEABANK;
+    document.getElementById("paySumPrice").textContent = `Rp ${orderSubtotal.toLocaleString("id-ID")}`;
+    document.getElementById("paySumTotal").textContent = `Rp ${order.total.toLocaleString("id-ID")}`;
+
+    if (order.discount > 0) {
+        document.getElementById('payVoucherRow').style.display = 'flex';
+        document.getElementById('paySumVoucher').textContent = `-Rp ${order.discount.toLocaleString('id-ID')}`;
+    } else {
+        document.getElementById('payVoucherRow').style.display = 'none';
+    }
+
+    document.getElementById("historyPage").style.display = "none";
+    document.getElementById("checkoutPage").classList.remove("show");
+    document.getElementById("paymentPage").classList.add("show");
+
+    const remaining = order.expiresAt ? Math.ceil((order.expiresAt - Date.now()) / 1000) : 1200;
+    if (remaining <= 0) {
+        alert("Waktu pembayaran pesanan ini sudah habis. Silakan buat pesanan baru.");
+        return;
+    }
+    startCountdown(remaining);
+}
+
+renderProducts();
+updateCartCount();
+</script>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import {
+  getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, signOut,
+  getAdditionalUserInfo
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBEmnd4MAMnbRzMH4cRBNJ18BbhPiHX41A",
+  authDomain: "truestore-8192c.firebaseapp.com",
+  projectId: "truestore-8192c",
+  storageBucket: "truestore-8192c.firebasestorage.app",
+  messagingSenderId: "397958886536",
+  appId: "1:397958886536:web:1b506295581a3e1aa11b3d",
+  measurementId: "G-QJMGLYEM90"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const provider = new GoogleAuthProvider();
+provider.setCustomParameters({ prompt: "select_account" });
+
+let authMode = "login";
+window.trueStoreUser = null;
+window.trueStorePendingAction = null;
+
+window.showAuth = function(mode = "login") {
+  authMode = mode;
+  const isRegister = mode === "register";
+  document.getElementById("authTitle").textContent = isRegister ? "Daftar Akun TRUE STORE" : "Masuk ke TRUE STORE";
+  document.getElementById("authDescription").textContent = isRegister
+    ? "Buat akun menggunakan Google. Jika ini pertama kali, akun Anda akan dibuat otomatis."
+    : "Masuk menggunakan akun Google yang sudah Anda miliki untuk melanjutkan checkout.";
+  document.getElementById("authMessage").textContent = "";
+  document.getElementById("authGoogleButton").textContent = isRegister ? "Daftar dengan Google" : "Masuk dengan Google";
+  document.getElementById("authOverlay").classList.add("show");
+};
+
+window.hideAuth = function() {
+  document.getElementById("authOverlay").classList.remove("show");
+};
+
+window.startGoogleAuth = async function() {
+  const button = document.getElementById("authGoogleButton");
+  const message = document.getElementById("authMessage");
+  button.disabled = true;
+  button.textContent = "Menghubungkan...";
+  message.textContent = "Mohon tunggu, sedang menghubungkan akun Google Anda.";
+  try {
+    const result = await signInWithPopup(auth, provider);
+    const info = getAdditionalUserInfo(result);
+    message.textContent = info?.isNewUser
+      ? "Akun TRUE STORE berhasil dibuat."
+      : "Berhasil masuk ke akun TRUE STORE.";
+    window.trueStorePendingAction = window.trueStorePendingAction || null;
+    window.hideAuth();
+    if (window.trueStorePendingAction === "checkout") {
+      window.trueStorePendingAction = null;
+      if (typeof window.openCheckout === "function") window.openCheckout();
+    }
+  } catch (error) {
+    console.error("Google authentication error:", error);
+    message.textContent = error.code === "auth/unauthorized-domain"
+      ? "Domain website belum diizinkan di Firebase Authentication."
+      : "Gagal masuk. Silakan coba lagi atau pilih akun Google lain.";
+  } finally {
+    button.disabled = false;
+    button.textContent = authMode === "register" ? "Daftar dengan Google" : "Masuk dengan Google";
+  }
+};
+
+onAuthStateChanged(auth, (user) => {
+  window.trueStoreUser = user || null;
+  const nav = document.getElementById("authNav");
+  if (!nav) return;
+  if (user) {
+    nav.innerHTML = `
+      <span class="auth-user" title="${(user.email || "").replace(/"/g, "&quot;")}">${user.displayName || user.email || "Akun TRUE STORE"}</span>
+      <button class="auth-login" id="signOutButton">KELUAR</button>`;
+    document.getElementById("signOutButton").addEventListener("click", async () => {
+      try { await signOut(auth); }
+      catch (error) { alert("Tidak dapat keluar. Silakan coba lagi."); }
+    });
+  } else {
+    nav.innerHTML = `
+      <button class="auth-login" onclick="showAuth('login')">MASUK</button>
+      <button class="auth-register" onclick="showAuth('register')">DAFTAR</button>`;
+  }
+});
+</script>
+
+</body>
+</html>
