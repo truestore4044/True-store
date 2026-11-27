@@ -46,16 +46,19 @@ header { background: rgba(255, 255, 255, 0.9); backdrop-filter: saturate(180%) b
 .scam-alert-close { position: absolute; right: 14px; top: 50%; transform: translateY(-50%); width: 26px; height: 26px; border-radius: 50%; background: rgba(255, 214, 10, 0.3); color: #6b4e00; font-size: 16px; font-weight: 700; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background 0.2s; line-height: 1; }
 .scam-alert-close:hover { background: rgba(255, 214, 10, 0.6); }
 
-/* BANNER VOUCHER */
-.hero-banner { width: 100%; background: linear-gradient(135deg, #0071e3 0%, #42a5f5 50%, #1e3c72 100%); padding: 45px 20px; text-align: center; border-bottom: 1px solid var(--line); position: relative; overflow: hidden; }
-.hero-banner::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 60%); pointer-events: none; }
-.hero-badge { display: inline-block; background: #ffd60a; color: #1d1d1f; font-size: 12px; font-weight: 900; padding: 5px 14px; border-radius: 20px; letter-spacing: 1px; margin-bottom: 14px; text-transform: uppercase; position: relative; }
-.hero-title { font-size: 34px; font-weight: 900; letter-spacing: -0.03em; margin-bottom: 10px; color: #fff; position: relative; line-height: 1.15; }
-.hero-title span { color: #ffd60a; }
-.hero-subtitle { font-size: 16px; color: rgba(255,255,255,0.9); font-weight: 500; position: relative; margin-bottom: 18px; }
-.hero-voucher-code { display: inline-flex; align-items: center; gap: 10px; background: rgba(255,255,255,0.15); border: 2px dashed rgba(255,255,255,0.6); border-radius: 12px; padding: 10px 20px; position: relative; }
-.hero-voucher-code .code-label { font-size: 12px; color: rgba(255,255,255,0.8); font-weight: 600; }
-.hero-voucher-code .code-value { font-size: 20px; font-weight: 900; color: #fff; letter-spacing: 2px; }
+/* BANNER PROMO IPHONE DUO */
+.hero-banner { width:100%; background:radial-gradient(circle at 75% 45%,#34465f 0%,#111827 48%,#05070b 100%); padding:36px clamp(18px,5vw,64px); border-bottom:1px solid var(--line); position:relative; overflow:hidden; min-height:340px; display:flex; align-items:center; justify-content:space-between; gap:28px; color:#fff; }
+.hero-copy { position:relative; z-index:2; max-width:520px; }
+.hero-badge { display:inline-block; background:#d9e6f7; color:#101827; font-size:11px; font-weight:900; padding:6px 13px; border-radius:20px; letter-spacing:1px; margin-bottom:16px; text-transform:uppercase; }
+.hero-title { font-size:clamp(30px,4vw,48px); font-weight:850; letter-spacing:-.04em; margin:0 0 10px; color:#fff; line-height:1.05; }
+.hero-title span { color:#c9dcf5; }
+.hero-subtitle { font-size:15px; color:rgba(255,255,255,.82); font-weight:500; margin:0 0 18px; }
+.hero-price { font-size:14px; color:#fff; margin:0 0 18px; }
+.hero-price strong { font-size:20px; }
+.hero-buy { background:#fff; color:#111827; border-radius:24px; padding:13px 28px; font-size:14px; font-weight:850; box-shadow:0 5px 20px rgba(0,0,0,.25); }
+.hero-buy:hover { background:#dce9f8; }
+.hero-art { width:min(48%,570px); max-height:300px; object-fit:contain; position:relative; z-index:1; filter:drop-shadow(0 20px 25px rgba(0,0,0,.3)); }
+@media(max-width:700px){.hero-banner{min-height:0;flex-direction:column-reverse;text-align:center;padding:24px 18px 30px;gap:8px}.hero-art{width:100%;max-height:190px}.hero-copy{max-width:100%}.hero-title{font-size:30px}.hero-subtitle{font-size:13px}.hero-price strong{font-size:18px}}
 
 /* SECTION KATEGORI */
 .category-section { background: var(--bg); padding: 30px 20px; border-bottom: 1px solid var(--line); }
@@ -273,6 +276,90 @@ header { background: rgba(255, 255, 255, 0.9); backdrop-filter: saturate(180%) b
 .auth-cancel{margin-top:12px;padding:10px 18px;color:#555;font-weight:700}
 @media(max-width:768px){.auth-nav{justify-content:center}.auth-user{max-width:110px}}
 
+
+
+/* ===== PENYEMPURNAAN MOBILE TRUE STORE ===== */
+@media (max-width: 600px) {
+  html { scroll-padding-top: 76px; }
+  body { overflow-x: hidden; }
+  header { position: sticky; top: 0; }
+  .nav {
+    min-height: 58px;
+    height: auto;
+    padding: 9px 13px;
+    gap: 8px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .brand { font-size: 21px; letter-spacing: -0.045em; }
+  .nav-links { display: none !important; }
+  .cart-btn, .history-btn, .auth-nav button {
+    min-height: 40px;
+    padding: 8px 10px;
+    border-radius: 10px;
+    font-size: 12px;
+  }
+  .nav > :last-child { max-width: 100%; }
+  .auth-nav { gap: 5px; }
+  .scam-alert {
+    padding: 10px 38px 10px 12px;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .scam-alert-content { gap: 8px; align-items: flex-start; }
+  .scam-alert-text { font-size: 11px; line-height: 1.45; }
+  .scam-alert-text strong { display: block; font-size: 11px; margin-bottom: 2px; }
+  .scam-alert-icon { width: 22px; min-width: 22px; }
+  .scam-alert-close { right: 8px; top: 8px; }
+  .hero-banner {
+    min-height: 0;
+    padding: 22px 16px 24px;
+    gap: 12px;
+    border-radius: 0;
+  }
+  .hero-art { width: 100%; max-height: 175px; object-fit: contain; }
+  .hero-title { font-size: clamp(27px, 8vw, 34px); line-height: 1.08; }
+  .hero-subtitle { font-size: 12px; line-height: 1.5; max-width: 330px; margin-left: auto; margin-right: auto; }
+  .hero-price { margin: 10px 0; font-size: 12px; }
+  .hero-buy { min-height: 46px; min-width: 145px; border-radius: 24px; }
+  .category-section { padding: 16px 12px; }
+  .category-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+  .cat-card { min-height: 88px; padding: 12px 6px; border-radius: 13px; }
+  .cat-icon { width: 32px; height: 32px; margin-bottom: 6px; }
+  .cat-card h3 { font-size: 12px; }
+  .product-section { padding: 30px 12px 42px; }
+  .section-title { margin-bottom: 20px; }
+  .section-title h2 { font-size: 24px; margin-bottom: 5px; }
+  .section-title p { font-size: 13px; }
+  .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .product-card {
+    min-width: 0;
+    padding: 12px 9px 14px;
+    border-radius: 14px;
+    box-shadow: 0 2px 10px rgba(0,0,0,.045);
+  }
+  .product-card img { max-width: 100%; }
+  .product-card h3 { font-size: 13px; line-height: 1.35; }
+  .product-card p { font-size: 12px; }
+  .product-card button { min-height: 40px; }
+  .detail-overlay { padding-bottom: env(safe-area-inset-bottom); }
+  .detail-header { padding: 12px 14px; }
+  .detail-content { padding: 14px; }
+  .detail-img-wrapper { max-height: 36vh; }
+  .detail-img { max-height: 34vh; object-fit: contain; }
+  .option-label { font-size: 13px; }
+  .detail-content button, .detail-header button { min-height: 42px; }
+  input, select, textarea { font-size: 16px !important; }
+  footer { padding: 26px 14px !important; }
+}
+@media (max-width: 360px) {
+  .brand { font-size: 19px; }
+  .cart-btn, .history-btn, .auth-nav button { padding: 7px 8px; font-size: 11px; }
+  .product-grid { gap: 8px; }
+  .product-card { padding: 10px 7px 12px; }
+}
+
 </style>
 </head>
 <body>
@@ -333,16 +420,17 @@ header { background: rgba(255, 255, 255, 0.9); backdrop-filter: saturate(180%) b
     <button class="scam-alert-close" onclick="document.getElementById('scamAlert').style.display='none'" aria-label="Tutup peringatan">×</button>
 </div>
 
-<!-- BANNER VOUCHER PENGGANTI HERO -->
-<div class="hero-banner">
-    <div class="hero-badge">🎉 Promo Spesial</div>
-    <h1 class="hero-title">BELANJA PERTAMA ANDA<br><span>GUNAKAN KODE TRUESPECIAL</span></h1>
-    <p class="hero-subtitle">Dapatkan potongan harga hingga Rp 2.500.000</p>
-    <div class="hero-voucher-code">
-        <span class="code-label">KODE:</span>
-        <span class="code-value">TRUESPECIAL</span>
+<!-- BANNER IKLAN IPHONE DUO -->
+<section class="hero-banner" aria-label="Promo iPhone Duo TRUE STORE">
+    <div class="hero-copy">
+        <div class="hero-badge">NEW ARRIVAL · TRUE STORE</div>
+        <h1 class="hero-title">iPhone <span>Duo.</span><br>Era baru layar lipat.</h1>
+        <p class="hero-subtitle">Layar besar. Desain titanium yang dapat dilipat. Pilih warna dan kapasitas favoritmu.</p>
+        <p class="hero-price">Mulai dari <strong>Rp 45.678.910</strong></p>
+        <button class="hero-buy" type="button" onclick="buyIPhoneDuo()">BUY NOW</button>
     </div>
-</div>
+    <img class="hero-art" src="https://www.pbtech.co.nz/imgprod/M/P/MPHAPP881000__7.jpg?h=4252470279" alt="iPhone Duo warna Night Sky dan Star White dalam posisi terbuka">
+</section>
 
 <section class="category-section">
     <div class="category-grid">
@@ -800,6 +888,11 @@ const products = [
     {id:53, cat:'Music', name:'AirPods Max', desc:'Headphone over-ear · Audio Spasial', capacities:['Standard'], prices:{'Standard':8499000}, isNew:false, colors:[
         {k:'Space Gray',n:'Space Gray',bg:'#6e6e73',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-airpods-max-1.jpg'},
         {k:'Silver',n:'Silver',bg:'#e0e0e0',img:'https://fdn2.gsmarena.com/vv/pics/apple/apple-airpods-max-2.jpg'}
+    ]},
+    // --- IPHONE DUO ---
+    {id:60, cat:'iPhone', name:'iPhone Duo', desc:'iPhone layar lipat · Layar dalam 7,6 inci · Chip A20 Pro', capacities:['256GB','512GB','1TB','2TB'], prices:{'256GB':45678910,'512GB':51999000,'1TB':61999000,'2TB':75999000}, isNew:true, colors:[
+        {k:'Star White',n:'Star White',bg:'#f2f1ec',img:'https://www.pbtech.co.nz/imgprod/M/P/MPHAPP881001.jpg?h=687457154'},
+        {k:'Night Sky',n:'Night Sky',bg:'#182638',img:'https://www.pbtech.co.nz/imgprod/M/P/MPHAPP881000__7.jpg?h=4252470279'}
     ]}
 ];
 
@@ -932,6 +1025,18 @@ function addToCartFromDetail() {
 
     updateCartCount();
     closeDetail();
+    openCheckout();
+}
+
+// Tombol BUY NOW pada banner: langsung siapkan iPhone Duo 256GB Star White di checkout.
+function buyIPhoneDuo() {
+    const product = products.find(p => p.id === 60);
+    if (!product) { alert('Produk iPhone Duo belum tersedia.'); return; }
+    const capacity = '256GB';
+    const color = product.colors.find(c => c.k === 'Star White') || product.colors[0];
+    // Pembelian dari banner dibuat khusus untuk iPhone Duo, tanpa item keranjang lain.
+    cart = [{ id: product.id, name: product.name, capacity, color: color.n, price: product.prices[capacity], qty: 1, img: color.img }];
+    updateCartCount();
     openCheckout();
 }
 
